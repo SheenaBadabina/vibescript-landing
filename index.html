@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VibeScript — AI Content Operating System</title>
+  <meta name="description" content="Turn one business idea into a complete, brand-consistent, ready-to-deploy marketing campaign across all platforms." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+  <style>
+    :root { --bg:#0b0f14; --fg:#e8f1f2; --muted:#9fb7c1; --accent:#13c2c2; }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family: Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif; color:var(--fg); background:linear-gradient(180deg,#0b0f14 0%, #0f1720 100%); }
+    .wrap { min-height:100svh; display:flex; align-items:center; justify-content:center; padding:24px; }
+    .card { width:100%; max-width:720px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08);
+            border-radius:20px; padding:28px; backdrop-filter: blur(8px); }
+    h1 { margin:0 0 8px; font-size:clamp(28px,4vw,40px); line-height:1.1; }
+    p { margin:8px 0; color:var(--muted); font-size:clamp(14px,2.5vw,18px); }
+    .pill { display:inline-block; padding:6px 12px; border-radius:999px; background:rgba(19,194,194,0.12); color:#bff7f7; font-weight:600; letter-spacing:.2px; }
+    .cta { margin-top:18px; display:flex; gap:10px; flex-wrap:wrap; }
+    input[type="email"] { flex:1 1 260px; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,0.12);
+                          background:rgba(255,255,255,0.04); color:var(--fg); outline:none; }
+    button { padding:12px 16px; border-radius:12px; border:0; background:var(--accent); color:#001111; font-weight:700; cursor:pointer; }
+    .grid { margin-top:18px; display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); }
+    .tile { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:12px; }
+    small { display:block; margin-top:14px; color:#7f96a2; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <section class="card">
+      <span class="pill">VibeScript</span>
+      <h1>Turn one idea into a full campaign</h1>
+      <p>VibeScript transforms a single business input into complete, brand-consistent, ready-to-deploy content for social, email, ads, and your website—optimized for each platform’s current best practices.</p>
+      <div class="cta">
+        <input type="email" id="email" placeholder="Enter email for early access" />
+        <button onclick="alert('Thanks! Early access list coming soon.')">Get Early Access</button>
+      </div>
+
+      <div class="grid">
+        <div class="tile"><strong>Social</strong><br><small>Posts, captions, stories, reels</small></div>
+        <div class="tile"><strong>Email</strong><br><small>Newsletters + follow-ups</small></div>
+        <div class="tile"><strong>Ads</strong><br><small>Google + Meta-ready copy</small></div>
+        <div class="tile"><strong>Website</strong><br><small>Landing pages, FAQs</small></div>
+      </div>
+
+      <small>Domains: vibescript.online · vibescript.app</small>
+    </section>
+  </main>
+</body>
+</html>
