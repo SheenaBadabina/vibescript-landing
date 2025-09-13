@@ -4,22 +4,19 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>VibeScript — AI-powered content campaigns</title>
-  <meta name="description" content="VibeScript transforms one idea into a complete, brand-consistent campaign across social, email, ads, and web." />
+  <meta name="description" content="VibeScript transforms one idea into a complete, brand-consistent campaign across social, email, ads, and web.">
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- (No Mailchimp CSS here anymore—keeps our styles pristine) -->
   <style>
     :root{
       --bg0:#0b0b0f;
-      --card:#0f121a;
+      --bg1:#12151e;
       --text:#e8eaf1;
       --muted:#9aa3b2;
-      --ring1:#ff7a00; --ring2:#ffd400; --ring3:#30e37a;
-      --ring4:#2bb0ff; --ring5:#7a5cff; --ring6:#ff4dd8;
+      --g:linear-gradient(90deg,#ff7a00,#ffd400,#30e37a,#2bb0ff,#7a5cff,#ff4dd8);
     }
     *{box-sizing:border-box}
     html,body{height:100%}
@@ -27,69 +24,48 @@
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--text);
-      background: radial-gradient(1200px 800px at 50% -10%, #1a1f2b 0%, #0b0b0f 60%) fixed;
+      background:
+        radial-gradient(900px 600px at 50% -10%, #1a1f2b 0%, #0b0b0f 60%) fixed,
+        var(--bg0);
     }
-    .wrap{
-      min-height:100%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
-    }
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
     .card{
-      width:100%;
-      max-width:840px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      border:1px solid rgba(255,255,255,0.10);
-      border-radius:28px;
-      padding:32px 24px 26px;
-      box-shadow: 0 18px 60px rgba(0,0,0,0.5);
-      backdrop-filter: blur(10px);
-      margin:0 auto;
-      text-align:center;
+      width:100%;max-width:840px;margin:0 auto;text-align:center;
+      background:#12141a;border:1px solid rgba(255,255,255,.08);border-radius:28px;
+      padding:28px 20px 20px; box-shadow:0 18px 60px rgba(0,0,0,.5);
     }
-    .logo{
-      height:110px; width:auto;
-      display:block; margin:0 auto 10px;
-      filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45));
-      user-select:none; -webkit-user-drag:none;
-    }
+    .logo{height:110px;width:auto;display:block;margin:0 auto 10px;user-select:none;-webkit-user-drag:none}
     h1{
-      margin:6px 0 12px;
-      font-size:clamp(36px, 6vw, 64px);
-      line-height:1.08; letter-spacing:-0.02em; font-weight:800;
-      background: linear-gradient(90deg,var(--ring1),var(--ring2),var(--ring3),var(--ring4),var(--ring5),var(--ring6));
-      -webkit-background-clip:text; background-clip:text; color:transparent;
+      margin:6px 0 12px;font-size:clamp(36px,6vw,64px);line-height:1.08;letter-spacing:-.02em;font-weight:800;
+      background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;
     }
-    .lead{
-      margin:0 auto 22px; max-width:58ch;
-      color:var(--muted);
-      font-size:clamp(16px, 2vw, 18px);
-      line-height:1.65;
-    }
-
-    /* CTA button (no clipping, fully centered) */
+    .lead{margin:0 auto 22px;max-width:58ch;color:var(--muted);font-size:clamp(16px,2vw,18px);line-height:1.65}
     .cta{
-      display:inline-flex; align-items:center; justify-content:center;
-      min-height:54px; padding:14px 24px;
-      border:0; border-radius:999px; cursor:pointer;
-      font-weight:800; font-size:18px; letter-spacing:.2px;
-      color:#121318; text-decoration:none;
-      background: linear-gradient(90deg,var(--ring1),var(--ring2),var(--ring3),var(--ring4),var(--ring5),var(--ring6));
-      box-shadow: 0 12px 30px rgba(0,0,0,0.45);
-      transition: transform .12s ease, box-shadow .12s ease, opacity .2s ease;
-      width:100%; max-width:420px;
+      display:inline-flex;align-items:center;justify-content:center;
+      min-height:54px;padding:14px 24px;border:0;border-radius:999px;cursor:pointer;
+      font-weight:800;font-size:18px;letter-spacing:.2px;color:#121318;text-decoration:none;
+      background:var(--g);box-shadow:0 12px 30px rgba(0,0,0,.45);width:100%;max-width:420px;
+      transition:transform .12s ease,box-shadow .12s ease,opacity .2s ease;
     }
-    .cta:hover{ transform: translateY(-1px); box-shadow:0 16px 36px rgba(0,0,0,0.5); }
-    .cta:active{ transform:none; opacity:.95; }
-
-    footer{ margin-top:18px; color:#8b93a7; font-size:13px; }
-
-    @media (max-width:480px){
-      .card{ padding:26px 16px 18px; border-radius:20px; }
-      .logo{ height:90px; }
-    }
+    .cta:hover{transform:translateY(-1px);box-shadow:0 16px 36px rgba(0,0,0,.5)}
+    .cta:active{transform:none;opacity:.95}
+    footer{margin-top:18px;color:#8b93a7;font-size:13px}
+    @media (max-width:480px){.card{padding:22px 14px 16px;border-radius:20px}.logo{height:90px}}
   </style>
 </head>
 <body>
-  <div class
+  <div class="wrap">
+    <main class="card" role="main" aria-labelledby="brand">
+      <!-- IMPORTANT: logo path is relative to index.html -->
+      <img class="logo" src="assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo">
+      <h1 id="brand">VibeScript</h1>
+      <p class="lead">
+        The AI-powered content platform that transforms one idea into a complete,
+        brand-consistent campaign. Launching soon — stay tuned for the future of AI marketing.
+      </p>
+      <a class="cta" href="https://eepurl.com/jnh9B2" target="_blank" rel="noopener">Get Updates</a>
+      <footer>© 2025 VibeScript. All rights reserved.</footer>
+    </main>
+  </div>
+</body>
+</html>
