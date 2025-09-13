@@ -12,166 +12,54 @@
   <style>
     :root{
       --bg1:#0b0f14;
-      --bg2:#111827;
       --card:#0c111b;
       --text:#e5e7eb;
       --muted:#9ca3af;
-      --input:#111827;
-      --ring:#1f2937;
       --shadow:0 8px 30px rgba(0,0,0,.45);
-
-      --grad: linear-gradient(90deg,
-        #ff9900, #ff5a00, #ff007a, #8a2be2, #2aa7ff, #00e19b, #ffe600);
+      --grad: linear-gradient(90deg,#ff9900,#ff5a00,#ff007a,#8a2be2,#2aa7ff,#00e19b,#ffe600);
     }
-
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
+      margin:0; color:var(--text);
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,"Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
       background: radial-gradient(1200px 700px at 50% 10%, #0d1220 0%, #0b0f14 40%, #080b10 100%);
       -webkit-font-smoothing:antialiased; text-rendering:optimizeLegibility;
     }
-
-    .wrap{
-      min-height:100%;
-      display:grid;
-      place-items:center;
-      padding:24px;
-    }
-
+    .wrap{min-height:100%;display:grid;place-items:center;padding:24px}
     .card{
-      width:100%;
-      max-width:720px;
+      width:100%;max-width:720px;position:relative;overflow:hidden;
       background: radial-gradient(120% 100% at 50% -20%, rgba(31,41,55,.65) 0%, rgba(17,24,39,.65) 50%, rgba(12,17,27,.85) 100%);
-      border:1px solid rgba(255,255,255,.06);
-      border-radius:28px;
-      box-shadow: var(--shadow);
+      border:1px solid rgba(255,255,255,.06);border-radius:28px;box-shadow:var(--shadow);
       padding:28px 24px 28px;
-      position:relative;
-      overflow:hidden;
     }
+    .card::before{content:"";position:absolute;inset:1px;border-radius:27px;background:radial-gradient(100% 60% at 50% 0%,rgba(255,255,255,.06),transparent 60%);pointer-events:none}
+    .logo{display:flex;align-items:center;gap:10px;margin-bottom:14px;justify-content:center}
+    .logo img{width:54px;height:54px;object-fit:cover;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.35)}
+    .logo span{color:var(--muted);font-weight:600;letter-spacing:.02em}
+    h1{margin:6px auto 12px;text-align:center;font-weight:800;font-size:clamp(28px,6vw,44px);letter-spacing:.01em;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .lead{margin:0 auto 18px;max-width:54ch;text-align:center;color:var(--muted);font-size:clamp(15px,3.6vw,18px);line-height:1.6}
 
-    .card::before{
-      /* subtle inner highlight */
-      content:"";
-      position:absolute; inset:1px;
-      border-radius:27px;
-      background: radial-gradient(100% 60% at 50% 0%, rgba(255,255,255,.06), transparent 60%);
-      pointer-events:none;
-    }
-
-    .logo{
-      display:flex; align-items:center; gap:10px;
-      margin-bottom:14px;
-      justify-content:center;
-    }
-    .logo img{
-      width:54px; height:54px; object-fit:cover; border-radius:12px;
-      box-shadow:0 4px 20px rgba(0,0,0,.35);
-    }
-    .logo span{ color:var(--muted); font-weight:600; letter-spacing:.02em; }
-
-    h1{
-      margin:6px auto 12px;
-      text-align:center;
-      font-weight:800;
-      font-size:clamp(28px, 6vw, 44px);
-      letter-spacing:.01em;
-      background: var(--grad);
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .lead{
-      margin:0 auto 18px;
-      max-width:54ch;
-      text-align:center;
-      color:var(--muted);
-      font-size:clamp(15px, 3.6vw, 18px);
-      line-height:1.6;
-    }
-
-    form{
-      width:100%;
-      max-width:560px;
-      margin: 0 auto;
-      display:grid;
-      grid-template-columns: 1fr;
-      gap:12px;
-    }
-
+    form{width:100%;max-width:560px;margin:0 auto;display:grid;grid-template-columns:1fr;gap:12px}
     .input{
-      width:100%;
-      height:56px;
-      border-radius:14px;
-      border:1px solid rgba(255,255,255,.08);
-      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow: inset 0 1px 0 rgba(255,255,255,.06);
-      color:var(--text);
-      padding:0 16px;
-      font-size:16px;
-      outline:none;
+      width:100%;height:56px;border-radius:14px;border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.03));
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.06);color:#e5e7eb;padding:0 16px;font-size:16px;outline:none;
       transition:border-color .2s, box-shadow .2s;
     }
-    .input::placeholder{ color:#b7c0cc }
-    .input:focus{
-      border-color:#3b82f6;
-      box-shadow:0 0 0 4px rgba(59,130,246,.15), inset 0 1px 0 rgba(255,255,255,.08);
-    }
+    .input::placeholder{color:#b7c0cc}
+    .input:focus{border-color:#3b82f6;box-shadow:0 0 0 4px rgba(59,130,246,.15), inset 0 1px 0 rgba(255,255,255,.08)}
 
     .button{
-      height:56px;
-      border:none;
-      border-radius:14px;
-      background:var(--grad);
-      color:#0b0f14;
-      font-weight:800;
-      font-size:17px;
-      letter-spacing:.02em;
-      cursor:pointer;
-      position:relative;
-      box-shadow:0 8px 22px rgba(0,0,0,.35);
-      transition: transform .08s ease, box-shadow .2s ease, opacity .2s ease;
+      height:56px;border:none;border-radius:14px;background:var(--grad);color:#0b0f14;
+      font-weight:800;font-size:17px;letter-spacing:.02em;cursor:pointer;position:relative;
+      box-shadow:0 8px 22px rgba(0,0,0,.35);transition:transform .08s ease, box-shadow .2s ease, opacity .2s ease;
     }
-    .button:active{ transform: translateY(1px) }
-    .button:hover{ opacity:.95 }
-
-    .fineprint{
-      margin:14px auto 0;
-      text-align:center;
-      color:#9aa5b1;
-      font-size:13px;
-    }
-
-    .toast{
-      display:none;
-      margin: 14px auto 0;
-      width:max-content;
-      max-width:92%;
-      background: rgba(34,197,94,.12);
-      border:1px solid rgba(34,197,94,.35);
-      color:#b7f7c8;
-      padding:10px 14px;
-      border-radius:12px;
-      font-size:14px;
-      text-align:center;
-    }
-
-    footer{
-      margin: 26px auto 0;
-      text-align:center;
-      color:#94a3b8;
-      font-size:13px;
-    }
-
-    /* medium+ layour tweak */
-    @media (min-width:560px){
-      form{ grid-template-columns: 1fr auto; gap:14px }
-      .button{ padding:0 22px; min-width:180px }
-    }
+    .button:active{transform:translateY(1px)} .button:hover{opacity:.95}
+    .error{color:#ffb4c1;font-size:14px;text-align:center;display:none}
+    .toast{display:none;margin:14px auto 0;width:max-content;max-width:92%;background:rgba(34,197,94,.12);border:1px solid rgba(34,197,94,.35);color:#b7f7c8;padding:10px 14px;border-radius:12px;font-size:14px;text-align:center}
+    footer{margin:26px auto 0;text-align:center;color:#94a3b8;font-size:13px}
+    @media (min-width:560px){form{grid-template-columns:1fr auto;gap:14px}.button{padding:0 22px;min-width:180px}}
   </style>
 </head>
 <body>
@@ -188,28 +76,13 @@
         Launching soon — stay tuned for the future of AI marketing.
       </p>
 
-      <!-- hidden iframe keeps user on-site after submit -->
-      <iframe name="mc-target" style="display:none;"></iframe>
-
-      <!-- Mailchimp: inline submit (stays on page) -->
-      <form
-        id="mc-form"
-        action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&id=4d7f887426&f_id=00ffa2e0f0"
-        method="post"
-        target="mc-target"
-        novalidate
-      >
-        <label class="sr-only" for="mce-EMAIL">Email address</label>
-        <input type="email" name="EMAIL" id="mce-EMAIL" class="input" placeholder="Your email address" required />
-
-        <!-- honeypot (leave empty) -->
-        <div aria-hidden="true" style="position:absolute; left:-5000px;">
-          <input type="text" name="b_0a7bc91bac675bcca19bd150d_4d7f887426" tabindex="-1" value="">
-        </div>
-
+      <form id="signup">
+        <label class="sr-only" for="email">Email address</label>
+        <input type="email" id="email" class="input" placeholder="Your email address" required />
         <button type="submit" class="button" id="submitBtn">Get Updates</button>
       </form>
 
+      <div id="err" class="error">Please enter a valid email.</div>
       <div id="toast" class="toast" role="status" aria-live="polite">
         Thanks! Check your inbox to confirm your subscription.
       </div>
@@ -219,18 +92,48 @@
   </div>
 
   <script>
-    // Minimal UX: show a confirmation toast and disable the button
-    const form = document.getElementById('mc-form');
-    const btn  = document.getElementById('submitBtn');
-    const toast= document.getElementById('toast');
+    const form  = document.getElementById('signup');
+    const email = document.getElementById('email');
+    const btn   = document.getElementById('submitBtn');
+    const errEl = document.getElementById('err');
+    const toast = document.getElementById('toast');
 
-    form.addEventListener('submit', function(){
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      errEl.style.display = 'none';
+
+      const value = email.value.trim();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+        errEl.style.display = 'block';
+        return;
+      }
+
       btn.disabled = true;
       btn.textContent = 'Sending…';
-      setTimeout(() => {
-        toast.style.display = 'block';
-        btn.textContent = 'Sent';
-      }, 900);
+
+      try {
+        const body = new FormData();
+        body.set('email', value);
+
+        const res = await fetch('/subscribe', { method: 'POST', body });
+        const data = await res.json();
+
+        if (data.ok) {
+          toast.style.display = 'block';
+          btn.textContent = 'Sent';
+          email.value = '';
+        } else {
+          errEl.textContent = data.message || 'Please try again.';
+          errEl.style.display = 'block';
+          btn.textContent = 'Get Updates';
+          btn.disabled = false;
+        }
+      } catch (e2) {
+        errEl.textContent = 'Network error. Please try again.';
+        errEl.style.display = 'block';
+        btn.textContent = 'Get Updates';
+        btn.disabled = false;
+      }
     });
   </script>
 </body>
