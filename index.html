@@ -1,85 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VibeScript</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>VibeScript — AI-powered content platform</title>
+  <meta name="description" content="VibeScript transforms one idea into a complete, brand-consistent campaign. Launching soon — stay tuned for the future of AI marketing." />
+
+  <!-- Brand font -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700;800&display=swap" rel="stylesheet" />
+
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Inter', sans-serif;
-      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
-      color: white;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
+    :root{
+      --card-bg: rgba(10,12,16,0.8);
+      --card-border: rgba(255,255,255,0.06);
+      --text: #dfe7ee;
+      --muted: #9fb0c2;
+      --shadow: 0 20px 60px rgba(0,0,0,0.45);
+      --radius: 28px;
+      --ring: 0 0 0 1px var(--card-border);
     }
-    .card {
-      background: rgba(0, 0, 0, 0.7);
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-      max-width: 400px;
-      width: 90%;
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body{
+      margin:0;
+      font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, 'Helvetica Neue', Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(1200px 800px at 50% -10%, #1f2a44 0%, #0f1724 45%, #0a0f18 100%);
+      display:flex; align-items:center; justify-content:center;
+      padding: 18px;
     }
-    .logo {
-      width: 120px;
-      margin-bottom: 1rem;
-    }
-    h1 {
-      font-size: 2rem;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin: 0.5rem 0;
-    }
-    p {
-      font-size: 1rem;
-      line-height: 1.5;
-      margin-bottom: 1.5rem;
-    }
-    input[type="email"] {
+
+    .wrap{
       width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #555;
-      border-radius: 10px;
-      font-size: 1rem;
+      max-width: 860px;
+      display:flex; justify-content:center; align-items:center;
     }
-    button {
+
+    .card{
       width: 100%;
-      padding: 0.75rem;
-      font-size: 1rem;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
-      color: white;
-      font-weight: bold;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: clamp(22px, 4vw, 36px);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    button:hover {
-      opacity: 0.9;
+
+    .logo{
+      display:flex; align-items:center; gap: 12px;
+      margin-bottom: 16px;
     }
-    footer {
-      margin-top: 1.5rem;
-      font-size: 0.8rem;
-      color: #aaa;
+    .logo img{
+      width: clamp(56px, 12vw, 90px);
+      height: auto;
+      display:block;
+      border-radius: 14px;
+    }
+    .logo small{
+      color: var(--muted);
+      letter-spacing: 0.08em;
+    }
+
+    h1{
+      margin: 6px 0 14px;
+      font-size: clamp(38px, 7vw, 64px);
+      line-height: 1.02;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(90deg,#ffd166,#ffe66d,#c2ff68,#56f49a,#42e2f4,#4f5df8,#a855f7);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+      filter: drop-shadow(0 4px 18px rgba(90,120,255,0.18));
+      text-align:center;
+    }
+
+    p.lead{
+      max-width: 58ch;
+      margin: 0 auto 22px;
+      font-size: clamp(16px, 2.4vw, 18px);
+      line-height: 1.6;
+      color: var(--muted);
+      text-align:center;
+    }
+
+    .cta{
+      display:flex;
+      justify-content:center;
+      margin-top: 10px;
+    }
+
+    .btn{
+      appearance:none; border:0; cursor:pointer;
+      padding: 14px 22px;
+      font-weight: 700; font-size: clamp(16px,2.6vw,18px);
+      color:#0b0f16;
+      border-radius: 999px;
+      position:relative;
+      isolation:isolate;
+      transition: transform .15s ease, filter .15s ease, opacity .15s ease;
+      box-shadow:
+        inset 0 0 0 1px rgba(255,255,255,0.35),
+        0 8px 24px rgba(0,0,0,0.35);
+      background: linear-gradient(
+        90deg,
+        #ffb703 0%,
+        #ffe66d 14%,
+        #9cff66 28%,
+        #2de39a 42%,
+        #41c8ff 56%,
+        #5a6bff 70%,
+        #7b4dff 84%,
+        #d16bff 100%
+      );
+    }
+    .btn:hover{ transform: translateY(-2px); filter: brightness(1.05); }
+    .btn:active{ transform: translateY(0); filter: brightness(.97); }
+
+    footer{
+      margin-top: 18px;
+      text-align:center;
+      color: #7f8fa3;
+      font-size: 0.92rem;
+    }
+
+    /* Responsive spacing tweak for very small phones */
+    @media (max-width: 380px){
+      .card{ padding: 18px; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    <img src="assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript Logo" class="logo" />
-    <h1>VibeScript</h1>
-    <p>The AI-powered content platform that transforms one idea into a complete, brand-consistent campaign. Launching soon — stay tuned for the future of AI marketing.</p>
-    <form action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&amp;id=4d7f887426" method="post" target="_blank">
-      <input type="email" name="EMAIL" placeholder="Your email address" required>
-      <button type="submit">Get Updates</button>
-    </form>
-    <footer>© 2025 VibeScript. All rights reserved.</footer>
-  </div>
+  <main class="wrap">
+    <section class="card" aria-labelledby="vs-title">
+      <div class="logo" style="justify-content:center;">
+        <img
+          src="/assets/file_00000000349861f5891169618f3eb38a.png"
+          alt="VibeScript Logo"
+          width="256"
+          height="256"
+          loading="eager"
+          decoding="async"
+          style="box-shadow: 0 6px 24px rgba(0,0,0,.45);"
+        />
+      </div>
+
+      <h1 id="vs-title">VibeScript</h1>
+
+      <p class="lead">
+        The AI-powered content platform that transforms one idea into a complete,
+        brand-consistent campaign. Launching soon — stay tuned for the future of AI marketing.
+      </p>
+
+      <div class="cta">
+        <!-- Opens your Mailchimp hosted signup in a new tab -->
+        <a class="btn" href="https://eepurl.com/jnh9B2" target="_blank" rel="noopener" aria-label="Join the VibeScript waitlist">
+          Get Updates
+        </a>
+      </div>
+
+      <footer>
+        © 2025 VibeScript. All rights reserved.
+      </footer>
+    </section>
+  </main>
 </body>
 </html>
