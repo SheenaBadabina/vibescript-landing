@@ -1,71 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>VibeScript — AI-powered content campaigns</title>
-  <meta name="description" content="VibeScript transforms one idea into a complete, brand-consistent campaign across social, email, ads, and web.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VibeScript</title>
   <style>
-    :root{
-      --bg0:#0b0b0f;
-      --bg1:#12151e;
-      --text:#e8eaf1;
-      --muted:#9aa3b2;
-      --g:linear-gradient(90deg,#ff7a00,#ffd400,#30e37a,#2bb0ff,#7a5cff,#ff4dd8);
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: radial-gradient(circle at center, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(900px 600px at 50% -10%, #1a1f2b 0%, #0b0b0f 60%) fixed,
-        var(--bg0);
+    .card {
+      background: rgba(0, 0, 0, 0.7);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 90%;
     }
-    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:24px}
-    .card{
-      width:100%;max-width:840px;margin:0 auto;text-align:center;
-      background:#12141a;border:1px solid rgba(255,255,255,.08);border-radius:28px;
-      padding:28px 20px 20px; box-shadow:0 18px 60px rgba(0,0,0,.5);
+    .logo {
+      width: 120px;
+      margin-bottom: 1rem;
     }
-    .logo{height:110px;width:auto;display:block;margin:0 auto 10px;user-select:none;-webkit-user-drag:none}
-    h1{
-      margin:6px 0 12px;font-size:clamp(36px,6vw,64px);line-height:1.08;letter-spacing:-.02em;font-weight:800;
-      background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent;
+    h1 {
+      font-size: 2rem;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin: 0.5rem 0;
     }
-    .lead{margin:0 auto 22px;max-width:58ch;color:var(--muted);font-size:clamp(16px,2vw,18px);line-height:1.65}
-    .cta{
-      display:inline-flex;align-items:center;justify-content:center;
-      min-height:54px;padding:14px 24px;border:0;border-radius:999px;cursor:pointer;
-      font-weight:800;font-size:18px;letter-spacing:.2px;color:#121318;text-decoration:none;
-      background:var(--g);box-shadow:0 12px 30px rgba(0,0,0,.45);width:100%;max-width:420px;
-      transition:transform .12s ease,box-shadow .12s ease,opacity .2s ease;
+    p {
+      font-size: 1rem;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
     }
-    .cta:hover{transform:translateY(-1px);box-shadow:0 16px 36px rgba(0,0,0,.5)}
-    .cta:active{transform:none;opacity:.95}
-    footer{margin-top:18px;color:#8b93a7;font-size:13px}
-    @media (max-width:480px){.card{padding:22px 14px 16px;border-radius:20px}.logo{height:90px}}
+    input[type="email"] {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #555;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+    button {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      background: linear-gradient(90deg, red, orange, yellow, green, blue, indigo, violet);
+      color: white;
+      font-weight: bold;
+    }
+    button:hover {
+      opacity: 0.9;
+    }
+    footer {
+      margin-top: 1.5rem;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <main class="card" role="main" aria-labelledby="brand">
-      <!-- IMPORTANT: logo path is relative to index.html -->
-      <img class="logo" src="assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo">
-      <h1 id="brand">VibeScript</h1>
-      <p class="lead">
-        The AI-powered content platform that transforms one idea into a complete,
-        brand-consistent campaign. Launching soon — stay tuned for the future of AI marketing.
-      </p>
-      <a class="cta" href="https://eepurl.com/jnh9B2" target="_blank" rel="noopener">Get Updates</a>
-      <footer>© 2025 VibeScript. All rights reserved.</footer>
-    </main>
+  <div class="card">
+    <img src="assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript Logo" class="logo" />
+    <h1>VibeScript</h1>
+    <p>The AI-powered content platform that transforms one idea into a complete, brand-consistent campaign. Launching soon — stay tuned for the future of AI marketing.</p>
+    <form action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&amp;id=4d7f887426" method="post" target="_blank">
+      <input type="email" name="EMAIL" placeholder="Your email address" required>
+      <button type="submit">Get Updates</button>
+    </form>
+    <footer>© 2025 VibeScript. All rights reserved.</footer>
   </div>
 </body>
 </html>
