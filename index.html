@@ -11,9 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-  <!-- Load Mailchimp base FIRST so our overrides win -->
-  <link href="https://cdn-images.mailchimp.com/embedcode/classic-061523.css" rel="stylesheet" type="text/css" />
-
+  <!-- (No Mailchimp CSS here anymore—keeps our styles pristine) -->
   <style>
     :root{
       --bg0:#0b0b0f;
@@ -29,11 +27,8 @@
       margin:0;
       font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
       color:var(--text);
-      background:
-        radial-gradient(1200px 800px at 50% -10%, #1a1f2b 0%, #0b0b0f 60%)
-        fixed;
+      background: radial-gradient(1200px 800px at 50% -10%, #1a1f2b 0%, #0b0b0f 60%) fixed;
     }
-
     .wrap{
       min-height:100%;
       display:flex;
@@ -41,7 +36,6 @@
       justify-content:center;
       padding:24px;
     }
-
     .card{
       width:100%;
       max-width:840px;
@@ -54,95 +48,42 @@
       margin:0 auto;
       text-align:center;
     }
-
     .logo{
-      height:110px;
-      width:auto;
-      display:block;
-      margin:0 auto 10px;
+      height:110px; width:auto;
+      display:block; margin:0 auto 10px;
       filter: drop-shadow(0 6px 14px rgba(0,0,0,0.45));
-      user-select:none;
-      -webkit-user-drag:none;
+      user-select:none; -webkit-user-drag:none;
     }
-
     h1{
       margin:6px 0 12px;
       font-size:clamp(36px, 6vw, 64px);
-      line-height:1.08;
-      letter-spacing:-0.02em;
-      font-weight:800;
+      line-height:1.08; letter-spacing:-0.02em; font-weight:800;
       background: linear-gradient(90deg,var(--ring1),var(--ring2),var(--ring3),var(--ring4),var(--ring5),var(--ring6));
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-
     .lead{
-      margin:0 auto 22px;
-      max-width:58ch;
+      margin:0 auto 22px; max-width:58ch;
       color:var(--muted);
       font-size:clamp(16px, 2vw, 18px);
       line-height:1.65;
     }
 
-    /* Mailchimp embed — make it clean, centered, responsive */
-    #mc_embed_shell{margin-top:18px}
-    #mc_embed_signup{
-      background:transparent !important;
-      color:var(--text);
-      width:100% !important;
-      max-width:560px;
-      margin:0 auto;
-      font-family:inherit;
-    }
-    #mc_embed_signup form{ padding:0 !important; }
-    #mc_embed_signup h2,
-    #mc_embed_signup .indicates-required,
-    .refferal_badge{ display:none !important; }
-
-    #mc_embed_signup .mc-field-group{
-      margin:0 0 12px !important;
-    }
-
-    #mc_embed_signup input.email,
-    #mc_embed_signup input[type="email"]{
-      width:100% !important;
-      padding:16px 18px !important;
-      border-radius:14px !important;
-      border:1px solid rgba(255,255,255,0.14) !important;
-      background:#0f1117 !important;
-      color:var(--text) !important;
-      font-size:16px !important;
-      outline:none;
-      transition:border-color .15s ease, box-shadow .15s ease;
-      box-shadow: inset 0 0 0 9999px rgba(255,255,255,0); /* remove MC bg */
-    }
-    #mc_embed_signup input[type="email"]:focus{
-      border-color:#2bb0ff !important;
-      box-shadow:0 0 0 4px rgba(43,176,255,0.18);
-    }
-
-    #mc_embed_signup .button,
-    #mc_embed_signup input[type="submit"]{
-      width:100% !important;
-      border:0 !important;
-      padding:14px 18px !important;
-      border-radius:999px !important;
-      font-weight:800 !important;
-      font-size:18px !important;
-      letter-spacing:.2px;
-      color:#121318 !important;
-      background: linear-gradient(90deg,var(--ring1),var(--ring2),var(--ring3),var(--ring4),var(--ring5),var(--ring6)) !important;
-      cursor:pointer;
+    /* CTA button (no clipping, fully centered) */
+    .cta{
+      display:inline-flex; align-items:center; justify-content:center;
+      min-height:54px; padding:14px 24px;
+      border:0; border-radius:999px; cursor:pointer;
+      font-weight:800; font-size:18px; letter-spacing:.2px;
+      color:#121318; text-decoration:none;
+      background: linear-gradient(90deg,var(--ring1),var(--ring2),var(--ring3),var(--ring4),var(--ring5),var(--ring6));
       box-shadow: 0 12px 30px rgba(0,0,0,0.45);
       transition: transform .12s ease, box-shadow .12s ease, opacity .2s ease;
+      width:100%; max-width:420px;
     }
-    #mc_embed_signup .button:hover{ transform: translateY(-1px); box-shadow:0 16px 36px rgba(0,0,0,0.5); }
-    #mc_embed_signup .button:active{ transform:none; opacity:.95; }
+    .cta:hover{ transform: translateY(-1px); box-shadow:0 16px 36px rgba(0,0,0,0.5); }
+    .cta:active{ transform:none; opacity:.95; }
 
-    footer{
-      margin-top:18px;
-      color:#8b93a7;
-      font-size:13px;
-    }
+    footer{ margin-top:18px; color:#8b93a7; font-size:13px; }
 
     @media (max-width:480px){
       .card{ padding:26px 16px 18px; border-radius:20px; }
@@ -151,56 +92,4 @@
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <main class="card" role="main" aria-labelledby="brand">
-      <img class="logo" src="/assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo" />
-      <h1 id="brand">VibeScript</h1>
-      <p class="lead">
-        The AI-powered content platform that transforms one idea into a complete,
-        brand-consistent campaign. Launching soon — stay tuned for the future of AI marketing.
-      </p>
-
-      <!-- Mailchimp embed (action URL preserved) -->
-      <div id="mc_embed_shell">
-        <div id="mc_embed_signup">
-          <form action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&amp;id=4d7f887426&amp;f_id=00ffa2e0f0"
-                method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
-                class="validate" target="_blank" novalidate>
-            <div id="mc_embed_signup_scroll">
-              <div class="mc-field-group">
-                <input type="email" name="EMAIL" class="required email" id="mce-EMAIL"
-                       placeholder="Your email address" required>
-              </div>
-
-              <div id="mce-responses" class="clear foot" aria-live="polite">
-                <div class="response" id="mce-error-response" style="display:none"></div>
-                <div class="response" id="mce-success-response" style="display:none"></div>
-              </div>
-
-              <!-- Honeypot -->
-              <div aria-hidden="true" style="position:absolute; left:-5000px;">
-                <input type="text" name="b_0a7bc91bac675bcca19bd150d_4d7f887426" tabindex="-1" value="">
-              </div>
-
-              <div class="optionalParent">
-                <div class="clear foot">
-                  <input type="submit" name="subscribe" id="mc-embedded-subscribe" class="button" value="Get Updates">
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </div>
-
-      <footer>© 2025 VibeScript. All rights reserved.</footer>
-    </main>
-  </div>
-
-  <!-- Mailchimp validation -->
-  <script src="https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js"></script>
-  <script>
-    (function($){window.fnames=[];window.ftypes=[];fnames[0]='EMAIL';ftypes[0]='email';})(jQuery);
-    var $mcj = jQuery.noConflict(true);
-  </script>
-</body>
-</html>
+  <div class
