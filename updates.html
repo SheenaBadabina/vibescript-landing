@@ -3,65 +3,54 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VibeScript Updates — Insider Progress</title>
-  <meta name="description" content="Insider updates for early followers of VibeScript. Progress notes, what’s shipping next, and how to get first access." />
-  <meta property="og:title" content="VibeScript Updates — Insider Progress" />
-  <meta property="og:description" content="Insider updates for early followers. See what we’re building and what’s next." />
+  <title>VibeScript Updates — The Revolution is Almost Here</title>
+  <meta name="description" content="Insider updates for early VibeScript followers. Get the hype, the hints, and first access when it launches." />
+  <meta property="og:title" content="VibeScript Updates — The Revolution is Almost Here" />
+  <meta property="og:description" content="You signed up early. This is your teaser feed for what's coming." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://vibescript.online/updates" />
-  <meta name="theme-color" content="#000000" />
+  <meta name="theme-color" content="#0a0b10" />
   <style>
     :root{
       --bg:#0a0b10;
       --card:#0f1117;
       --muted:#aab1c6;
       --text:#e8ecf7;
-      --ring: 0 0 0 1.5px rgba(255,255,255,.08) inset;
-      --grad: linear-gradient(90deg,#ff7a18,#ffb400,#00d084,#00c2ff,#7a5cff,#c12fff);
+      --ring:0 0 0 1.5px rgba(255,255,255,.08) inset;
+      --grad:linear-gradient(90deg,#ff7a18,#ffb400,#00d084,#00c2ff,#7a5cff,#c12fff);
       --accent:#00c2ff;
     }
     *{box-sizing:border-box}
     html,body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Ubuntu,"Helvetica Neue",Arial,sans-serif;line-height:1.55}
     a{color:inherit;text-decoration:none}
     .wrap{max-width:980px;margin:0 auto;padding:24px}
+    .top-strip{margin:10px auto 18px;max-width:100%;border-radius:14px;overflow:hidden;box-shadow:var(--ring)}
+    .top-strip img{display:block;width:100%;height:auto}
     .banner{position:relative;border-radius:20px;overflow:hidden;background:#07080d;box-shadow:var(--ring)}
-    .banner::before{
-      content:"";position:absolute;inset:0;pointer-events:none;
-      background:
-        radial-gradient(1200px 300px at 50% -50%, rgba(255,255,255,.06), transparent 60%),
-        radial-gradient(800px 200px at 50% 100%, rgba(255,255,255,.05), transparent 70%);
-      mix-blend: screen;
-    }
     .banner-inner{padding:28px 18px 18px}
-    .chip{display:inline-block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#0a0b10;background:var(--grad);
-      padding:8px 12px;border-radius:999px;font-weight:700}
+    .chip{display:inline-block;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:#0a0b10;background:var(--grad);padding:8px 12px;border-radius:999px;font-weight:800}
     .h1{font-size:clamp(28px,5vw,40px);margin:14px 0 8px;font-weight:800}
     .sub{color:var(--muted);max-width:62ch}
-    .grid{display:grid;gap:16px;margin-top:22px}
-    @media(min-width:720px){.grid{grid-template-columns:1.1fr .9fr;gap:18px}}
-    .card{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--ring)}
+    .card{background:var(--card);border-radius:16px;padding:16px;box-shadow:var(--ring);margin-top:18px}
     .card h2{margin:0 0 8px;font-size:18px}
-    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px}
-    .prog{margin:8px 0 0;padding:0;list-style:none}
-    .prog li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.06)}
-    .prog li:last-child{border-bottom:none}
+    .lead p{margin:10px 0}
+    .bullets{margin:12px 0 0;padding:0 0 0 18px}
+    .bullets li{margin:8px 0}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:8px}
     .pill{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:12px;background:rgba(255,255,255,.04);font-size:14px}
     .pill b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
     .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
     .btn{display:inline-block;padding:12px 16px;border-radius:12px;background:var(--grad);color:#0a0b10;font-weight:800}
     .btn.ghost{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,.12)}
     .hr{height:1px;background:rgba(255,255,255,.06);margin:22px 0}
-    .tease{background:conic-gradient(from 180deg at 50% 50%, rgba(255,255,255,.04), rgba(255,255,255,0));padding:14px;border-radius:14px}
     .small{color:var(--muted);font-size:13px}
-    .mono{font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-    /* narrow banner lightning image container */
-    .top-strip{margin:10px auto 18px;max-width:100%;border-radius:14px;overflow:hidden;box-shadow:var(--ring)}
-    .top-strip img{display:block;width:100%;height:auto}
+    .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
   </style>
 </head>
 <body>
   <header class="wrap">
-    <!-- narrow banner: use the rainbow lightning image you just made -->
+    <!-- Optional thin banner above the hero: use your rainbow lightning header here -->
+    <!-- Replace the src with your uploaded asset path -->
     <div class="top-strip">
       <img src="/assets/updates-strip.jpg" alt="VibeScript lightning banner" />
     </div>
@@ -69,83 +58,44 @@
     <section class="banner">
       <div class="banner-inner">
         <span class="chip">Insider Updates</span>
-        <h1 class="h1">VibeScript is taking shape</h1>
+        <h1 class="h1">The Revolution is Almost Here</h1>
         <p class="sub">
-          You opted in for real progress, not vague hype. This page tracks milestones and what’s coming next —
-          without giving away the secret sauce.
+          You signed up early for a reason. This is your window into what’s coming — no jargon, no spoilers,
+          just enough heat to keep your curiosity sparking.
         </p>
-        <div class="cta-row">
-          <a class="btn" href="#latest">See the latest</a>
-          <a class="btn ghost" href="#early-access">Get early access</a>
-        </div>
       </div>
     </section>
   </header>
 
   <main class="wrap">
-    <section id="latest" class="grid">
-      <article class="card">
-        <h2>Latest status</h2>
-        <div class="meta">
-          <span class="pill"><b>Build phase</b> · private</span>
-          <span class="pill">Updated <span class="mono" id="today"></span></span>
-        </div>
-        <ul class="prog">
-          <li><strong>Welcome flow live.</strong> New subscribers receive a launch-phase email and are routed to this insider page.</li>
-          <li><strong>Voice-driven site builder — prototype.</strong> Natural phrases → structured SiteSpec JSON. (Full demo soon.)</li>
-          <li><strong>Campaign engine scaffolding.</strong> Turning one idea into multi-platform assets is in active development.</li>
-          <li><strong>Deliverability stack.</strong> Domain auth, routing, and sending are being hardened for scale.</li>
-        </ul>
-      </article>
-
-      <aside class="card">
-        <h2>What we can share</h2>
-        <p class="small">
-          VibeScript will let you <em>speak</em> a website into existence. You describe your business and vibe;
-          the system composes pages, sections, and brand-consistent content — then previews before publish.
-          Think “producer mode” without the learning curve.
-        </p>
-        <div class="tease small">
-          <strong>Curiosity gap:</strong> We’re testing a guidance loop that feels like collaborating with a creative director.
-          You’ll see it in action in the early access demo.
-        </div>
-      </aside>
-    </section>
-
-    <div class="hr"></div>
-
-    <section class="grid">
-      <article class="card">
-        <h2>Near-term roadmap</h2>
-        <ul class="prog">
-          <li><strong>Invite-only demo:</strong> Voice → draft site → instant revision prompts.</li>
-          <li><strong>Brand intake:</strong> Logo + colors → auto-themed components.</li>
-          <li><strong>First campaign generator:</strong> Home hero + About + 1-page offer → socials + email draft.</li>
-          <li><strong>Export & deploy:</strong> GitHub → Cloudflare Pages, one-click.</li>
-        </ul>
-      </article>
-
-      <aside class="card" id="early-access">
-        <h2>Get early access</h2>
-        <p class="small">Want a front-row seat? We’ll invite the most engaged subscribers first.</p>
-        <div class="cta-row">
-          <a class="btn" href="https://vibescript.online/#get-updates">I’m in</a>
-          <a class="btn ghost" href="/privacy.html">Privacy</a>
-        </div>
-        <p class="small">Your feedback will directly shape the first public release.</p>
-      </aside>
-    </section>
-
-    <div class="hr"></div>
+    <article class="card lead">
+      <p>You're witnessing the birth of something extraordinary. While the world struggles with clunky website builders and scattered marketing tools, we're crafting something that will make all of that feel ancient.</p>
+      <p><strong>VibeScript will let you speak a website into existence.</strong> Not metaphorically. Literally. Your voice, your vision, your brand—transformed into reality faster than you can finish your morning coffee.</p>
+      <p>We're not just building another platform. We're reimagining how ideas become campaigns, how thoughts become businesses, how conversations become conversions. Every line of code we write, every algorithm we train, every interface we design is pushing toward one magical moment: when you realize you never have to fight with technology again.</p>
+    </article>
 
     <section class="card">
-      <h2>FAQ (short & sweet)</h2>
-      <ul class="prog">
-        <li><strong>Is this available today?</strong> Not yet. You’re on the insider list; you’ll know first.</li>
-        <li><strong>Will I need to code?</strong> No. Speak your intent, review, approve, publish.</li>
-        <li><strong>What data do you keep?</strong> Only what’s needed to run the preview and deploy flow. No resale of your content.</li>
+      <h2>What’s brewing right now</h2>
+      <ul class="bullets">
+        <li><strong>Speak your vision out loud</strong> and watch it materialize into a complete website.</li>
+        <li><strong>One casual conversation → full marketing campaign</strong> across every platform you need.</li>
+        <li><strong>Marketing that feels like a conversation,</strong> not shouting into the void.</li>
+        <li><strong>Brand consistency that flows</strong> naturally from your authentic voice.</li>
+        <li><strong>Smart campaign intelligence</strong> that learns what works and amplifies it automatically.</li>
       </ul>
-      <p class="small">Questions? Reply to your welcome email — it routes to a real human.</p>
+      <div class="meta">
+        <span class="pill">Updated <span class="mono" id="today"></span></span>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Ahead of the curve</h2>
+      <p>The early glimpses we've shared barely scratch the surface. What you've seen so far? That's just the foundation. The real magic—the part that will make you question everything you thought you knew about building an online presence—that's still coming.</p>
+      <p>We can't reveal everything yet, but soon you'll discover just how deep this transformation goes. The best part hasn't even launched yet, and when it does, you'll understand why we've been so mysteriously excited about what we're building.</p>
+      <div class="cta-row">
+        <a class="btn" href="https://vibescript.online/#get-updates">Stay close</a>
+        <a class="btn ghost" href="/">Back to home</a>
+      </div>
     </section>
 
     <p class="small" style="margin:20px 0 40px;opacity:.7">
@@ -154,7 +104,7 @@
   </main>
 
   <script>
-    // tiny helpers to keep the page fresh without a build step
+    // auto-stamp date/year without a build step
     const d=new Date();
     document.getElementById('today').textContent =
       d.toLocaleDateString(undefined,{year:'numeric',month:'short',day:'numeric'});
