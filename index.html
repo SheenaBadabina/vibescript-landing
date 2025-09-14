@@ -1,146 +1,177 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VibeScript — Early Access</title>
-  <meta name="description" content="VibeScript: the AI-powered content platform that turns one idea into a complete, on-brand campaign." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>VibeScript — Launching Soon</title>
+  <meta name="description" content="The AI-powered content platform that turns one idea into a complete, brand-consistent campaign." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="icon" href="/favicon.ico" />
+
+  <meta property="og:title" content="VibeScript — Launching Soon" />
+  <meta property="og:description" content="Turn one idea into momentum. Join the early access list." />
+  <meta property="og:image" content="https://vibescript.online/assets/file_00000000349861f5891169618f3eb38a.png" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#0f1221" />
+
   <style>
     :root{
-      --bg-top:#0b0f1a;
-      --bg-bot:#111318;
-      --glass:#0f1117cc;
-      --glass-border:#ffffff1a;
-      --text:#e7ecf3;
-      --muted:#a9b3c4;
+      --glass: rgba(14,16,28,.72);
+      --ring: rgba(255,255,255,.06);
+      --txt: #d9e1ff;
+      --txt-dim:#9aa3b2;
+      --shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(255,255,255,.06);
+      --radius: 28px;
     }
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0; font-family:Manrope,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:var(--text);
-      background: radial-gradient(1200px 600px at 50% -100px,#1a2740 0,#141823 55%,#0b0f1a 100%),
-                  linear-gradient(to bottom, var(--bg-top), var(--bg-bot));
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji", "Segoe UI Symbol";
+      color:var(--txt);
+      background: radial-gradient(1200px 800px at 50% 10%, #0e1324 0%, #0b0f1e 45%, #0a0d19 100%);
       display:flex; align-items:center; justify-content:center; padding:24px;
     }
     .card{
-      width:min(720px,100%);
-      background:linear-gradient(180deg,#0b0f1400,#0b0f1414) border-box;
-      border:1px solid var(--glass-border);
-      border-radius:28px;
-      padding:28px 22px;
-      box-shadow:0 30px 70px #00000066, inset 0 1px 0 #ffffff1a;
-      backdrop-filter: blur(8px);
+      width:100%; max-width: 680px;
+      background: var(--glass);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      border: 1px solid var(--ring);
+      padding: clamp(20px, 4.5vw, 36px);
+      backdrop-filter: blur(14px) saturate(120%);
     }
-    @media (min-width:520px){ .card{ padding:40px 36px } }
-
-    .top-row{display:flex; align-items:center; gap:12px; margin-bottom:6px}
-    .logo{width:44px; height:44px; border-radius:999px; object-fit:cover; box-shadow:0 8px 30px #0007}
-    .brand{font-weight:800; letter-spacing:.3px; font-size:20px; color:#b2b7ff}
-    .title{font-size: clamp(36px, 6vw, 56px); line-height:1.08; margin:10px 0 10px; font-weight:800}
-    .title span{
-      background:linear-gradient(90deg,#ffd54a,#ff7a3d,#ff3864,#c43dff,#4aa8ff,#34e89e);
+    .logo-row{display:flex; align-items:center; gap:12px; margin-bottom:8px}
+    .logo{
+      width:38px; height:38px; border-radius:50%; flex:0 0 auto;
+      object-fit:cover; border:1px solid var(--ring);
+    }
+    .brand{font-weight:600; letter-spacing:.2px; color:#cfd6ff; opacity:.9}
+    h1{
+      margin:8px 0 12px; font-size: clamp(32px, 6.2vw, 54px);
+      line-height:1.05; font-weight:800;
+      background: linear-gradient(90deg,#ffd54a,#ff7a45,#ff3ec8,#6b6bff,#3ad3ff,#37e49e);
       -webkit-background-clip:text; background-clip:text; color:transparent;
     }
-    p{margin:0 0 20px; color:var(--muted); font-size:clamp(16px,2.9vw,18px); line-height:1.7}
-
-    .field{ display:flex; flex-direction:column; gap:10px; margin:16px 0 18px }
-    label{font-size:14px; color:#cbd3e1}
-    .input{
-      width:100%; height:54px; border-radius:16px; border:1px solid #2a3040; background:#0c1016; color:var(--text);
-      outline:none; padding:0 18px; font-size:16px;
-      box-shadow: inset 0 1px 0 #ffffff0a, 0 0 0 2px transparent;
-      transition: box-shadow .2s, border-color .2s;
+    p{margin:0 0 22px; color:var(--txt-dim); font-size: clamp(16px, 2.8vw, 18px); line-height:1.6}
+    label{display:block; font-size:14px; color:#b8c2d8; margin: 16px 0 8px}
+    .row{display:flex; gap:12px; flex-wrap:wrap}
+    input[type="email"]{
+      flex:1 1 auto; width:100%;
+      padding:16px 18px;
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.1);
+      border-radius:14px;
+      color:#fff; outline:none;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.02);
     }
-    .input::placeholder{color:#7e889a}
-    .input:focus{ border-color:#4aa8ff55; box-shadow:0 0 0 6px #4aa8ff1f }
-
-    .cta{
-      appearance:none; border:0; cursor:pointer; width:100%; height:56px; border-radius:18px; font-weight:800; font-size:18px; color:#0d1117;
-      background:linear-gradient(90deg,#ff8800,#ffd400,#7cff00,#00ffd0,#4aa8ff,#7a5cff,#ff47b5);
-      box-shadow:0 12px 30px #0008, inset 0 -2px 0 #00000026;
-      transition: transform .06s ease, filter .2s ease;
+    input::placeholder{color:#9aa3b2}
+    button{
+      flex:0 0 auto; width:100%;
+      padding:16px 18px; font-weight:700; font-size:16px;
+      border:0; border-radius:14px; color:#0b0f1e;
+      background: linear-gradient(90deg,#ff9e00,#ffd500,#38e54d,#23c6f6,#6b6bff,#b44dff);
+      box-shadow: 0 10px 24px rgba(0,0,0,.3), inset 0 -2px 0 rgba(255,255,255,.3);
+      cursor:pointer;
     }
-    .cta:active{ transform: translateY(1px) }
-    .status{ margin-top:14px; font-size:14px; min-height:20px }
-    .ok{ color:#7CFFBF } .err{ color:#ff6b7a }
-
-    footer{ text-align:center; margin-top:18px; color:#8b93a6; font-size:13px }
+    .cta-wrap{display:grid; grid-template-columns:1fr auto; gap:12px}
+    @media (max-width:640px){ .cta-wrap{grid-template-columns:1fr} }
+    .msg{margin-top:14px; font-size:15px}
+    .msg.ok{color:#40e59b}
+    .msg.err{color:#ff7a7a}
+    footer{margin-top:18px; font-size:13px; color:#8f98ab}
   </style>
 </head>
 <body>
-  <main class="card" role="main">
-    <div class="top-row">
-      <img class="logo" src="./assets/file_00000000349861f5891169618f3eb38a.png" alt="VibeScript logo" />
+  <main class="card" role="main" aria-labelledby="title">
+    <div class="logo-row">
+      <img class="logo" src="/assets/file_00000000349861f5891169618f3eb38a.png" alt="VibeScript logo" />
       <div class="brand">VibeScript</div>
     </div>
 
-    <h1 class="title"><span>VibeScript</span></h1>
+    <h1 id="title">VibeScript</h1>
     <p>
       The AI-powered content platform that transforms one idea into a complete, brand-consistent campaign.
       Launching soon — stay tuned for the future of AI marketing.
     </p>
 
-    <!-- Hidden iframe keeps the user on this page after submit -->
-    <iframe name="mc-target" style="display:none"></iframe>
-
-    <!-- Mailchimp form (posts to your list; no redirect) -->
-    <form id="mc-form" target="mc-target"
-      action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&id=4d7f887426&f_id=00ffa2e0f0"
-      method="post" novalidate>
-      <div class="field">
-        <label for="mce-EMAIL">Email address</label>
-        <input class="input" id="mce-EMAIL" type="email" name="EMAIL" placeholder="Your email address" required />
+    <form id="mc" aria-label="Join the waitlist" novalidate>
+      <label for="email">Email address</label>
+      <div class="cta-wrap">
+        <input id="email" name="EMAIL" type="email" placeholder="Your email address" required />
+        <button id="submit" type="submit" aria-label="Get updates">Get Updates</button>
       </div>
-
-      <!-- Honeypot (leave in to reduce bot signups) -->
-      <div aria-hidden="true" style="position:absolute; left:-5000px;">
-        <input type="text" name="b_0a7bc91bac675bcca19bd150d_4d7f887426" tabindex="-1" value="">
-      </div>
-
-      <button class="cta" type="submit">Get Updates</button>
-      <div id="status" class="status" aria-live="polite"></div>
+      <div id="msg" class="msg" role="status" aria-live="polite"></div>
     </form>
 
     <footer>© 2025 VibeScript. All rights reserved.</footer>
   </main>
 
   <script>
-    // Lightweight UX for Mailchimp + hidden iframe flow
-    (function () {
-      const form = document.getElementById('mc-form');
-      const status = document.getElementById('status');
-      const iframe = document.getElementsByName('mc-target')[0];
-      let submitting = false;
+    // Classic embed endpoint (DO NOT change your list IDs)
+    const ACTION_URL = "https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&id=4d7f887426&f_id=00ffa2e0f0";
 
-      form.addEventListener('submit', function () {
-        submitting = true;
-        status.textContent = 'Sending…';
-        status.className = 'status';
-      });
+    const form = document.getElementById('mc');
+    const email = document.getElementById('email');
+    const msg = document.getElementById('msg');
+    const btn = document.getElementById('submit');
 
-      iframe.addEventListener('load', function () {
-        if (!submitting) return; // ignore initial about:blank load
-        submitting = false;
-        status.textContent = 'Thanks! Please check your inbox for confirmation.';
-        status.className = 'status ok';
-        form.reset();
-      });
+    function encode(data){
+      return Object.keys(data).map(k => encodeURIComponent(k)+"="+encodeURIComponent(data[k])).join("&");
+    }
 
-      // Fallback timeout in case iframe doesn’t fire (rare)
-      form.addEventListener('submit', function () {
-        setTimeout(function () {
-          if (submitting) {
-            submitting = false;
-            status.textContent = 'Submitted — if you don’t see an email, check spam.';
-            status.className = 'status ok';
-            form.reset();
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      msg.textContent = "";
+      btn.disabled = true; btn.textContent = "Sending…";
+
+      // Submit via a hidden iframe to avoid redirecting off-site
+      const iframe = document.createElement('iframe');
+      iframe.name = "hidden_iframe";
+      iframe.style.display = "none";
+      document.body.appendChild(iframe);
+
+      const phantom = document.createElement('form');
+      phantom.method = "POST";
+      phantom.target = "hidden_iframe";
+      phantom.action = ACTION_URL;
+
+      const emailInput = document.createElement('input');
+      emailInput.name = "EMAIL";
+      emailInput.value = email.value;
+
+      phantom.appendChild(emailInput);
+      document.body.appendChild(phantom);
+
+      iframe.onload = () => {
+        msg.className = "msg ok";
+        msg.textContent = "Thanks! Please check your inbox for confirmation.";
+        btn.disabled = false; btn.textContent = "Get Updates";
+        email.value = "";
+        setTimeout(()=>{ iframe.remove(); phantom.remove(); }, 500);
+      };
+
+      try{
+        phantom.submit();
+        // Timeout fallback in case Mailchimp returns a 204/no-render
+        setTimeout(() => {
+          if (!msg.textContent){
+            msg.className = "msg ok";
+            msg.textContent = "Thanks! Please check your inbox for confirmation.";
+            btn.disabled = false; btn.textContent = "Get Updates";
+            email.value = "";
+            iframe.remove(); phantom.remove();
           }
-        }, 3500);
-      });
-    })();
+        }, 2500);
+      }catch(err){
+        msg.className = "msg err";
+        msg.textContent = "Network error. Please try again.";
+        btn.disabled = false; btn.textContent = "Get Updates";
+        iframe.remove(); phantom.remove();
+      }
+    });
   </script>
 </body>
 </html>
