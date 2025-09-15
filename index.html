@@ -4,12 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VibeScript — Speak Websites Into Existence</title>
-  <meta name="description" content="VibeScript is the AI platform that transforms your voice into complete websites and marketing campaigns. Speak your vision and ship a production-ready site with optimized content across every channel." />
-  <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png" type="image/png" />
-
-  <!-- Preconnects for performance -->
-  <link rel="preconnect" href="https://online.us2.list-manage.com" crossorigin>
-  <link rel="preconnect" href="https://s3.amazonaws.com" crossorigin>
+  <meta name="description" content="VibeScript transforms your voice into complete websites and marketing campaigns. Speak your vision and ship a production-ready site with optimized content across every channel." />
+  <link rel="icon" href="assets/file_0000000034986115891169618f3eb38a.png" type="image/png" />
 
   <style>
     :root{
@@ -19,7 +15,7 @@
       --muted:#9fb0c8;
       --ring:rgba(255,255,255,.18);
 
-      /* Chakra palette */
+      /* Chakra palette (sparingly used) */
       --chakra-red:#ef4444;
       --chakra-orange:#f97316;
       --chakra-yellow:#eab308;
@@ -48,20 +44,31 @@
     }
     .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
     .brand img{width:36px;height:36px;object-fit:contain;border-radius:8px}
-    .brand span{font-weight:800;letter-spacing:.2px}
 
-    .chakra-cta{
-      appearance:none;border:0;cursor:pointer;border-radius:999px;
-      padding:12px 16px;font-weight:800;color:#fff;
+    /* Neutral button (header + secondary CTAs) */
+    .btn{
+      appearance:none;border:1px solid rgba(159,176,200,.28);cursor:pointer;border-radius:999px;
+      padding:10px 14px;font-weight:700;color:var(--text);background:transparent;
+      transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
+    .btn:hover{border-color:rgba(159,176,200,.45); background:rgba(255,255,255,.03)}
+    .btn:active{transform:translateY(1px) scale(.99)}
+    .btn:focus-visible{outline:3px solid var(--ring); outline-offset:2px}
+
+    /* Subscribe button — the ONLY chakra gradient */
+    .btn-subscribe{
+      appearance:none;border:0;cursor:pointer;border-radius:12px;
+      padding:12px 16px;font-weight:900;color:#fff;
       background:linear-gradient(90deg,
         var(--chakra-red), var(--chakra-orange), var(--chakra-yellow),
         var(--chakra-green), var(--chakra-blue), var(--chakra-indigo), var(--chakra-violet));
-      background-size:200% 100%; transition:transform .08s ease, box-shadow .2s ease, background-position .6s ease;
-      box-shadow:0 12px 30px rgba(99,102,241,.25), 0 6px 16px rgba(59,130,246,.22);
+      background-size:200% 100%;
+      transition:transform .08s ease, box-shadow .2s ease, background-position .6s ease;
+      box-shadow:0 10px 26px rgba(99,102,241,.22), 0 6px 16px rgba(59,130,246,.20);
     }
-    .chakra-cta:hover{background-position:100% 0}
-    .chakra-cta:active{transform:translateY(1px) scale(.99)}
-    .chakra-cta:focus-visible{outline:3px solid var(--ring); outline-offset:2px}
+    .btn-subscribe:hover{background-position:100% 0}
+    .btn-subscribe:active{transform:translateY(1px) scale(.99)}
+    .btn-subscribe:focus-visible{outline:3px solid var(--ring); outline-offset:2px}
 
     .hero{
       position:relative; display:grid; align-items:center; min-height:72svh; overflow:clip;
@@ -70,9 +77,9 @@
     .hero::before{
       content:""; position:absolute; inset:0; z-index:-2;
       background:
-        linear-gradient(180deg, rgba(10,12,16,.15), rgba(10,12,16,.92)),
-        radial-gradient(70% 50% at 50% 0%, rgba(139,92,246,.25), transparent 60%),
-        url("/assets/file_000000001048622f95bff34ddca0e28a.png") center/cover no-repeat;
+        linear-gradient(180deg, rgba(10,12,16,.20), rgba(10,12,16,.92)),
+        radial-gradient(70% 50% at 50% 0%, rgba(139,92,246,.20), transparent 60%),
+        url("assets/file_000000001048622f95bff34ddca0e28a.png") center/cover no-repeat;
       filter:saturate(1.08) contrast(1.05);
       transform:scale(1.02);
     }
@@ -94,7 +101,7 @@
     }
     .feature{
       grid-column: span 12;
-      background:linear-gradient(180deg, rgba(34,197,94,.08), rgba(99,102,241,.10));
+      background:linear-gradient(180deg, rgba(34,197,94,.06), rgba(99,102,241,.08));
       border:1px solid rgba(159,176,200,.18); border-radius:16px; padding:14px
     }
     .feature b{color:#def7ff}
@@ -118,22 +125,10 @@
       transition:border-color .15s ease, box-shadow .15s ease;
     }
     input[type="email"]:focus-visible{outline:none; border-color:var(--chakra-blue); box-shadow:0 0 0 4px rgba(59,130,246,.25)}
-    .submit{
-      width:100%; border:0; border-radius:12px; cursor:pointer; font-weight:900; color:#fff; padding:12px 16px;
-      background:linear-gradient(90deg,
-        var(--chakra-red), var(--chakra-orange), var(--chakra-yellow),
-        var(--chakra-green), var(--chakra-blue), var(--chakra-indigo), var(--chakra-violet));
-      background-size:200% 100%;
-      transition:transform .08s ease, box-shadow .2s ease, background-position .6s ease;
-      box-shadow:0 12px 30px rgba(139,92,246,.24), 0 6px 16px rgba(34,197,94,.22)
-    }
-    .submit:hover{background-position:100% 0}
-    .submit:active{transform:translateY(1px) scale(.99)}
-    @media(min-width:480px){ .submit{width:auto} }
     .micro{font-size:12px; color:var(--muted); margin-top:6px}
 
     .qa{display:grid; gap:12px}
-    .qa-item{border:1px solid rgba(159,176,200,.14);border-radius:14px;padding:14px;background:linear-gradient(180deg, rgba(59,130,246,.06), rgba(99,102,241,.06))}
+    .qa-item{border:1px solid rgba(159,176,200,.14);border-radius:14px;padding:14px;background:linear-gradient(180deg, rgba(59,130,246,.05), rgba(99,102,241,.05))}
     .qa-item h3{margin:.2em 0; font-size:18px}
     .qa-item p{margin:.2em 0; color:var(--muted)}
 
@@ -145,6 +140,11 @@
     .links{display:flex;gap:14px;flex-wrap:wrap;justify-self:start}
     .links a{text-decoration:none}
     .links a:hover{text-decoration:underline}
+
+    /* Inline status */
+    .status { margin-top:8px; font-size:14px; }
+    .status.success { color:#86efac; }
+    .status.error { color:#fca5a5; }
   </style>
 
   <!-- FAQ structured data for AEO -->
@@ -179,11 +179,11 @@
   <!-- Header -->
   <header>
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;">
+      <!-- Logo only to avoid duplicate text -->
       <a class="brand" href="/" aria-label="VibeScript Home">
-        <img src="/assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo">
-        <span>VibeScript</span>
+        <img src="assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo">
       </a>
-      <button class="chakra-cta" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">
+      <button class="btn" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">
         Get Early Access
       </button>
     </div>
@@ -201,10 +201,10 @@
           social content, email sequences, ads, and a conversion-ready digital strategy.
         </p>
         <div class="row">
-          <button class="chakra-cta" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">
+          <button class="btn" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">
             Speak Your Website Into Reality
           </button>
-          <a href="#learn" class="chakra-cta" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+          <a href="#learn" class="btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
             How it works
           </a>
         </div>
@@ -228,32 +228,22 @@
           <h2>Get product updates</h2>
           <p class="micro">No spam—only meaningful progress, invites, and early access opportunities.</p>
 
-          <form
-            action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&amp;id=4d7f887426&amp;f_id=00ffa2e0f0"
-            method="post" target="_blank" novalidate aria-label="Mailchimp signup">
+          <!-- JSONP Mailchimp submit keeps users on-site -->
+          <form id="mc-form" novalidate aria-label="Mailchimp signup">
             <label class="label" for="mce-EMAIL">Email address</label>
             <div class="grid">
               <input type="email" name="EMAIL" id="mce-EMAIL" required
                      placeholder="you@example.com" inputmode="email" autocomplete="email" />
-              <button class="submit" type="submit" name="subscribe" id="mc-embedded-subscribe">
-                Subscribe
-              </button>
+              <button class="btn-subscribe" type="submit">Subscribe</button>
             </div>
-            <!-- Honeypot -->
-            <div aria-hidden="true" style="position:absolute; left:-5000px;">
-              <input type="text" name="b_0a7bc91bac675bcca19bd150d_4d7f887426" tabindex="-1" value="">
-            </div>
-            <div id="mce-responses" class="micro" aria-live="polite" aria-atomic="true">
-              <div id="mce-error-response" style="display:none;"></div>
-              <div id="mce-success-response" style="display:none;"></div>
-            </div>
+            <div id="mc-status" class="status" aria-live="polite" aria-atomic="true"></div>
           </form>
-          <noscript><p class="micro">JavaScript is disabled; the Mailchimp form will open in a new tab.</p></noscript>
+          <noscript><p class="micro">JavaScript is disabled; subscription requires JavaScript on this site.</p></noscript>
         </div>
       </div>
     </section>
 
-    <!-- Q&A SEO/AEO/GEO content (human-readable, search-friendly) -->
+    <!-- Q&A SEO/AEO content -->
     <section class="section">
       <div class="container">
         <div class="qa">
@@ -294,8 +284,8 @@
   <footer>
     <div class="container footgrid">
       <a class="brandmark" href="/" aria-label="VibeScript">
-        <img src="/assets/file_0000000034986115891169618f3eb38a.png" alt="">
-        <strong>VibeScript</strong>
+        <img src="assets/file_0000000034986115891169618f3eb38a.png" alt="">
+        <strong style="display:none">VibeScript</strong>
       </a>
       <nav class="links" aria-label="Footer">
         <a href="#learn">How it works</a>
@@ -308,7 +298,71 @@
     </div>
   </footer>
 
-  <!-- (Optional) Mailchimp validation script -->
-  <script src="https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" defer></script>
+  <!-- Vanilla JSONP to Mailchimp -->
+  <script>
+    (function(){
+      const form = document.getElementById('mc-form');
+      const email = document.getElementById('mce-EMAIL');
+      const status = document.getElementById('mc-status');
+
+      function setStatus(type, msg){
+        status.className = 'status ' + type;
+        status.textContent = msg;
+      }
+
+      form.addEventListener('submit', function(e){
+        e.preventDefault();
+        const val = (email.value || '').trim();
+        if(!val){
+          setStatus('error', 'Please enter a valid email.');
+          email.focus();
+          return;
+        }
+
+        setStatus('', 'Submitting…');
+
+        // Build JSONP URL
+        const base = 'https://online.us2.list-manage.com/subscribe/post-json';
+        const params = new URLSearchParams({
+          u: '0a7bc91bac675bcca19bd150d',
+          id: '4d7f887426',
+          EMAIL: val,
+          c: 'mcCallback'  // JSONP callback name
+        });
+
+        // Unique callback per submit
+        const cbName = 'mcCallback_' + Math.random().toString(36).slice(2);
+        window[cbName] = function(data){
+          try {
+            if (data.result === 'success') {
+              setStatus('success', 'You’re in! Redirecting…');
+              setTimeout(function(){ window.location.href = 'thank-you.html'; }, 600);
+            } else {
+              const msg = (data.msg || '').replace(/<[^>]+>/g,'').trim() || 'Something went wrong. Please try again.';
+              setStatus('error', msg);
+            }
+          } finally {
+            cleanup();
+          }
+        };
+
+        const script = document.createElement('script');
+        script.src = base + '?' + params.toString().replace('mcCallback', cbName);
+        script.async = true;
+        document.body.appendChild(script);
+
+        const timeout = setTimeout(function(){
+          setStatus('error', 'Network timeout. Please try again.');
+          cleanup();
+        }, 15000);
+
+        function cleanup(){
+          clearTimeout(timeout);
+          if (script && script.parentNode) script.parentNode.removeChild(script);
+          try { delete window[cbName]; } catch(_){ window[cbName] = undefined; }
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
