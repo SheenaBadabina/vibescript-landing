@@ -3,257 +3,237 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VibeScript – Speak Websites Into Existence</title>
-  <meta name="description" content="VibeScript is the AI platform that turns your spoken vision into complete websites and marketing campaigns—optimized for SEO, AEO, and GEO from day one." />
 
-  <!-- Social -->
-  <meta property="og:title" content="VibeScript – Speak Websites Into Existence" />
-  <meta property="og:description" content="Talk your website into reality. VibeScript converts your voice into websites, emails, social posts, ads, and landing pages." />
+  <title>VibeScript — Speak Websites Into Existence</title>
+  <meta name="description" content="VibeScript is the voice-driven AI platform that turns spoken ideas into complete websites and conversion-ready marketing campaigns optimized for SEO, AEO, and local GEO search." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VibeScript — Speak Websites Into Existence" />
+  <meta property="og:description" content="Talk your website into reality. VibeScript generates sites, emails, ads, and social content from a single spoken prompt." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://vibescript-landing.pages.dev" />
-  <meta property="og:image" content="/assets/file_000000001048622f95bff34ddca0e28a.png" />
-  <meta name="theme-color" content="#0b0f1a" />
+  <meta property="og:image" content="/assets/file_000000000349861f5891169618f3eb38a.png" />
+
+  <link rel="icon" href="/assets/file_000000000349861f5891169618f3eb38a.png" />
 
   <style>
-    /* -------- Theme -------- */
     :root{
-      --bg-1:#07090f;   /* deep space */
-      --bg-2:#0c1220;   /* midnight blue */
-      --card:#0e1526;   /* glass card */
-      --ink:#e8eef7;    /* headline */
-      --muted:#9bb0c7;  /* subhead */
-      --outline:rgba(255,255,255,.08);
-
-      /* Chakra gradient used for logo text & CTA */
-      --chakra: linear-gradient(90deg,
-        #ff6b6b 0%,
-        #ffa94d 16%,
-        #ffd43b 32%,
-        #69db7c 48%,
-        #38d9a9 60%,
-        #4dabf7 78%,
-        #b197fc 100%
-      );
+      --bg: #0b0f14;
+      --card:#0f1620;
+      --muted:#9fb0c7;
+      --text:#e6eef9;
+      --ring: 0 0 0 2px #ffffff22, 0 0 0 8px #ffffff0a;
+      --radius: 14px;
     }
 
-    /* -------- Base -------- */
+    /* --- reset --- */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Inter, Roboto, "Helvetica Neue", Arial;
-      color:var(--ink);
-      background:
-        radial-gradient(1200px 800px at 10% -10%, rgba(73, 99, 187,.25), transparent 60%),
-        radial-gradient(1200px 800px at 110% 0%, rgba(156, 102, 234,.22), transparent 55%),
-        linear-gradient(180deg, var(--bg-1), var(--bg-2));
-      background-attachment: fixed;
-    }
-    .wrap{max-width:980px; margin:0 auto; padding:28px 20px 88px}
-
-    /* -------- Header -------- */
-    header{display:flex; align-items:center; gap:12px; margin-bottom:18px}
-    .logo{width:44px; height:44px; object-fit:contain}
-    .brand{font-weight:800; letter-spacing:.2px}
-    .brand .chakra-text{
-      background:var(--chakra); -webkit-background-clip:text; background-clip:text; color:transparent;
-      filter: drop-shadow(0 0 10px rgba(178, 141, 255,.15));
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background: radial-gradient(1200px 600px at 10% -10%, #1b2330 20%, transparent 60%),
+                  radial-gradient(1000px 800px at 110% 10%, #1b1835 10%, transparent 60%),
+                  linear-gradient(#0a0d12, #0b0f14);
+      background-color: var(--bg);
     }
 
-    /* -------- Card / Hero -------- */
-    .hero{
-      position:relative;
-      background: color-mix(in oklab, var(--card) 90%, black 10%);
-      border:1px solid var(--outline);
-      border-radius:20px;
-      padding:26px;
-      box-shadow:
-        0 30px 60px rgba(0,0,0,.45),
-        0 0 0 1px rgba(255,255,255,.03) inset;
-      overflow:hidden;
+    /* faint vertical edges to mimic the original subtle frame */
+    .edge-left,.edge-right{
+      position:fixed; top:0; bottom:0; width:10px; pointer-events:none; z-index:0;
+      background: linear-gradient(180deg, #3b1b92 0%, transparent 40% 60%, #2b5a9a 100%);
+      filter: blur(14px) opacity(.22);
     }
-    /* Soft animated perimeter glow */
-    .hero::before{
-      content:"";
-      position:absolute; inset:-2px;
-      border-radius:22px;
-      background: conic-gradient(from 0deg, #ff6b6b, #ffa94d, #ffd43b, #69db7c, #38d9a9, #4dabf7, #b197fc, #ff6b6b);
-      filter: blur(18px) saturate(120%);
-      opacity:.08;
-      animation: swirl 12s linear infinite;
-      z-index:0;
-    }
-    @keyframes swirl{ to{ transform: rotate(360deg); } }
-    .hero > * { position:relative; z-index:1; }
+    .edge-left{left:0}
+    .edge-right{right:0}
 
-    h1{font-size: clamp(28px, 5.2vw, 46px); line-height:1.08; margin:6px 0 10px}
-    .chakra-fill{
-      background:var(--chakra); -webkit-background-clip:text; background-clip:text; color:transparent;
-      text-shadow: 0 0 30px rgba(125, 102, 255, .18);
-    }
-    h2{font-size: clamp(18px, 3.6vw, 22px); color:var(--muted); font-weight:600; margin:0 0 18px}
-    p{font-size:16px; line-height:1.7; color:#cfe0f2; margin:0 0 14px}
+    .wrap{max-width:960px; margin:0 auto; padding:32px 20px 80px; position:relative; z-index:1}
 
-    .banner{
-      width:100%; border-radius:14px; margin:14px 0 10px;
-      border:1px solid var(--outline);
-      display:block;
+    /* header */
+    .brand{
+      display:flex; align-items:center; gap:14px; user-select:none;
+    }
+    .brand img{
+      width:44px; height:44px; border-radius:50%;
+      box-shadow: 0 0 0 2px #ffffff0f, 0 0 40px 0 rgba(103, 232, 249, .15);
+    }
+    .brand-name{
+      font-weight:700; letter-spacing:.2px;
+      background: linear-gradient(90deg,#ff6b6b,#ffb86b,#ffd166,#7bd88f,#61dafb,#a78bfa,#ff77e9);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      text-shadow: 0 0 24px #ffffff10;
     }
 
-    .grid{display:grid; gap:16px}
-    @media(min-width:860px){ .grid{grid-template-columns:1fr 1fr} }
-
+    /* hero card */
     .card{
-      background: color-mix(in oklab, var(--card) 94%, black 6%);
-      border:1px solid var(--outline);
-      border-radius:16px; padding:18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,.35);
-    }
-    .card h3{margin:0 0 10px; font-size:20px}
-    .bullets{padding-left:18px; margin:10px 0 0}
-    .bullets li{margin:8px 0; color:#cfe0f2}
-
-    /* -------- Email form + Chakra CTA -------- */
-    .form{
-      background: color-mix(in oklab, var(--card) 90%, black 10%);
-      border:1px solid var(--outline);
-      border-radius:16px; padding:16px; margin-top:12px;
-      display:flex; gap:12px; flex-wrap:wrap; align-items:center;
-    }
-    input[type="email"]{
-      flex:1 1 260px;
-      background:#0b1020;
-      color:var(--ink);
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:12px; padding:14px 14px;
-      outline: none;
-    }
-    input[type="email"]::placeholder{color:#93a6be}
-
-    /* Chakra glow button */
-    .cta{
-      position:relative;
-      isolation:isolate;
-      border:none;
-      border-radius:12px;
-      padding:14px 18px;
-      font-weight:900;
-      letter-spacing:.2px;
-      color:#0a0f1c;
-      cursor:pointer;
-      background: var(--chakra);
+      margin-top:22px; background: rgba(13,18,27,.72);
+      border:1px solid #ffffff14; border-radius: var(--radius);
       box-shadow:
-        0 8px 20px rgba(88, 118, 255, .35),
-        0 0 0 1px rgba(255,255,255,.05) inset;
-      transition: transform .15s ease, box-shadow .15s ease;
+        0 10px 40px #00000080,
+        inset 0 0 0 1px #ffffff06,
+        0 0 80px 0 #6ee7ff14;
+      padding:28px;
     }
-    /* outer animated glow ring */
-    .cta::before{
-      content:"";
-      position:absolute; inset:-3px; border-radius:14px; z-index:-1;
-      background: conic-gradient(from 0deg, #ff6b6b, #ffa94d, #ffd43b, #69db7c, #38d9a9, #4dabf7, #b197fc, #ff6b6b);
-      filter: blur(14px);
-      opacity:.6;
-      animation: swirl 10s linear infinite;
-    }
-    .cta:hover{ transform: translateY(-1px); box-shadow:
-        0 12px 28px rgba(88,118,255,.45),
-        0 0 0 1px rgba(255,255,255,.08) inset; }
-    .cta:active{ transform: translateY(0); }
 
-    .fine{font-size:13px; color:#a9bed6}
-    footer{opacity:.9; margin-top:22px; font-size:13px; color:#b9cbe0}
-    footer a{color:#cfe0f2}
-    .keywords{font-size:15px}
+    .headline{
+      font-size: clamp(28px, 4.5vw, 40px);
+      line-height:1.05; margin:8px 0 8px;
+      letter-spacing:.2px;
+      background: linear-gradient(90deg,#ffd166,#7bd88f,#61dafb,#a78bfa,#ff77e9);
+      -webkit-background-clip:text; background-clip:text; color:transparent;
+      filter: drop-shadow(0 6px 28px #8ec5ff24);
+    }
+    .sub{
+      color: var(--muted);
+      font-size: clamp(16px, 2.6vw, 18px);
+    }
+
+    /* lightning divider */
+    .banner{
+      width:100%; border-radius: var(--radius);
+      margin:22px 0 10px; display:block; opacity:.95;
+      box-shadow: 0 16px 50px #000000aa, 0 0 80px #00d9ff10;
+    }
+
+    /* copy blocks */
+    .panel{
+      background: rgba(14,20,30,.7);
+      border:1px solid #ffffff12; border-radius: var(--radius);
+      padding:22px; margin-top:18px;
+      box-shadow: inset 0 0 0 1px #ffffff06;
+    }
+    .panel h3{margin:.2rem 0 10px; font-size:20px}
+    .panel p{margin:.5rem 0 0; color:#c9d7ea; line-height:1.6}
+
+    .bullets{margin:8px 0 4px; padding-left:18px}
+    .bullets li{margin:8px 0; line-height:1.55}
+
+    /* Mailchimp form */
+    .cta{
+      margin-top:22px;
+      background: rgba(12,18,28,.8);
+      border:1px solid #ffffff18; border-radius: var(--radius);
+      padding:18px; display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+    }
+    .cta input[type="email"]{
+      flex:1 1 280px; min-width:0;
+      background:#0c131c; color:var(--text);
+      border:1px solid #2b3b4d; border-radius:12px;
+      padding:14px 14px; outline:none; font-size:16px;
+      box-shadow: inset 0 0 0 1px #ffffff05;
+    }
+    .cta input[type="email"]::placeholder{color:#93a6bf}
+    .cta button, .btn{
+      cursor:pointer; border:0; padding:14px 18px; border-radius:14px; font-weight:700;
+      color:#0c0f14; letter-spacing:.2px;
+      background: linear-gradient(90deg,#ff6b6b,#ffb86b,#ffd166,#7bd88f,#61dafb,#a78bfa,#ff77e9);
+      box-shadow: 0 6px 40px #60a5fa33;
+      transition: transform .05s ease-in-out, filter .2s ease;
+    }
+    .cta button:hover{filter:saturate(1.1) brightness(1.06)}
+    .cta button:active{transform: translateY(1px)}
+
+    .note{font-size:13px; color:#93a6bf}
+    .foot{
+      color:#a9bad2; font-size:14px; margin:22px 4px 0;
+    }
+    .foot a{color:#cfe4ff}
+    .center{text-align:center}
+    .sr{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
+
+    /* small screens padding tweak */
+    @media (max-width:520px){
+      .card{padding:22px}
+      .cta{padding:14px}
+    }
   </style>
 </head>
 <body>
-  <div class="wrap">
-    <header>
-      <img class="logo" src="/assets/file_00000000349861f5891169618f3eb38a.png" alt="VibeScript logo" />
-      <div class="brand"><span class="chakra-text">VibeScript</span></div>
+  <div class="edge-left"></div><div class="edge-right"></div>
+
+  <main class="wrap">
+    <!-- BRAND -->
+    <header class="brand">
+      <img src="/assets/file_000000000349861f5891169618f3eb38a.png" alt="VibeScript logo" />
+      <div class="brand-name" style="font-size:20px">VibeScript</div>
     </header>
 
-    <section class="hero" aria-label="VibeScript overview">
-      <h1><span class="chakra-fill">VibeScript – Speak Websites Into Existence</span></h1>
-      <h2>The AI Platform That Transforms Your Voice Into Complete Websites and Marketing Campaigns</h2>
+    <!-- HERO -->
+    <section class="card" aria-labelledby="headline">
+      <h1 id="headline" class="headline">VibeScript — Speak Websites Into Existence</h1>
+      <p class="sub">
+        The AI platform that transforms your voice into complete websites and
+        conversion-ready marketing campaigns — optimized for search (SEO), answers (AEO),
+        and local discovery (GEO).
+      </p>
 
-      <img class="banner" src="/assets/file_000000001048622f95bff34ddca0e28a.png" alt="Lightning banner" loading="eager" />
+      <img class="banner" src="/assets/file_000000001048622f95bff34ddca0e28a.png" alt="Chakra lightning banner" />
 
-      <p>Speak a website into existence with VibeScript — the revolutionary AI platform that converts your spoken ideas into fully functional websites, complete with marketing campaigns, content, and brand consistency. Simply describe your vision out loud and watch as advanced AI transforms your words into professional websites, social media content, email sequences, advertisements, and comprehensive digital marketing strategies.</p>
-
-      <div class="grid" style="margin-top:12px">
-        <div class="card">
-          <h3>What you’re signing up for</h3>
-          <p>When you join the early-access list, you’ll get product updates, behind-the-scenes progress, and a chance to test new features first. We’ll show you exactly how voice-to-website creation works inside VibeScript and how campaigns are generated from a single spoken prompt. You’re opting into practical launch updates and early invites — not generic newsletters.</p>
-
-          <form class="form" id="signup">
-            <input type="email" id="email" name="email" placeholder="Enter your email to get early access updates" required />
-            <button class="cta" type="submit">Speak Your Website Into Reality — Get Early Access</button>
-            <div class="fine">No spam. Unsubscribe anytime.</div>
-          </form>
-        </div>
-
-        <div class="card">
-          <h3>Key features</h3>
-          <ul class="bullets">
-            <li>🎤 Speak Websites Into Reality — No coding or design skills. Just your voice and vision.</li>
-            <li>🚀 Complete Campaign Generation — One input creates websites, emails, social posts, ads, and landing pages.</li>
-            <li>🎯 Multi-Platform Optimization — Ready for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email.</li>
-            <li>🧠 Advanced AI Prompting — Meta-prompting frameworks + prompt engineering.</li>
-            <li>📈 Business-Ready Content — Brand-consistent, conversion-optimized materials.</li>
-            <li>⚡ Instant Marketing Automation — Replace expensive agencies with AI-driven creation.</li>
-          </ul>
-        </div>
+      <div class="panel">
+        <h3>What you’re signing up for</h3>
+        <p>
+          Join the early-access list to get product updates, behind-the-scenes progress,
+          and priority invites to try new features first. You’ll see exactly how
+          voice-to-website creation works inside VibeScript — and how one spoken prompt
+          becomes a fast, mobile-friendly website with launch-ready content for Instagram,
+          TikTok, LinkedIn, Facebook, Google Ads, and email.
+        </p>
       </div>
 
-      <div class="grid" style="margin-top:16px">
-        <div class="card">
-          <h3>SEO / AEO / GEO-Optimized</h3>
-          <p>VibeScript helps your business get discovered. From conversational search (AEO) to local intent (GEO), your voice-driven site and campaigns are structured for visibility and conversion from day one.</p>
-          <ul class="bullets">
-            <li><strong>Conversational intent:</strong> Built to answer natural-language queries.</li>
-            <li><strong>Local reach:</strong> GEO-aware content for maps, directories, and local search.</li>
-            <li><strong>Technical SEO:</strong> Clean markup, semantic structure, fast performance.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h3>Keywords we target</h3>
-          <p class="keywords">speak website into existence, voice to website, AI website builder, voice-activated website creation, talk to create website, AI web development, voice website generator, speak website creation, AI-powered web builder, voice-driven website platform, conversational website builder, voice website technology</p>
-        </div>
+      <div class="panel">
+        <h3>Why VibeScript</h3>
+        <ul class="bullets">
+          <li><strong>Speak websites into reality.</strong> No code. No design tools. Just your voice and vision.</li>
+          <li><strong>Complete campaigns from one idea.</strong> Websites, landing pages, social posts, email sequences, and ads.</li>
+          <li><strong>Multi-platform optimization.</strong> Content tuned for social, search, and inbox delivery.</li>
+          <li><strong>Advanced AI prompting.</strong> Meta-prompting frameworks keep tone, brand, and conversion goals consistent.</li>
+          <li><strong>Business-ready from day one.</strong> Copy and layouts structured for speed, semantics, and discoverability.</li>
+        </ul>
       </div>
 
-      <footer>
-        © 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved. ·
-        <a href="https://github.com/SheenaBadabina/vibescript-landing" rel="noopener">Follow progress on GitHub</a>.
-      </footer>
+      <!-- Human-readable keyword-rich paragraph (replaces the “Keywords we target” box) -->
+      <div class="panel">
+        <h3>Findable by design</h3>
+        <p>
+          VibeScript is a conversational, voice-driven website builder — an AI-powered web
+          development platform that lets you talk to create a website. Our voice-activated
+          website creation generates brand-consistent pages and content that search engines
+          understand, so people looking for a voice website generator or AI website builder
+          can actually find you. From local, GEO-aware pages to answer-ready snippets for
+          assistants, your site is structured for fast performance and clear semantics.
+        </p>
+      </div>
+
+      <!-- MAILCHIMP FORM -->
+      <div class="cta" id="mc_embed_signup">
+        <form
+          action="https://us2.list-manage.com/subscribe/post?u=__PASTE_YOUR_U_VALUE_HERE__&amp;id=4d7f887426"
+          method="post"
+          id="mc-embedded-subscribe-form"
+          name="mc-embedded-subscribe-form"
+          target="_blank"
+          novalidate
+          style="display:contents"
+        >
+          <label for="mce-EMAIL" class="sr">Email address</label>
+          <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email to get early access updates" required>
+          <!-- honeypot -->
+          <div aria-hidden="true" style="position:absolute; left:-5000px">
+            <input type="text" name="b___PASTE_YOUR_U_VALUE_HERE___4d7f887426" tabindex="-1" value="">
+          </div>
+          <button type="submit" name="subscribe" id="mc-embedded-subscribe">
+            Speak Your Website Into Reality — Get Early Access
+          </button>
+        </form>
+        <div class="note">We’ll only send practical launch updates and early invites. Unsubscribe anytime.</div>
+      </div>
+
+      <p class="foot">
+        © 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.
+        · <a href="https://github.com/SheenaBadabina/vibescript-landing" rel="noopener">Follow progress on GitHub</a>.
+      </p>
     </section>
-  </div>
-
-  <script>
-    // Minimal email capture – posts to your Pages Function at /api/subscribe
-    document.getElementById('signup').addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const email = document.getElementById('email').value.trim();
-      if (!email) return;
-      try{
-        const res = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({ email })
-        });
-        if(res.ok){
-          alert('Thanks! You’re on the early-access list.');
-          e.target.reset();
-        }else{
-          const txt = await res.text().catch(()=> '');
-          alert('Something went wrong. ' + (txt || 'Try again.'));
-        }
-      }catch(err){
-        alert('Network error. Please try again.');
-      }
-    });
-  </script>
+  </main>
 </body>
 </html>
