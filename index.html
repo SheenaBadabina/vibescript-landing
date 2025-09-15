@@ -3,237 +3,257 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>VibeScript — Speak Websites Into Existence</title>
-  <meta name="description" content="VibeScript is the voice-driven AI platform that turns spoken ideas into complete websites and conversion-ready marketing campaigns optimized for SEO, AEO, and local GEO search." />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="VibeScript — Speak Websites Into Existence" />
-  <meta property="og:description" content="Talk your website into reality. VibeScript generates sites, emails, ads, and social content from a single spoken prompt." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="/assets/file_000000000349861f5891169618f3eb38a.png" />
-
-  <link rel="icon" href="/assets/file_000000000349861f5891169618f3eb38a.png" />
-
+  <title>VibeScript — Let your website speak</title>
+  <meta name="description" content="VibeScript turns your voice into a production-ready website. Speak it. Ship it.">
+  <link rel="preconnect" href="https://cdn-images.mailchimp.com" crossorigin>
+  <link rel="icon" href="/assets/vibescript-logo.png" type="image/png" />
   <style>
-    :root{
-      --bg: #0b0f14;
-      --card:#0f1620;
-      --muted:#9fb0c7;
-      --text:#e6eef9;
-      --ring: 0 0 0 2px #ffffff22, 0 0 0 8px #ffffff0a;
-      --radius: 14px;
+    :root {
+      --bg: #0b0d10;
+      --fg: #eaf2ff;
+      --muted: #9bb0c8;
+      --brand: #14b8a6; /* teal */
+      --brand-2: #7c3aed; /* violet accent */
+      --card: #11151a;
+      --ring: rgba(20,184,166,0.5);
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
-    /* --- reset --- */
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text);
-      background: radial-gradient(1200px 600px at 10% -10%, #1b2330 20%, transparent 60%),
-                  radial-gradient(1000px 800px at 110% 10%, #1b1835 10%, transparent 60%),
-                  linear-gradient(#0a0d12, #0b0f14);
-      background-color: var(--bg);
+    /* Layout */
+    .container { width: 100%; max-width: 1120px; margin: 0 auto; padding: 16px; }
+    header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; padding: 8px 0;
+      position: sticky; top: 0; background: linear-gradient(180deg, rgba(11,13,16,0.9), rgba(11,13,16,0));
+      backdrop-filter: blur(6px); z-index: 40;
     }
+    .logo { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--fg); }
+    .logo img { width: 36px; height: 36px; object-fit: contain; }
+    .logo span { font-weight: 700; letter-spacing: 0.3px; }
 
-    /* faint vertical edges to mimic the original subtle frame */
-    .edge-left,.edge-right{
-      position:fixed; top:0; bottom:0; width:10px; pointer-events:none; z-index:0;
-      background: linear-gradient(180deg, #3b1b92 0%, transparent 40% 60%, #2b5a9a 100%);
-      filter: blur(14px) opacity(.22);
+    .cta {
+      appearance: none; border: 0; cursor: pointer;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: #fff; padding: 12px 16px; border-radius: 999px; font-weight: 700;
+      transition: transform .08s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 20px rgba(20,184,166,0.25), 0 2px 8px rgba(124,58,237,0.25);
     }
-    .edge-left{left:0}
-    .edge-right{right:0}
+    .cta:focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; }
+    .cta:active { transform: translateY(1px) scale(0.99); }
 
-    .wrap{max-width:960px; margin:0 auto; padding:32px 20px 80px; position:relative; z-index:1}
-
-    /* header */
-    .brand{
-      display:flex; align-items:center; gap:14px; user-select:none;
+    /* Hero */
+    .hero {
+      position: relative;
+      display: grid;
+      align-items: center;
+      min-height: 70svh;
+      padding: clamp(32px, 6vw, 80px) 0;
+      overflow: clip;
     }
-    .brand img{
-      width:44px; height:44px; border-radius:50%;
-      box-shadow: 0 0 0 2px #ffffff0f, 0 0 40px 0 rgba(103, 232, 249, .15);
+    .hero::before {
+      content: ""; position: absolute; inset: 0;
+      background:
+        linear-gradient(180deg, rgba(11,13,16,0.2), rgba(11,13,16,0.85)),
+        radial-gradient(80% 50% at 50% 0%, rgba(124,58,237,0.25), transparent 60%),
+        url("/assets/lightning-banner.jpg") center/cover no-repeat;
+      filter: saturate(1.1) contrast(1.05);
+      z-index: -2;
+      transform: scale(1.02);
     }
-    .brand-name{
-      font-weight:700; letter-spacing:.2px;
-      background: linear-gradient(90deg,#ff6b6b,#ffb86b,#ffd166,#7bd88f,#61dafb,#a78bfa,#ff77e9);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      text-shadow: 0 0 24px #ffffff10;
+    .hero-inner { display: grid; gap: 16px; max-width: 760px; }
+    .eyebrow { color: var(--brand); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: 12px; }
+    h1 {
+      margin: 0;
+      font-size: clamp(28px, 6.5vw, 56px);
+      line-height: 1.05;
+      letter-spacing: -0.02em;
     }
-
-    /* hero card */
-    .card{
-      margin-top:22px; background: rgba(13,18,27,.72);
-      border:1px solid #ffffff14; border-radius: var(--radius);
-      box-shadow:
-        0 10px 40px #00000080,
-        inset 0 0 0 1px #ffffff06,
-        0 0 80px 0 #6ee7ff14;
-      padding:28px;
-    }
-
-    .headline{
-      font-size: clamp(28px, 4.5vw, 40px);
-      line-height:1.05; margin:8px 0 8px;
-      letter-spacing:.2px;
-      background: linear-gradient(90deg,#ffd166,#7bd88f,#61dafb,#a78bfa,#ff77e9);
-      -webkit-background-clip:text; background-clip:text; color:transparent;
-      filter: drop-shadow(0 6px 28px #8ec5ff24);
-    }
-    .sub{
+    .lead {
       color: var(--muted);
-      font-size: clamp(16px, 2.6vw, 18px);
+      font-size: clamp(15px, 2.8vw, 18px);
+      max-width: 60ch;
+    }
+    .btn-row { display: flex; gap: 12px; flex-wrap: wrap; padding-top: 6px; }
+
+    /* Feature strip */
+    .features {
+      display: grid; gap: 12px; grid-template-columns: repeat(12, 1fr);
+      margin-top: 28px;
+    }
+    .feature {
+      grid-column: span 12;
+      background: linear-gradient(180deg, rgba(20,184,166,0.08), rgba(124,58,237,0.08));
+      border: 1px solid rgba(126,144,170,0.18);
+      border-radius: 14px; padding: 14px;
+    }
+    .feature b { color: #dff7ff; }
+    @media (min-width: 720px) {
+      .feature { grid-column: span 4; }
     }
 
-    /* lightning divider */
-    .banner{
-      width:100%; border-radius: var(--radius);
-      margin:22px 0 10px; display:block; opacity:.95;
-      box-shadow: 0 16px 50px #000000aa, 0 0 80px #00d9ff10;
+    /* Signup */
+    .section { padding: 40px 0; }
+    .card {
+      background: var(--card); border: 1px solid rgba(126,144,170,0.15);
+      border-radius: 16px; padding: clamp(16px, 4vw, 28px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.25);
     }
+    .card h2 { margin-top: 0; margin-bottom: 6px; font-size: clamp(20px, 4.5vw, 28px); }
+    .label { display: block; font-size: 14px; color: var(--muted); margin-bottom: 6px; }
 
-    /* copy blocks */
-    .panel{
-      background: rgba(14,20,30,.7);
-      border:1px solid #ffffff12; border-radius: var(--radius);
-      padding:22px; margin-top:18px;
-      box-shadow: inset 0 0 0 1px #ffffff06;
+    form .row {
+      display: grid; gap: 10px; grid-template-columns: 1fr;
     }
-    .panel h3{margin:.2rem 0 10px; font-size:20px}
-    .panel p{margin:.5rem 0 0; color:#c9d7ea; line-height:1.6}
+    @media (min-width: 480px) {
+      form .row { grid-template-columns: 1fr auto; }
+    }
+    input[type="email"] {
+      width: 100%;
+      background: #0f1419; color: var(--fg);
+      border: 1px solid rgba(126,144,170,0.25);
+      border-radius: 12px; padding: 12px 14px;
+      font-size: 16px;
+      transition: border-color .15s ease, box-shadow .15s ease;
+    }
+    input[type="email"]:focus-visible {
+      outline: none; border-color: var(--brand);
+      box-shadow: 0 0 0 4px var(--ring);
+    }
+    .submit {
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      color: white; font-weight: 700; border: 0; border-radius: 12px;
+      padding: 12px 16px; cursor: pointer;
+      transition: transform .08s ease, box-shadow .2s ease;
+      box-shadow: 0 6px 20px rgba(20,184,166,0.25), 0 2px 8px rgba(124,58,237,0.25);
+      width: 100%;
+    }
+    @media (min-width: 480px) { .submit { width: auto; } }
+    .submit:active { transform: translateY(1px) scale(0.99); }
+    .micro { font-size: 12px; color: var(--muted); margin-top: 6px; }
 
-    .bullets{margin:8px 0 4px; padding-left:18px}
-    .bullets li{margin:8px 0; line-height:1.55}
+    footer {
+      padding: 28px 0 40px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .footgrid { display: grid; gap: 12px; align-items: center; }
+    @media (min-width: 640px) { .footgrid { grid-template-columns: auto 1fr; } }
+    .brandmark { display: inline-flex; align-items: center; gap: 10px; color: var(--fg); text-decoration: none; }
+    .brandmark img { width: 28px; height: 28px; object-fit: contain; }
+    .links { display: flex; gap: 14px; flex-wrap: wrap; justify-self: start; }
+    .links a { color: var(--muted); text-decoration: none; }
+    .links a:hover { color: var(--fg); text-decoration: underline; }
 
-    /* Mailchimp form */
-    .cta{
-      margin-top:22px;
-      background: rgba(12,18,28,.8);
-      border:1px solid #ffffff18; border-radius: var(--radius);
-      padding:18px; display:flex; gap:10px; flex-wrap:wrap;
-      align-items:center;
-    }
-    .cta input[type="email"]{
-      flex:1 1 280px; min-width:0;
-      background:#0c131c; color:var(--text);
-      border:1px solid #2b3b4d; border-radius:12px;
-      padding:14px 14px; outline:none; font-size:16px;
-      box-shadow: inset 0 0 0 1px #ffffff05;
-    }
-    .cta input[type="email"]::placeholder{color:#93a6bf}
-    .cta button, .btn{
-      cursor:pointer; border:0; padding:14px 18px; border-radius:14px; font-weight:700;
-      color:#0c0f14; letter-spacing:.2px;
-      background: linear-gradient(90deg,#ff6b6b,#ffb86b,#ffd166,#7bd88f,#61dafb,#a78bfa,#ff77e9);
-      box-shadow: 0 6px 40px #60a5fa33;
-      transition: transform .05s ease-in-out, filter .2s ease;
-    }
-    .cta button:hover{filter:saturate(1.1) brightness(1.06)}
-    .cta button:active{transform: translateY(1px)}
-
-    .note{font-size:13px; color:#93a6bf}
-    .foot{
-      color:#a9bad2; font-size:14px; margin:22px 4px 0;
-    }
-    .foot a{color:#cfe4ff}
-    .center{text-align:center}
-    .sr{position:absolute!important;height:1px;width:1px;overflow:hidden;clip:rect(1px,1px,1px,1px)}
-
-    /* small screens padding tweak */
-    @media (max-width:520px){
-      .card{padding:22px}
-      .cta{padding:14px}
+    /* Utility */
+    .visually-hidden {
+      position: absolute !important; width: 1px; height: 1px; margin: -1px; padding: 0;
+      border: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
     }
   </style>
 </head>
+
 <body>
-  <div class="edge-left"></div><div class="edge-right"></div>
+  <a class="visually-hidden" href="#signup">Skip to signup</a>
 
-  <main class="wrap">
-    <!-- BRAND -->
-    <header class="brand">
-      <img src="/assets/file_000000000349861f5891169618f3eb38a.png" alt="VibeScript logo" />
-      <div class="brand-name" style="font-size:20px">VibeScript</div>
-    </header>
+  <header class="container" aria-label="Site header">
+    <a class="logo" href="/" aria-label="VibeScript Home">
+      <img src="/assets/vibescript-logo.png" alt="VibeScript logo">
+      <span>VibeScript</span>
+    </a>
+    <button class="cta" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'});">
+      Get updates
+    </button>
+  </header>
 
-    <!-- HERO -->
-    <section class="card" aria-labelledby="headline">
-      <h1 id="headline" class="headline">VibeScript — Speak Websites Into Existence</h1>
-      <p class="sub">
-        The AI platform that transforms your voice into complete websites and
-        conversion-ready marketing campaigns — optimized for search (SEO), answers (AEO),
-        and local discovery (GEO).
-      </p>
-
-      <img class="banner" src="/assets/file_000000001048622f95bff34ddca0e28a.png" alt="Chakra lightning banner" />
-
-      <div class="panel">
-        <h3>What you’re signing up for</h3>
-        <p>
-          Join the early-access list to get product updates, behind-the-scenes progress,
-          and priority invites to try new features first. You’ll see exactly how
-          voice-to-website creation works inside VibeScript — and how one spoken prompt
-          becomes a fast, mobile-friendly website with launch-ready content for Instagram,
-          TikTok, LinkedIn, Facebook, Google Ads, and email.
+  <main>
+    <section class="hero">
+      <div class="container hero-inner">
+        <span class="eyebrow">Early access</span>
+        <h1>Speak your site into existence</h1>
+        <p class="lead">
+          VibeScript converts natural language into a production-ready website and deploys it for you.
+          Say it. Ship it. You focus on the vibe—we handle the script.
         </p>
-      </div>
-
-      <div class="panel">
-        <h3>Why VibeScript</h3>
-        <ul class="bullets">
-          <li><strong>Speak websites into reality.</strong> No code. No design tools. Just your voice and vision.</li>
-          <li><strong>Complete campaigns from one idea.</strong> Websites, landing pages, social posts, email sequences, and ads.</li>
-          <li><strong>Multi-platform optimization.</strong> Content tuned for social, search, and inbox delivery.</li>
-          <li><strong>Advanced AI prompting.</strong> Meta-prompting frameworks keep tone, brand, and conversion goals consistent.</li>
-          <li><strong>Business-ready from day one.</strong> Copy and layouts structured for speed, semantics, and discoverability.</li>
-        </ul>
-      </div>
-
-      <!-- Human-readable keyword-rich paragraph (replaces the “Keywords we target” box) -->
-      <div class="panel">
-        <h3>Findable by design</h3>
-        <p>
-          VibeScript is a conversational, voice-driven website builder — an AI-powered web
-          development platform that lets you talk to create a website. Our voice-activated
-          website creation generates brand-consistent pages and content that search engines
-          understand, so people looking for a voice website generator or AI website builder
-          can actually find you. From local, GEO-aware pages to answer-ready snippets for
-          assistants, your site is structured for fast performance and clear semantics.
-        </p>
-      </div>
-
-      <!-- MAILCHIMP FORM -->
-      <div class="cta" id="mc_embed_signup">
-        <form
-          action="https://us2.list-manage.com/subscribe/post?u=__PASTE_YOUR_U_VALUE_HERE__&amp;id=4d7f887426"
-          method="post"
-          id="mc-embedded-subscribe-form"
-          name="mc-embedded-subscribe-form"
-          target="_blank"
-          novalidate
-          style="display:contents"
-        >
-          <label for="mce-EMAIL" class="sr">Email address</label>
-          <input type="email" name="EMAIL" id="mce-EMAIL" placeholder="Enter your email to get early access updates" required>
-          <!-- honeypot -->
-          <div aria-hidden="true" style="position:absolute; left:-5000px">
-            <input type="text" name="b___PASTE_YOUR_U_VALUE_HERE___4d7f887426" tabindex="-1" value="">
-          </div>
-          <button type="submit" name="subscribe" id="mc-embedded-subscribe">
-            Speak Your Website Into Reality — Get Early Access
+        <div class="btn-row">
+          <button class="cta" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'});">
+            Join the updates list
           </button>
-        </form>
-        <div class="note">We’ll only send practical launch updates and early invites. Unsubscribe anytime.</div>
-      </div>
+          <a class="cta" style="text-decoration:none; display:inline-flex; align-items:center; gap:8px;"
+             href="#learn-more" aria-label="Learn more about VibeScript">
+            Learn more
+          </a>
+        </div>
 
-      <p class="foot">
-        © 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.
-        · <a href="https://github.com/SheenaBadabina/vibescript-landing" rel="noopener">Follow progress on GitHub</a>.
-      </p>
+        <div class="features" id="learn-more" aria-label="Highlights">
+          <div class="feature"><b>Voice to website:</b> describe the site; VibeScript builds pages, styles, and routes.</div>
+          <div class="feature"><b>Deploys itself:</b> GitHub → Cloudflare Pages with every change.</div>
+          <div class="feature"><b>Built-in AI toolkit:</b> copy, email, posts, and ads generated from the same prompt.</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="signup" class="section">
+      <div class="container">
+        <div class="card" role="region" aria-label="Signup form">
+          <h2>Get product updates</h2>
+          <p class="micro">No spam—just meaningful progress and invites.</p>
+
+          <!-- Mailchimp embed: action contains your u and id -->
+          <form
+            action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&amp;id=4d7f887426&amp;f_id=00ffa2e0f0"
+            method="post" target="_blank" novalidate aria-label="Mailing list signup">
+            <label class="label" for="mce-EMAIL">Email address</label>
+            <div class="row">
+              <input type="email" name="EMAIL" id="mce-EMAIL" required
+                     placeholder="you@example.com" inputmode="email" autocomplete="email" />
+              <button class="submit" type="submit" name="subscribe" id="mc-embedded-subscribe">
+                Subscribe
+              </button>
+            </div>
+
+            <!-- Anti-bot honeypot (keep it) -->
+            <div aria-hidden="true" style="position:absolute; left:-5000px;">
+              <input type="text" name="b_0a7bc91bac675bcca19bd150d_4d7f887426" tabindex="-1" value="">
+            </div>
+
+            <!-- Optional feedback containers that Mailchimp can use -->
+            <div id="mce-responses" class="micro" aria-live="polite" aria-atomic="true">
+              <div id="mce-error-response" style="display:none;"></div>
+              <div id="mce-success-response" style="display:none;"></div>
+            </div>
+          </form>
+          <noscript><p class="micro">JavaScript is disabled; the Mailchimp form will open in a new tab.</p></noscript>
+        </div>
+      </div>
     </section>
   </main>
+
+  <footer>
+    <div class="container footgrid">
+      <a class="brandmark" href="/" aria-label="VibeScript">
+        <img src="/assets/vibescript-logo.png" alt="">
+        <strong>VibeScript</strong>
+      </a>
+      <nav class="links" aria-label="Footer">
+        <a href="#learn-more">Learn more</a>
+        <a href="#signup">Get updates</a>
+        <a href="mailto:admin@vibescript.online">Contact</a>
+      </nav>
+    </div>
+  </footer>
+
+  <!-- (Optional) Mailchimp validation script – safe to omit, but keeping for parity with embed -->
+  <script src="https://s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js" defer></script>
 </body>
 </html>
