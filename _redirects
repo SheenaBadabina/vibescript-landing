@@ -3,9 +3,10 @@
 /privacy        /privacy.html        200
 /terms          /terms.html          200
 /contact        /contact.html        200
+/speak          /speak.html          200
 
-# trailing slash normalization (optional examples)
 /how-it-works/  /how-it-works       301
 /privacy/       /privacy            301
 /terms/         /terms              301
 /contact/       /contact            301
+/speak/         /speak              301
