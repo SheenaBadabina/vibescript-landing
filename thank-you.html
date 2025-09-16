@@ -1,82 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VibeScript — You’re In</title>
-  <meta name="description" content="Thanks for subscribing to VibeScript updates. Keep an eye on your inbox for early access and milestone news." />
-  <link rel="icon" href="assets/file_0000000034986115891169618f3eb38a.png" type="image/png" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thank You - VibeScript</title>
   <style>
-    :root{
-      --bg:#0a0c10; --card:#0f1218; --text:#eef3ff; --muted:#9fb0c8;
-      --chakra-red:#ef4444; --chakra-orange:#f97316; --chakra-yellow:#eab308;
-      --chakra-green:#22c55e; --chakra-blue:#3b82f6; --chakra-indigo:#6366f1; --chakra-violet:#8b5cf6;
-      --ring:rgba(255,255,255,.18);
+    body {
+      margin: 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      background: linear-gradient(180deg, #0a0a0a 0%, #000 100%);
+      color: #fff;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.55}
-    .container{max-width:820px;margin:0 auto;padding:20px}
-    .shell{
-      min-height:92svh; display:grid; place-items:center;
-      background:
-        linear-gradient(180deg, rgba(10,12,16,.15), rgba(10,12,16,.95)),
-        radial-gradient(70% 50% at 50% 0%, rgba(99,102,241,.18), transparent 60%),
-        url("assets/file_000000001048622f95bff34ddca0e28a.png") center/cover no-repeat;
+    header {
+      padding: 20px;
     }
-    .card{background:var(--card);border:1px solid rgba(159,176,200,.16);border-radius:18px;padding:24px;box-shadow:0 10px 26px rgba(0,0,0,.28)}
-    .logo{width:56px;height:56px;object-fit:contain;border-radius:12px;margin:0 auto 10px;display:block}
-
-    .eyebrow{
-      text-align:center;font-weight:900;letter-spacing:.16em;text-transform:uppercase;font-size:12px;margin-bottom:8px;
-      background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
-      -webkit-background-clip:text;background-clip:text;color:transparent;
+    header img {
+      max-height: 70px;
     }
-    h1{margin:.2em 0 0;font-size:clamp(26px,6.5vw,42px);text-align:center}
-    p{color:var(--muted);margin:.4em 0;text-align:center}
-
-    .teasers{margin-top:10px;display:grid;gap:10px}
-    .teaser{
-      border:1px solid rgba(159,176,200,.14);border-radius:14px;padding:12px;
-      background:linear-gradient(180deg, rgba(59,130,246,.05), rgba(99,102,241,.05));
-      text-align:center; color:var(--muted);
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
-    .teaser b{color:#e6f5ff}
-
-    /* Neutral button back home */
-    .btn{
-      appearance:none;border:1px solid rgba(159,176,200,.28);cursor:pointer;border-radius:999px;
-      padding:12px 16px;font-weight:800;color:var(--text);background:transparent;
-      transition:transform .08s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
-      display:inline-block; text-decoration:none;
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
-    .btn:hover{border-color:rgba(159,176,200,.45); background:rgba(255,255,255,.03)}
-    .btn:active{transform:translateY(1px) scale(.99)}
-    .btn:focus-visible{outline:3px solid var(--ring); outline-offset:2px}
-
-    .actions{display:flex;justify-content:center;margin-top:14px}
+    p {
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 20px;
+      line-height: 1.5;
+    }
+    .teasers {
+      margin: 20px 0;
+      text-align: left;
+      max-width: 500px;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 10px;
+    }
+    .teasers h2 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: #9b5de5;
+    }
+    .teasers ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .teasers li {
+      margin: 8px 0;
+    }
+    .chakra-button {
+      background: linear-gradient(90deg,
+        red, orange, yellow, green, blue, indigo, violet);
+      border: none;
+      border-radius: 6px;
+      color: #fff;
+      font-size: 1rem;
+      padding: 12px 24px;
+      cursor: pointer;
+      transition: transform 0.2s ease;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 20px;
+    }
+    .chakra-button:hover {
+      transform: scale(1.05);
+    }
+    footer {
+      padding: 20px;
+      font-size: 0.8rem;
+      color: #aaa;
+    }
   </style>
 </head>
 <body>
-  <div class="shell">
-    <div class="container">
-      <div class="card" role="status" aria-live="polite">
-        <img class="logo" src="assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo">
-        <div class="eyebrow">You’re In</div>
-        <h1>Thanks — keep an eye on your email</h1>
-        <p>We’ll send meaningful progress updates and early-access invites. You’ll hear from us soon.</p>
+  <header>
+    <img src="assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript Logo">
+  </header>
 
-        <div class="teasers">
-          <div class="teaser"><b>Voice-to-Website</b> demos: watch ideas become live pages in minutes.</div>
-          <div class="teaser"><b>Campaign Auto-Builder</b>: one prompt → posts, emails, and ads.</div>
-          <div class="teaser"><b>Studio Sneak Peeks</b>: new UI with chakra-tuned accents and fast flows.</div>
-        </div>
+  <main>
+    <h1>Thanks — keep an eye on your email</h1>
+    <p>We’ll send meaningful progress updates and early-access invites. You’ll hear from us soon.</p>
 
-        <div class="actions">
-          <a class="btn" href="/">Back to home</a>
-        </div>
-      </div>
+    <div class="teasers">
+      <h2>You’re In — Here’s What’s Coming:</h2>
+      <ul>
+        <li><strong>Voice-to-Website demos:</strong> watch ideas become live pages in minutes.</li>
+        <li><strong>Campaign Auto-Builder:</strong> one prompt → posts, emails, and ads.</li>
+        <li><strong>Studio Sneak Peeks:</strong> a new UI with chakra-tuned accents and fast flows.</li>
+      </ul>
     </div>
-  </div>
+
+    <a href="index.html" class="chakra-button">Back to Home</a>
+  </main>
+
+  <footer>
+    © 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.
+  </footer>
 </body>
 </html>
