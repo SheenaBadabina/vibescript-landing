@@ -6,3 +6,38 @@
     <div class="qa-item"><h3>Who is VibeScript for?</h3><p>Entrepreneurs, small businesses, and creators who want a <strong>voice-driven website platform</strong> that turns ideas into brand-consistent, conversion-ready results—fast.</p></div>
   </div>
 </div>
+
+<script>
+(function(){
+  if (window.__vsGuardInstalled) return;
+  window.__vsGuardInstalled = true;
+
+  const form = document.getElementById('mc-form');
+  if (form) {
+    const hp = document.createElement('input');
+    hp.type = 'text'; hp.name = 'hp'; hp.id = 'vs_hp'; hp.autocomplete='off'; hp.tabIndex=-1;
+    hp.style.position='absolute'; hp.style.left='-5000px';
+    form.appendChild(hp);
+
+    const ts = document.createElement('input');
+    ts.type='hidden'; ts.name='ts'; ts.id='vs_ts'; ts.value=String(Date.now());
+    form.appendChild(ts);
+
+    if (!window.__vsFetchPatched) {
+      const _fetch = window.fetch;
+      window.fetch = function(url, opts){
+        try{
+          if (typeof url === 'string' && url.indexOf('/api/subscribe') === 0 && opts && opts.method === 'POST') {
+            const body = JSON.parse(opts.body || '{}');
+            body.hp = document.getElementById('vs_hp')?.value || '';
+            body.ts = Number(document.getElementById('vs_ts')?.value || Date.now());
+            opts.body = JSON.stringify(body);
+          }
+        }catch(_){}
+        return _fetch.apply(this, arguments);
+      };
+      window.__vsFetchPatched = true;
+    }
+  }
+})();
+</script>
