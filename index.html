@@ -5,32 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VibeScript — Speak Websites Into Existence</title>
   <meta name="description" content="VibeScript transforms your voice into complete websites and marketing campaigns. Speak your vision and ship a production-ready site with optimized content across every channel." />
-
-  <!-- App icons (absolute paths + cache buster) -->
   <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" />
+  <link rel="manifest" href="/manifest.webmanifest">
 
-  <!-- Logo fallback helper: define BEFORE any <img> uses onerror -->
   <script>
-    // VibeScript logo fallback: rotate through candidates, then show wordmark
-    window._vbLogoFallback = function imgFallback(img){
+    // Logo fallback helper (unchanged)
+    window._vbLogoFallback = function(img){
       try{
-        var list = img.getAttribute('data-fallbacks');
-        var urls = list ? JSON.parse(list) : [];
+        var urls = JSON.parse(img.getAttribute('data-fallbacks')||'[]');
         var i = (Number(img.getAttribute('data-idx'))||0) + 1;
-        if(i < urls.length){
-          img.setAttribute('data-idx', String(i));
-          img.src = urls[i];
-        }else{
-          // Show gradient wordmark instead of a broken icon
-          var brand = img.parentElement;
-          if(brand) brand.classList.add('fallback');
-          img.removeAttribute('onerror');
-        }
-      }catch(e){
-        var brand = img.parentElement;
-        if(brand) brand.classList.add('fallback');
-      }
+        if(i < urls.length){ img.setAttribute('data-idx', String(i)); img.src = urls[i]; }
+        else{ var brand = img.parentElement; if(brand) brand.classList.add('fallback'); img.removeAttribute('onerror'); }
+      }catch(e){ var brand = img.parentElement; if(brand) brand.classList.add('fallback'); }
     };
   </script>
 
@@ -61,7 +48,6 @@
     .btn:active{transform:translateY(1px) scale(.99)}
     .btn:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
 
-    /* Only the Subscribe button gets chakra */
     .btn-subscribe{appearance:none;border:0;cursor:pointer;border-radius:12px;padding:12px 16px;font-weight:900;color:#fff;
       background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
       background-size:200% 100%;transition:transform .08s,box-shadow .2s,background-position .6s;
@@ -119,7 +105,7 @@
     .status{margin-top:8px;font-size:14px}.status.success{color:#86efac}.status.error{color:#fca5a5}
   </style>
 
-  <!-- FAQ structured data -->
+  <!-- (AEO/FAQ JSON-LD unchanged) -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"How do I speak a website into existence with VibeScript?","acceptedAnswer":{"@type":"Answer","text":"Use your voice to describe the site. VibeScript’s AI website builder converts your spoken input into pages, styles, and content—then deploys to Cloudflare Pages."}},
@@ -221,36 +207,56 @@
         <span class="wordmark">VibeScript</span>
       </a>
       <nav class="links" aria-label="Footer">
-        <a href="#learn">How it works</a><a href="#signup">Get updates</a><a href="mailto:admin@vibescript.online">Contact</a>
+        <a href="/how-it-works.html">How it works</a>
+        <a href="#signup">Get updates</a>
+        <a href="/privacy.html">Privacy</a>
+        <a href="/terms.html">Terms</a>
+        <a href="mailto:admin@vibescript.online">Contact</a>
       </nav>
     </div>
     <div class="container" style="margin-top:10px">© 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.</div>
   </footer>
 
-  <!-- Mailchimp JSONP -->
+  <!-- PROXY: subscribe via /api/subscribe -->
   <script>
   (function(){
-    const form=document.getElementById('mc-form');
-    const email=document.getElementById('mce-EMAIL');
-    const status=document.getElementById('mc-status');
-    function setStatus(t,m){status.className='status '+t;status.textContent=m}
-    form.addEventListener('submit',function(e){
+    const form = document.getElementById('mc-form');
+    const email = document.getElementById('mce-EMAIL');
+    const status = document.getElementById('mc-status');
+
+    function setStatus(type, msg){
+      status.className = 'status ' + (type || '');
+      status.textContent = msg;
+    }
+
+    form.addEventListener('submit', async function(e){
       e.preventDefault();
-      const val=(email.value||'').trim();
-      if(!val){setStatus('error','Please enter a valid email.');email.focus();return;}
+      const val = (email.value || '').trim();
+      if(!val){
+        setStatus('error','Please enter a valid email.');
+        email.focus();
+        return;
+      }
+
       setStatus('', 'Submitting…');
-      const base='https://online.us2.list-manage.com/subscribe/post-json';
-      const params=new URLSearchParams({u:'0a7bc91bac675bcca19bd150d',id:'4d7f887426',EMAIL:val,c:'mcCallback'});
-      const cbName='mcCallback_'+Math.random().toString(36).slice(2);
-      window[cbName]=function(data){
-        try{ if(data.result==='success'){ setStatus('success','You’re in! Redirecting…'); setTimeout(function(){ location.href='thank-you.html'; },600);}
-          else{ const msg=(data.msg||'').replace(/<[^>]+>/g,'').trim()||'Something went wrong. Please try again.'; setStatus('error',msg); }
-        } finally{ cleanup(); }
-      };
-      const s=document.createElement('script');
-      s.src=base+'?'+params.toString().replace('mcCallback',cbName); s.async=true; document.body.appendChild(s);
-      const to=setTimeout(function(){ setStatus('error','Network timeout. Please try again.'); cleanup(); },15000);
-      function cleanup(){ clearTimeout(to); if(s&&s.parentNode)s.parentNode.removeChild(s); try{ delete window[cbName]; }catch(_){ window[cbName]=undefined; } }
+
+      try{
+        const resp = await fetch('/api/subscribe', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ email: val })
+        });
+
+        const data = await resp.json().catch(()=>({ ok:false }));
+        if(resp.ok && data.ok){
+          setStatus('success','You’re in! Redirecting…');
+          setTimeout(function(){ window.location.href = 'thank-you.html'; }, 600);
+        }else{
+          setStatus('error','Could not subscribe. Please try again.');
+        }
+      }catch(_){
+        setStatus('error','Network error. Please try again.');
+      }
     });
   })();
   </script>
