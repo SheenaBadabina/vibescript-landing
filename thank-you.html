@@ -5,8 +5,27 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VibeScript — You’re In</title>
   <meta name="description" content="Thanks for subscribing to VibeScript updates. Keep an eye on your inbox for early access and milestone news." />
+
+  <!-- App icons + PWA -->
   <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+
+  <!-- Open Graph / Social preview -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VibeScript">
+  <meta property="og:title" content="VibeScript — You’re In">
+  <meta property="og:description" content="Thanks for subscribing. Watch your voice become a website and a full campaign.">
+  <meta property="og:url" content="https://vibescript.online/thank-you.html">
+  <meta property="og:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VibeScript — You’re In">
+  <meta name="twitter:description" content="Thanks for subscribing. Watch your voice become a website and a full campaign.">
+  <meta name="twitter:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png">
+
+  <!-- Logo fallback helper -->
   <script>
     window._vbLogoFallback = function(img){
       try{
@@ -17,6 +36,7 @@
       }catch(e){ var brand = img.parentElement; if(brand) brand.classList.add('fallback'); }
     };
   </script>
+
   <style>
     :root{
       --bg:#0a0c10; --card:#0f1218; --text:#eef3ff; --muted:#9fb0c8; --ring:rgba(255,255,255,.18);
@@ -49,6 +69,7 @@
     .teaser{border:1px solid rgba(159,176,200,.14);border-radius:14px;padding:12px;background:linear-gradient(180deg,rgba(59,130,246,.05),rgba(99,102,241,.05));text-align:center;color:var(--muted)}
     .teaser b{color:#e6f5ff}
 
+    /* Chakra button to match the landing CTA palette */
     .btn{display:inline-block;margin-top:14px;padding:12px 16px;border-radius:999px;color:#fff;text-decoration:none;font-weight:800;
       background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
       background-size:200% 100%;transition:background-position .6s ease,transform .08s}
@@ -74,7 +95,6 @@
           />
           <span class="wordmark">VibeScript</span>
         </div>
-
         <div class="eyebrow">You’re In</div>
         <h1>Thanks — keep an eye on your email</h1>
         <p>We’ll send meaningful progress updates and early-access invites. You’ll hear from us soon.</p>
