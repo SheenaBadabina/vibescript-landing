@@ -4,270 +4,227 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>VibeScript — Speak Websites Into Existence</title>
-  <meta name="description" content="VibeScript transforms your voice into complete websites and marketing campaigns. Speak your vision and ship a production-ready site with optimized content across every channel." />
-  <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" type="image/png" />
-  <link rel="apple-touch-icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" />
-  <link rel="manifest" href="/manifest.webmanifest" />
-
-  <!-- Open Graph / Twitter (kept in the frame to avoid head injections) -->
-  <meta property="og:type" content="website">
-  <meta property="og:site_name" content="VibeScript">
-  <meta property="og:title" content="VibeScript — Speak Websites Into Existence">
-  <meta property="og:description" content="Transform your voice into complete websites and marketing campaigns.">
-  <meta property="og:url" content="https://vibescript.online/">
-  <meta property="og:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="VibeScript — Speak Websites Into Existence">
-  <meta name="twitter:description" content="Transform your voice into complete websites and campaigns.">
-  <meta name="twitter:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png">
-
-  <!-- Logo fallback helper -->
-  <script>
-    window._vbLogoFallback = function(img){
-      try{
-        var urls = JSON.parse(img.getAttribute('data-fallbacks')||'[]');
-        var i = (Number(img.getAttribute('data-idx'))||0) + 1;
-        if(i < urls.length){ img.setAttribute('data-idx', String(i)); img.src = urls[i]; }
-        else{ var brand = img.parentElement; if(brand) brand.classList.add('fallback'); img.removeAttribute('onerror'); }
-      }catch(e){ var brand = img.parentElement; if(brand) brand.classList.add('fallback'); }
-    };
-  </script>
-
+  <meta name="description" content="The AI platform that transforms your voice into complete websites and marketing campaigns." />
+  <meta name="color-scheme" content="dark" />
+  <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png" type="image/png" />
+  <meta property="og:title" content="VibeScript — Speak Websites Into Existence" />
+  <meta property="og:description" content="Describe your vision out loud—VibeScript turns words into live sites and full campaigns." />
+  <meta property="og:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png" />
+  <meta name="theme-color" content="#111827" />
   <style>
     :root{
-      --bg:#0a0c10; --card:#0f1218; --text:#eef3ff; --muted:#9fb0c8; --ring:rgba(255,255,255,.18);
-      --chakra-red:#ef4444; --chakra-orange:#f97316; --chakra-yellow:#eab308;
-      --chakra-green:#22c55e; --chakra-blue:#3b82f6; --chakra-indigo:#6366f1; --chakra-violet:#8b5cf6;
+      --bg:#090b10; --bg2:#0c1117; --card:#0f141b; --muted:#9fb0c8; --text:#eef3ff;
+      --ring:rgba(255,255,255,.12);
+      --r:#ef4444; --o:#f97316; --y:#eab308; --g:#22c55e; --b:#3b82f6; --i:#6366f1; --v:#8b5cf6;
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.55}
-    a{color:inherit}
-    .container{max-width:1100px;margin:0 auto;padding:16px}
-    .visually-hidden{position:absolute!important;width:1px;height:1px;margin:-1px;border:0;padding:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
-
-    header{position:sticky;top:0;z-index:40;background:linear-gradient(180deg,rgba(10,12,16,.9),rgba(10,12,16,0));backdrop-filter:blur(6px)}
-    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-    .brand img{width:36px;height:36px;object-fit:contain;border-radius:8px}
-    .wordmark{display:none;font-weight:900;letter-spacing:.02em;
-      background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
-      -webkit-background-clip:text;background-clip:text;color:transparent;font-size:20px}
-    .brand.fallback .wordmark{display:inline}
-    .brand.fallback img{display:none}
-
-    .btn{appearance:none;border:1px solid rgba(159,176,200,.28);cursor:pointer;border-radius:999px;padding:10px 14px;font-weight:700;color:var(--text);background:transparent;transition:transform .08s,box-shadow .2s,border-color .2s,background .2s}
-    .btn:hover{border-color:rgba(159,176,200,.45);background:rgba(255,255,255,.03)}
-    .btn:active{transform:translateY(1px) scale(.99)}
-    .btn:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
-
-    /* Only Subscribe uses chakra colors */
-    .btn-subscribe{appearance:none;border:0;cursor:pointer;border-radius:12px;padding:12px 16px;font-weight:900;color:#fff;
-      background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
-      background-size:200% 100%;transition:transform .08s,box-shadow .2s,background-position .6s;
-      box-shadow:0 10px 26px rgba(99,102,241,.22),0 6px 16px rgba(59,130,246,.20)}
-    .btn-subscribe:hover{background-position:100% 0}
-    .btn-subscribe:active{transform:translateY(1px) scale(.99)}
-    .btn-subscribe:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
-
-    .hero{position:relative;display:grid;align-items:center;min-height:72svh;overflow:clip;padding:clamp(28px,6vw,80px) 0}
-    .hero::before{content:"";position:absolute;inset:0;z-index:-2;
-      background:linear-gradient(180deg,rgba(10,12,16,.20),rgba(10,12,16,.92)),
-        radial-gradient(70% 50% at 50% 0%,rgba(139,92,246,.20),transparent 60%),
-        url("/assets/file_000000001048622f95bff34ddca0e28a.png?v=3") center/cover no-repeat;
-      filter:saturate(1.08) contrast(1.05);transform:scale(1.02)}
-
-    .eyebrow{font-weight:900;letter-spacing:.16em;text-transform:uppercase;font-size:12px;
-      background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
-      -webkit-background-clip:text;background-clip:text;color:transparent}
-    h1{margin:.2em 0 0;font-size:clamp(28px,7vw,56px);line-height:1.05;letter-spacing:-.02em}
-    .sub{color:var(--muted);font-size:clamp(15px,3vw,18px);max-width:64ch}
-    .row{display:flex;flex-wrap:wrap;gap:12px;padding-top:8px}
-
-    .section{padding:40px 0}
-    .card{background:var(--card);border:1px solid rgba(159,176,200,.16);border-radius:16px;padding:clamp(16px,4vw,28px);box-shadow:0 10px 26px rgba(0,0,0,.28)}
-    .label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
-    form .grid{display:grid;gap:10px;grid-template-columns:1fr}
-    @media(min-width:480px){form .grid{grid-template-columns:1fr auto}}
-    input[type="email"]{width:100%;background:#0c1117;color:var(--text);border:1px solid rgba(159,176,200,.26);border-radius:12px;padding:12px 14px;font-size:16px;transition:border-color .15s,box-shadow .15s}
-    input[type="email"]:focus-visible{outline:none;border-color:var(--chakra-blue);box-shadow:0 0 0 4px rgba(59,130,246,.25)}
-    .micro{font-size:12px;color:var(--muted);margin-top:6px}
-
-    .qa{display:grid;gap:12px}
-    .qa-item{border:1px solid rgba(159,176,200,.14);border-radius:14px;padding:14px;background:linear-gradient(180deg,rgba(59,130,246,.05),rgba(99,102,241,.05))}
-    .qa-item h3{margin:.2em 0;font-size:18px}
-    .qa-item p{margin:.2em 0;color:var(--muted)}
-
-    footer{padding:28px 0 40px;color:var(--muted);font-size:13px}
-    .footgrid{display:grid;gap:12px;align-items:center}
-    @media(min-width:640px){.footgrid{grid-template-columns:auto 1fr}}
-    .brandmark{display:inline-flex;align-items:center;gap:10px;text-decoration:none}
-    .brandmark img{width:28px;height:28px;object-fit:contain;border-radius:6px}
-    .brandmark.fallback .wordmark{display:inline}
-    .brandmark.fallback img{display:none}
-    .links{display:flex;gap:14px;flex-wrap:wrap;justify-self:start}
-    .links a{text-decoration:none}
-    .links a:hover{text-decoration:underline}
-
-    .status{margin-top:8px;font-size:14px}.status.success{color:#86efac}.status.error{color:#fca5a5}
+    *{box-sizing:border-box} html,body{height:100%}
+    body{
+      margin:0; color:var(--text);
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.55;
+      background:radial-gradient(1200px 800px at 50% -10%,#1b1030 0%,#0a0c10 45%,#07080c 100%) fixed;
+    }
+    .container{max-width:1080px;margin:0 auto;padding:16px}
+    header{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:color-mix(in oklab,#0a0c10 86%,transparent);border-bottom:1px solid rgba(159,176,200,.12)}
+    .nav{display:flex;align-items:center;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .logo{width:28px;height:28px;border-radius:7px;object-fit:cover}
+    .brand-name{font-weight:900;letter-spacing:.2px}
+    .pill{margin-left:auto;border:1px solid rgba(159,176,200,.18);background:#121826;color:#fff;padding:7px 12px;border-radius:999px;font-weight:800}
+    main{display:grid;gap:20px}
+    .hero{display:grid;gap:16px;padding-top:22px}
+    .headline{font-size:clamp(28px,8vw,44px);letter-spacing:-.01em;margin:0}
+    .lead{color:var(--muted);margin:0}
+    .bg-banner{
+      position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(159,176,200,.14);background:#0b0f15;
+    }
+    .bg-banner::before{
+      content:""; position:absolute; inset:0;
+      background-image:url('/assets/file_000000001048622f95bff34ddca0e28a.png');
+      background-size:cover; background-position:center; opacity:.18; filter:contrast(110%) saturate(120%);
+    }
+    .cards{display:grid;gap:12px}
+    .card{
+      background:rgba(16,21,28,.85); border:1px solid rgba(159,176,200,.16); border-radius:16px; padding:14px;
+      box-shadow:0 10px 28px rgba(0,0,0,.28)
+    }
+    .card h3{margin:0 0 6px}
+    .faq{display:grid;gap:12px}
+    /* Form */
+    .form{display:grid;gap:10px;margin-top:6px}
+    input[type="email"]{
+      width:100%; background:#0c1117; color:#eef3ff; border:1px solid rgba(159,176,200,.26);
+      border-radius:12px; padding:12px 14px; font-size:16px
+    }
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px; padding:12px 16px;
+      border-radius:12px; border:1px solid rgba(159,176,200,.28); background:#121826; color:#fff; font-weight:800; cursor:pointer
+    }
+    .btn:hover{background:#182030}
+    /* chakra gradient ONLY on subscribe button */
+    .btn-chakra{
+      border:0; background:linear-gradient(90deg,var(--r),var(--o),var(--y),var(--g),var(--b),var(--i),var(--v)); background-size:200% 100%;
+    }
+    .btn-chakra:hover{background-position:100% 0}
+    /* Footer */
+    footer{border-top:1px solid rgba(159,176,200,.12); margin-top:16px}
+    .foot-grid{display:grid;gap:10px}
+    .foot-brand{display:flex;align-items:center;gap:10px}
+    .foot-links{display:flex;gap:16px;flex-wrap:wrap}
+    .muted{color:var(--muted)}
+    a{color:#cde1ff;text-decoration:none} a:hover{text-decoration:underline}
+    /* Layout tweaks */
+    @media(min-width:860px){
+      .hero{grid-template-columns:1.2fr .8fr;align-items:center}
+      .cards{grid-template-columns:1fr 1fr}
+      .foot-grid{grid-template-columns:auto 1fr;align-items:center;justify-content:space-between}
+    }
   </style>
-
-  <!-- JSON-LD (kept in frame) -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
-    {"@type":"Question","name":"How do I speak a website into existence with VibeScript?","acceptedAnswer":{"@type":"Answer","text":"Use your voice to describe the site. VibeScript’s AI website builder converts your spoken input into pages, styles, and content—then deploys to Cloudflare Pages."}},
-    {"@type":"Question","name":"Does VibeScript create complete marketing campaigns?","acceptedAnswer":{"@type":"Answer","text":"Yes. One voice input generates a website plus email sequences, social posts, ads, and landing pages optimized for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email."}},
-    {"@type":"Question","name":"Is this a voice-activated website creation platform?","acceptedAnswer":{"@type":"Answer","text":"VibeScript is a voice-driven website platform. Speak your vision and it builds a production-ready site with brand-consistent content."}}
-  ]}
-  </script>
 </head>
 <body>
-  <a class="visually-hidden" href="#signup">Skip to signup</a>
-
   <header>
-    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 16px;">
-      <a class="brand" id="brandTop" href="/" aria-label="VibeScript Home">
-        <img
-          id="logoTop"
-          alt="VibeScript logo"
-          src="/assets/file_0000000034986115891169618f3eb38a.png?v=3"
-          data-fallbacks='[
-            "/assets/file_0000000034986115891169618f3eb38a.png?v=3",
-            "https://vibescript-landing.pages.dev/assets/file_0000000034986115891169618f3eb38a.png",
-            "https://raw.githubusercontent.com/SheenaBadabina/vibescript-landing/main/assets/file_0000000034986115891169618f3eb38a.png"
-          ]'
-          onerror="_vbLogoFallback(this)"
-        />
-        <span class="wordmark">VibeScript</span>
-      </a>
-      <button class="btn" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Get Early Access</button>
+    <div class="container nav">
+      <div class="brand">
+        <img class="logo" src="/assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo" onerror="this.remove();document.querySelector('.brand-name').style.marginLeft='0'">
+        <div class="brand-name">VibeScript</div>
+      </div>
+      <span class="pill">Early Access</span>
     </div>
   </header>
 
-  <main>
-    <section class="hero">
-      <div class="container" style="display:grid;gap:16px;max-width:760px">
-        <span class="eyebrow">Early Access</span>
-        <h1>VibeScript — Speak Websites Into Existence</h1>
-        <p class="sub">The AI platform that transforms your voice into complete websites and marketing campaigns. Speak your vision out loud and watch advanced AI turn words into professional sites, social content, email sequences, ads, and a conversion-ready digital strategy.</p>
-        <div class="row">
-          <button class="btn" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Speak Your Website Into Reality</button>
-          <a href="#learn" class="btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">How it works</a>
+  <main class="container">
+    <section class="hero bg-banner">
+      <div class="card" style="background:rgba(11,15,21,.65)">
+        <p class="muted" style="font-weight:800;letter-spacing:.18em;margin:0 0 6px">EARLY ACCESS</p>
+        <h1 class="headline">VibeScript — Speak Websites Into Existence</h1>
+        <p class="lead">
+          The AI platform that transforms your voice into complete websites and marketing campaigns.
+          Speak your vision out loud and watch advanced AI turn words into professional sites, social content,
+          email sequences, ads, and a conversion-ready digital strategy.
+        </p>
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
+          <a class="btn" href="#updates">How it works</a>
+        </div>
+      </div>
+
+      <div class="cards">
+        <div class="card">
+          <h3>🎤 Speak Websites Into Reality</h3>
+          <p class="muted">Talk your website into existence—no coding or design skills required.</p>
+        </div>
+        <div class="card">
+          <h3>🚀 Complete Campaign Generation</h3>
+          <p class="muted">One input creates websites, emails, social posts, ads, and landing pages.</p>
+        </div>
+        <div class="card">
+          <h3>🎯 Multi-Platform Optimization</h3>
+          <p class="muted">Tuned for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email marketing.</p>
+        </div>
+        <div class="card">
+          <h3>🧠 Advanced AI Prompting</h3>
+          <p class="muted">Powered by sophisticated meta-prompting frameworks and prompt engineering.</p>
+        </div>
+        <div class="card">
+          <h3>📈 Business-Ready Content</h3>
+          <p class="muted">Brand-consistent, conversion-optimized materials ready to deploy.</p>
+        </div>
+        <div class="card">
+          <h3>⚡ Instant Marketing Automation</h3>
+          <p class="muted">Replace expensive agencies with intelligent AI-driven creation.</p>
         </div>
       </div>
     </section>
 
-    <!-- DROP-IN SECTIONS (auto-injected) -->
-    <section class="section" id="learn" data-include="/partials/features.html"></section>
-    <section class="section" data-include="/partials/faq.html"></section>
+    <!-- Updates / Mailchimp -->
+    <section id="updates" class="card">
+      <h2 style="margin:0 0 6px">Get product updates</h2>
+      <p class="muted" style="margin:0 0 10px">No spam—only meaningful progress, invites, and early-access opportunities.</p>
 
-    <!-- Subscribe (kept in frame so the proxy script can bind synchronously) -->
-    <section id="signup" class="section">
-      <div class="container">
-        <div class="card" role="region" aria-label="Signup form">
-          <h2>Get product updates</h2>
-          <p class="micro">No spam—only meaningful progress, invites, and early access opportunities.</p>
+      <!-- Hidden iframe will receive Mailchimp response, then we redirect to /thanks.html -->
+      <iframe name="mc-target" style="display:none" id="mc-target"></iframe>
 
-          <form id="mc-form" novalidate aria-label="Mailchimp signup">
-            <label class="label" for="mce-EMAIL">Email address</label>
-            <div class="grid">
-              <input type="email" name="EMAIL" id="mce-EMAIL" required placeholder="you@example.com" inputmode="email" autocomplete="email" />
-              <button class="btn-subscribe" type="submit">Subscribe</button>
-            </div>
-            <div id="mc-status" class="status" aria-live="polite" aria-atomic="true"></div>
-          </form>
-          <noscript><p class="micro">JavaScript is disabled; subscription requires JavaScript on this site.</p></noscript>
+      <form
+        id="mc-form"
+        class="form"
+        action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&amp;id=4d7f887426&amp;f_id=00ffa2e0f0"
+        method="post"
+        target="mc-target"
+        novalidate
+      >
+        <label for="mce-EMAIL" class="muted" style="font-weight:600">Email address</label>
+        <input type="email" id="mce-EMAIL" name="EMAIL" required placeholder="you@example.com" />
+
+        <!-- bot trap required by MC -->
+        <div aria-hidden="true" style="position:absolute;left:-5000px">
+          <input type="text" name="b_0a7bc91bac675bcca19bd150d_4d7f887426" tabindex="-1" value="">
         </div>
+
+        <button type="submit" class="btn btn-chakra" id="subscribe-btn">Subscribe</button>
+
+        <div id="mc-hint" class="muted" style="display:none">Submitting…</div>
+      </form>
+    </section>
+
+    <!-- FAQ / SEO as Q&A -->
+    <section class="faq">
+      <div class="card">
+        <h3>What is a voice-to-website builder?</h3>
+        <p class="muted">It’s a conversational builder that lets you <strong>speak a website into existence</strong>. VibeScript interprets your voice, generates pages, styles, and content, then deploys the site.</p>
+      </div>
+      <div class="card">
+        <h3>Can I build a full marketing system from one idea?</h3>
+        <p class="muted">Yes. Describe your offer once and get <strong>AI-powered web development</strong> plus <strong>complete campaign generation</strong>—emails, social posts, ads, and landing pages—ready to publish.</p>
+      </div>
+      <div class="card">
+        <h3>Is it optimized for multiple platforms?</h3>
+        <p class="muted">Absolutely. Content is tuned for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email marketing, making VibeScript a <strong>voice-activated website creation</strong> and multi-platform engine in one.</p>
+      </div>
+      <div class="card">
+        <h3>Who is VibeScript for?</h3>
+        <p class="muted">Entrepreneurs, small businesses, and creators who want a <strong>voice-driven website platform</strong> that turns ideas into brand-consistent, conversion-ready results—fast.</p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footgrid">
-      <a class="brandmark" id="brandFoot" href="/" aria-label="VibeScript">
-        <img
-          id="logoFoot"
-          alt="VibeScript logo"
-          src="/assets/file_0000000034986115891169618f3eb38a.png?v=3"
-          data-fallbacks='[
-            "/assets/file_0000000034986115891169618f3eb38a.png?v=3",
-            "https://vibescript-landing.pages.dev/assets/file_0000000034986115891169618f3eb38a.png",
-            "https://raw.githubusercontent.com/SheenaBadabina/vibescript-landing/main/assets/file_0000000034986115891169618f3eb38a.png"
-          ]'
-          onerror="_vbLogoFallback(this)"
-        />
-        <span class="wordmark">VibeScript</span>
-      </a>
-      <nav class="links" aria-label="Footer">
-        <a href="/how-it-works.html">How it works</a>
-        <a href="#signup">Get updates</a>
-        <a href="/privacy.html">Privacy</a>
-        <a href="/terms.html">Terms</a>
-        <a href="mailto:admin@vibescript.online">Contact</a>
+    <div class="container foot-grid">
+      <div class="foot-brand">
+        <img class="logo" src="/assets/file_0000000034986115891169618f3eb38a.png" alt="" onerror="this.style.display='none'">
+        <strong>VibeScript</strong>
+      </div>
+      <nav class="foot-links">
+        <a href="/how-it-works">How it works</a>
+        <a href="/thanks.html">Get updates</a>
+        <a href="/contact.html">Contact</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/terms">Terms</a>
       </nav>
     </div>
-    <div class="container" style="margin-top:10px">© 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.</div>
+    <div class="container" style="padding:12px 16px 24px">
+      <span class="muted">© 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.</span>
+    </div>
   </footer>
 
-  <!-- Loader: pulls /partials/*.html into any element with data-include -->
+  <!-- Minimal Mailchimp handler: submit to hidden iframe; after it loads, go to /thanks.html -->
   <script>
-    (function loadPartials(){
-      const nodes = document.querySelectorAll('[data-include]');
-      nodes.forEach(async (el) => {
-        const url = el.getAttribute('data-include');
-        try{
-          const res = await fetch(url, { cache: 'no-cache' });
-          if(!res.ok) throw new Error('HTTP '+res.status);
-          const html = await res.text();
-          el.innerHTML = html;
-        }catch(e){
-          el.innerHTML = '<div class="container"><div class="card">Section temporarily unavailable.</div></div>';
+    (function(){
+      var form = document.getElementById('mc-form');
+      var btn = document.getElementById('subscribe-btn');
+      var hint = document.getElementById('mc-hint');
+      var target = document.getElementById('mc-target');
+      var submitted = false;
+
+      form.addEventListener('submit', function(){
+        submitted = true;
+        btn.disabled = true;
+        hint.style.display = 'block';
+      });
+
+      target.addEventListener('load', function(){
+        if(submitted){
+          window.location.href = '/thanks.html';
         }
       });
     })();
-  </script>
-
-  <!-- Subscribe via server-side proxy -->
-  <script>
-  (function(){
-    const form = document.getElementById('mc-form');
-    const email = document.getElementById('mce-EMAIL');
-    const status = document.getElementById('mc-status');
-
-    function setStatus(type, msg){
-      status.className = 'status ' + (type || '');
-      status.textContent = msg;
-    }
-
-    form.addEventListener('submit', async function(e){
-      e.preventDefault();
-      const val = (email.value || '').trim();
-      if(!val){
-        setStatus('error','Please enter a valid email.');
-        email.focus();
-        return;
-      }
-
-      setStatus('', 'Submitting…');
-
-      try{
-        const resp = await fetch('/api/subscribe', {
-          method: 'POST',
-          headers: { 'content-type': 'application/json' },
-          body: JSON.stringify({ email: val })
-        });
-
-        const data = await resp.json().catch(()=>({ ok:false }));
-        if(resp.ok && data.ok){
-          setStatus('success','You’re in! Redirecting…');
-          setTimeout(function(){ window.location.href = 'thank-you.html'; }, 600);
-        }else{
-          setStatus('error','Could not subscribe. Please try again.');
-        }
-      }catch(_){
-        setStatus('error','Network error. Please try again.');
-      }
-    });
-  })();
   </script>
 </body>
 </html>
