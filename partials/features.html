@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" id="vs-features">
   <div class="qa" aria-label="Key features">
     <div class="qa-item"><h3>🎤 Speak Websites Into Reality</h3><p>Talk your website into existence—no coding or design skills required.</p></div>
     <div class="qa-item"><h3>🚀 Complete Campaign Generation</h3><p>One input creates websites, emails, social posts, ads, and landing pages.</p></div>
@@ -8,3 +8,84 @@
     <div class="qa-item"><h3>⚡ Instant Marketing Automation</h3><p>Replace expensive agencies with intelligent AI-driven content creation.</p></div>
   </div>
 </div>
+
+<script>
+(function(){
+  // Avoid double-running if both features + faq include guards
+  if (window.__vsGuardInstalled) return;
+  window.__vsGuardInstalled = true;
+
+  // 1) Inject honeypot + timestamp into the subscribe form
+  const form = document.getElementById('mc-form');
+  if (form) {
+    // Honeypot (hidden)
+    const hp = document.createElement('input');
+    hp.type = 'text';
+    hp.name = 'hp';
+    hp.id = 'vs_hp';
+    hp.autocomplete = 'off';
+    hp.tabIndex = -1;
+    hp.style.position = 'absolute';
+    hp.style.left = '-5000px';
+    form.appendChild(hp);
+
+    // Timestamp (hidden)
+    const ts = document.createElement('input');
+    ts.type = 'hidden';
+    ts.name = 'ts';
+    ts.id = 'vs_ts';
+    ts.value = String(Date.now());
+    form.appendChild(ts);
+
+    // Patch submit handler to include hp + ts in the body
+    const origHandler = form.onsubmit;
+    if (!form.__vsPatched) {
+      form.addEventListener('submit', function(ev){
+        // The frame's fetch('/api/subscribe') reads #mce-EMAIL value;
+        // we intercept fetch by decorating window.fetch to inject hp + ts.
+        if (!window.__vsFetchPatched) {
+          const _fetch = window.fetch;
+          window.fetch = function(url, opts){
+            try{
+              if (typeof url === 'string' && url.indexOf('/api/subscribe') === 0 && opts && opts.method === 'POST') {
+                const body = JSON.parse(opts.body || '{}');
+                body.hp = document.getElementById('vs_hp')?.value || '';
+                body.ts = Number(document.getElementById('vs_ts')?.value || Date.now());
+                opts.body = JSON.stringify(body);
+              }
+            }catch(_){}
+            return _fetch.apply(this, arguments);
+          };
+          window.__vsFetchPatched = true;
+        }
+      }, { capture: true });
+      form.__vsPatched = true;
+    }
+  }
+
+  // 2) Auto-load Pricing + Testimonials below this section
+  const host = document.getElementById('vs-features');
+  if (host) {
+    const makeSection = (id) => {
+      const sec = document.createElement('section');
+      sec.className = 'section';
+      sec.id = id;
+      return sec;
+    };
+
+    const pricingSec = makeSection('pricing');
+    host.parentElement.appendChild(pricingSec);
+    fetch('/partials/pricing.html', { cache: 'no-cache' })
+      .then(r => r.ok ? r.text() : Promise.reject(r.status))
+      .then(html => pricingSec.innerHTML = html)
+      .catch(_ => pricingSec.innerHTML = '<div class="container"><div class="card">Pricing is on the way.</div></div>');
+
+    const testiSec = makeSection('testimonials');
+    host.parentElement.appendChild(testiSec);
+    fetch('/partials/testimonials.html', { cache: 'no-cache' })
+      .then(r => r.ok ? r.text() : Promise.reject(r.status))
+      .then(html => testiSec.innerHTML = html)
+      .catch(_ => testiSec.innerHTML = '<div class="container"><div class="card">Testimonials coming soon.</div></div>');
+  }
+})();
+</script>
