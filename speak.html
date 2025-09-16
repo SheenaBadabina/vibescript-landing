@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Speak — VibeScript</title>
+  <meta name="description" content="Speak your site into existence. Describe your brand, offer, and vibe, then generate a live site." />
+  <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" type="image/png" />
+  <link rel="apple-touch-icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <style>
+    :root{
+      --bg:#0a0c10; --card:#0f1218; --text:#eef3ff; --muted:#9fb0c8; --ring:rgba(255,255,255,.18);
+      --chakra-red:#ef4444; --chakra-orange:#f97316; --chakra-yellow:#eab308; --chakra-green:#22c55e;
+      --chakra-blue:#3b82f6; --chakra-indigo:#6366f1; --chakra-violet:#8b5cf6;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.55}
+    .container{max-width:900px;margin:0 auto;padding:16px}
+    .hero{min-height:30svh;display:grid;place-items:center;background:
+      linear-gradient(180deg,rgba(10,12,16,.15),rgba(10,12,16,.95)),
+      radial-gradient(70% 50% at 50% 0%,rgba(99,102,241,.18),transparent 60%),
+      url("/assets/file_000000001048622f95bff34ddca0e28a.png?v=3") center/cover no-repeat}
+    .card{background:var(--card);border:1px solid rgba(159,176,200,.16);border-radius:16px;padding:16px;box-shadow:0 10px 26px rgba(0,0,0,.28)}
+    .row{display:grid;gap:10px}
+    @media(min-width:700px){.row{grid-template-columns:1fr 1fr}}
+    label{display:block;font-size:14px;color:var(--muted);margin:8px 0 6px}
+    textarea,input{width:100%;background:#0c1117;color:var(--text);border:1px solid rgba(159,176,200,.26);border-radius:12px;padding:12px 14px;font-size:16px}
+    textarea{min-height:160px;resize:vertical}
+    textarea:focus-visible,input:focus-visible{outline:none;border-color:var(--chakra-blue);box-shadow:0 0 0 4px rgba(59,130,246,.25)}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid rgba(159,176,200,.28);background:transparent;color:var(--text);font-weight:800;cursor:pointer}
+    .btn:hover{background:rgba(255,255,255,.05)}
+    .btn-cta{border:0;color:#fff;background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));background-size:200% 100%;}
+    .btn-cta:hover{background-position:100% 0}
+    .status{margin-top:8px;font-size:14px}
+    .status.ok{color:#86efac}.status.err{color:#fca5a5}
+    .micro{font-size:12px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="container" style="text-align:center">
+      <h1 style="margin:.2em 0 0;font-size:clamp(28px,7vw,48px);letter-spacing:-.01em">Speak Your Website Into Existence</h1>
+      <p style="color:var(--muted);max-width:64ch;margin:6px auto 0">Press record and describe your brand, offer, vibe, sections you want, and calls-to-action. We’ll generate a live site you can view immediately.</p>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+      <form class="card" id="speak-form" onsubmit="return false">
+        <div class="row">
+          <div>
+            <label for="title">Project name (used in URL slug)</label>
+            <input id="title" placeholder="e.g., Moonbeam Yoga" required />
+          </div>
+          <div>
+            <label for="voice">Your spoken description (auto-fills as you talk)</label>
+            <textarea id="voice" placeholder="Tell us who it's for, the tone, sections you want, and your CTA…" required></textarea>
+            <div class="controls">
+              <button class="btn" type="button" id="btn-record">🎙️ Start Recording</button>
+              <button class="btn" type="button" id="btn-stop" disabled>⏹️ Stop</button>
+              <span class="micro" id="rec-status">Mic idle</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="controls">
+          <button class="btn btn-cta" id="btn-generate" type="button">⚡ Generate Site</button>
+          <a class="btn" href="/">Back to home</a>
+        </div>
+        <div id="status" class="status" aria-live="polite"></div>
+      </form>
+    </div>
+  </main>
+
+  <script>
+    // --- Dictation using Web Speech API (Chrome best) with graceful fallback ---
+    (function(){
+      const voice = document.getElementById('voice');
+      const recBtn = document.getElementById('btn-record');
+      const stopBtn = document.getElementById('btn-stop');
+      const recStatus = document.getElementById('rec-status');
+      let recog, active = false;
+
+      function available(){
+        return 'webkitSpeechRecognition' in window || 'SpeechRecognition' in window;
+      }
+      function createRecog(){
+        const Ctor = window.SpeechRecognition || window.webkitSpeechRecognition;
+        const r = new Ctor();
+        r.lang = 'en-US';
+        r.continuous = true;
+        r.interimResults = true;
+        return r;
+      }
+      function start(){
+        if(!available()){ recStatus.textContent = 'Speech recognition not supported in this browser.'; return; }
+        if(active) return;
+        recog = createRecog();
+        active = true;
+        recBtn.disabled = true; stopBtn.disabled = false;
+        recStatus.textContent = 'Listening… speak naturally.';
+        recog.onresult = (e)=>{
+          let finalText = '';
+          for(let i=e.resultIndex; i<e.results.length; i++){
+            const t = e.results[i][0].transcript;
+            if(e.results[i].isFinal) finalText += t + ' ';
+            else finalText += t;
+          }
+          voice.value = (voice.value + ' ' + finalText).trim();
+        };
+        recog.onend = ()=>{ active=false; recBtn.disabled=false; stopBtn.disabled=true; recStatus.textContent='Mic stopped'; };
+        recog.onerror = ()=>{ active=false; recBtn.disabled=false; stopBtn.disabled=true; recStatus.textContent='Mic error'; };
+        recog.start();
+      }
+      function stop(){ try{ recog && recog.stop(); }catch(_){ } }
+      recBtn.addEventListener('click', start);
+      stopBtn.addEventListener('click', stop);
+    })();
+
+    // --- Generate: send transcript to /api/speak/start ---
+    (function(){
+      const status = document.getElementById('status');
+      const title = document.getElementById('title');
+      const voice = document.getElementById('voice');
+      const btn = document.getElementById('btn-generate');
+      btn.addEventListener('click', async function(){
+        const t = (title.value||'').trim();
+        const v = (voice.value||'').trim();
+        if(!t || !v){ status.className='status err'; status.textContent='Please provide a project name and a description.'; return; }
+        status.className='status'; status.textContent='Generating…';
+        btn.disabled = true;
+        try{
+          const resp = await fetch('/api/speak/start', {
+            method:'POST',
+            headers:{'content-type':'application/json'},
+            body: JSON.stringify({ title: t, transcript: v })
+          });
+          const data = await resp.json().catch(()=>({}));
+          if(resp.ok && data.ok && data.previewUrl){
+            status.className='status ok';
+            status.innerHTML = 'Done. Preview: <a href="'+data.previewUrl+'">'+data.previewUrl+'</a>';
+          }else{
+            status.className='status err';
+            status.textContent = data.error || 'Generation failed.';
+          }
+        }catch(e){
+          status.className='status err'; status.textContent='Network error.';
+        }finally{
+          btn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+  </html>
