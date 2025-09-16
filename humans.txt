@@ -1,0 +1,8 @@
+/* Team */
+Designer-Developer: Sheena Badabina
+Site: https://vibescript.online
+Contact: admin@vibescript.online
+
+/* Technology */
+Hosting: Cloudflare Pages
+Edge Functions: Cloudflare Pages Functions
