@@ -7,10 +7,22 @@
   <meta name="description" content="VibeScript transforms your voice into complete websites and marketing campaigns. Speak your vision and ship a production-ready site with optimized content across every channel." />
   <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" type="image/png" />
   <link rel="apple-touch-icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" />
-  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="manifest" href="/manifest.webmanifest" />
 
+  <!-- Open Graph / Twitter (kept in the frame to avoid head injections) -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="VibeScript">
+  <meta property="og:title" content="VibeScript — Speak Websites Into Existence">
+  <meta property="og:description" content="Transform your voice into complete websites and marketing campaigns.">
+  <meta property="og:url" content="https://vibescript.online/">
+  <meta property="og:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VibeScript — Speak Websites Into Existence">
+  <meta name="twitter:description" content="Transform your voice into complete websites and campaigns.">
+  <meta name="twitter:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png">
+
+  <!-- Logo fallback helper -->
   <script>
-    // Logo fallback helper (unchanged)
     window._vbLogoFallback = function(img){
       try{
         var urls = JSON.parse(img.getAttribute('data-fallbacks')||'[]');
@@ -48,6 +60,7 @@
     .btn:active{transform:translateY(1px) scale(.99)}
     .btn:focus-visible{outline:3px solid var(--ring);outline-offset:2px}
 
+    /* Only Subscribe uses chakra colors */
     .btn-subscribe{appearance:none;border:0;cursor:pointer;border-radius:12px;padding:12px 16px;font-weight:900;color:#fff;
       background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
       background-size:200% 100%;transition:transform .08s,box-shadow .2s,background-position .6s;
@@ -70,15 +83,8 @@
     .sub{color:var(--muted);font-size:clamp(15px,3vw,18px);max-width:64ch}
     .row{display:flex;flex-wrap:wrap;gap:12px;padding-top:8px}
 
-    .features{display:grid;gap:12px;margin-top:26px;grid-template-columns:repeat(12,1fr)}
-    .feature{grid-column:span 12;background:linear-gradient(180deg,rgba(34,197,94,.06),rgba(99,102,241,.08));
-      border:1px solid rgba(159,176,200,.18);border-radius:16px;padding:14px}
-    .feature b{color:#def7ff}
-    @media(min-width:720px){.feature{grid-column:span 4}}
-
     .section{padding:40px 0}
     .card{background:var(--card);border:1px solid rgba(159,176,200,.16);border-radius:16px;padding:clamp(16px,4vw,28px);box-shadow:0 10px 26px rgba(0,0,0,.28)}
-    .card h2{margin:0 0 6px;font-size:clamp(20px,4.5vw,28px)}
     .label{display:block;font-size:14px;color:var(--muted);margin-bottom:6px}
     form .grid{display:grid;gap:10px;grid-template-columns:1fr}
     @media(min-width:480px){form .grid{grid-template-columns:1fr auto}}
@@ -105,7 +111,7 @@
     .status{margin-top:8px;font-size:14px}.status.success{color:#86efac}.status.error{color:#fca5a5}
   </style>
 
-  <!-- (AEO/FAQ JSON-LD unchanged) -->
+  <!-- JSON-LD (kept in frame) -->
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
     {"@type":"Question","name":"How do I speak a website into existence with VibeScript?","acceptedAnswer":{"@type":"Answer","text":"Use your voice to describe the site. VibeScript’s AI website builder converts your spoken input into pages, styles, and content—then deploys to Cloudflare Pages."}},
@@ -147,18 +153,14 @@
           <button class="btn" type="button" onclick="document.getElementById('signup').scrollIntoView({behavior:'smooth'})">Speak Your Website Into Reality</button>
           <a href="#learn" class="btn" style="text-decoration:none;display:inline-flex;align-items:center;gap:8px;">How it works</a>
         </div>
-
-        <div class="features" id="learn" aria-label="Highlights">
-          <div class="feature"><b>🎤 Speak Websites Into Reality</b> — Talk your website into existence—no coding or design skills required.</div>
-          <div class="feature"><b>🚀 Complete Campaign Generation</b> — One input creates websites, emails, social posts, ads, and landing pages.</div>
-          <div class="feature"><b>🎯 Multi-Platform Optimization</b> — Tuned for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email.</div>
-          <div class="feature"><b>🧠 Advanced AI Prompting</b> — Powered by meta-prompting frameworks and robust prompt engineering.</div>
-          <div class="feature"><b>📈 Business-Ready Content</b> — Brand-consistent, conversion-optimized materials ready to deploy.</div>
-          <div class="feature"><b>⚡ Instant Marketing Automation</b> — Replace expensive marketing agencies with intelligent AI-driven creation.</div>
-        </div>
       </div>
     </section>
 
+    <!-- DROP-IN SECTIONS (auto-injected) -->
+    <section class="section" id="learn" data-include="/partials/features.html"></section>
+    <section class="section" data-include="/partials/faq.html"></section>
+
+    <!-- Subscribe (kept in frame so the proxy script can bind synchronously) -->
     <section id="signup" class="section">
       <div class="container">
         <div class="card" role="region" aria-label="Signup form">
@@ -174,17 +176,6 @@
             <div id="mc-status" class="status" aria-live="polite" aria-atomic="true"></div>
           </form>
           <noscript><p class="micro">JavaScript is disabled; subscription requires JavaScript on this site.</p></noscript>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="qa">
-          <div class="qa-item"><h3>What is a voice-to-website builder?</h3><p>It’s a conversational website builder that lets you <strong>speak a website into existence</strong>. VibeScript interprets your voice, generates pages, styles, and content, then deploys the site.</p></div>
-          <div class="qa-item"><h3>Can I build a full marketing system from one idea?</h3><p>Yes. Describe your offer once and get <strong>AI-powered web development</strong> plus <strong>complete campaign generation</strong>—emails, social posts, ads, and landing pages—ready to publish.</p></div>
-          <div class="qa-item"><h3>Is it optimized for multiple platforms?</h3><p>Absolutely. Content is tuned for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email marketing, making VibeScript a <strong>voice-activated website creation</strong> and multi-platform engine in one.</p></div>
-          <div class="qa-item"><h3>Who is VibeScript for?</h3><p>Entrepreneurs, small businesses, and creators who want a <strong>voice-driven website platform</strong> that turns ideas into brand-consistent, conversion-ready results—fast.</p></div>
         </div>
       </div>
     </section>
@@ -217,7 +208,25 @@
     <div class="container" style="margin-top:10px">© 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.</div>
   </footer>
 
-  <!-- PROXY: subscribe via /api/subscribe -->
+  <!-- Loader: pulls /partials/*.html into any element with data-include -->
+  <script>
+    (function loadPartials(){
+      const nodes = document.querySelectorAll('[data-include]');
+      nodes.forEach(async (el) => {
+        const url = el.getAttribute('data-include');
+        try{
+          const res = await fetch(url, { cache: 'no-cache' });
+          if(!res.ok) throw new Error('HTTP '+res.status);
+          const html = await res.text();
+          el.innerHTML = html;
+        }catch(e){
+          el.innerHTML = '<div class="container"><div class="card">Section temporarily unavailable.</div></div>';
+        }
+      });
+    })();
+  </script>
+
+  <!-- Subscribe via server-side proxy -->
   <script>
   (function(){
     const form = document.getElementById('mc-form');
