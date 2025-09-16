@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>How It Works — VibeScript</title>
+  <meta name="description" content="See how VibeScript turns your voice into a complete website and campaign—fast." />
+  <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png?v=3" type="image/png" />
+  <style>
+    :root{
+      --bg:#0a0c10; --card:#0f1218; --text:#eef3ff; --muted:#9fb0c8; --ring:rgba(255,255,255,.18);
+      --chakra-red:#ef4444; --chakra-orange:#f97316; --chakra-yellow:#eab308; --chakra-green:#22c55e;
+      --chakra-blue:#3b82f6; --chakra-indigo:#6366f1; --chakra-violet:#8b5cf6;
+    }
+    *{box-sizing:border-box} html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif;line-height:1.55}
+    a{color:inherit}
+    .container{max-width:1000px;margin:0 auto;padding:16px}
+    header{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(10,12,16,.9),rgba(10,12,16,0));backdrop-filter:blur(6px)}
+    .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+    .brand img{width:36px;height:36px;object-fit:contain;border-radius:8px}
+    .wordmark{display:none;font-weight:900;letter-spacing:.02em;
+      background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
+      -webkit-background-clip:text;background-clip:text;color:transparent;font-size:20px}
+    .brand.fallback .wordmark{display:inline}
+    .brand.fallback img{display:none}
+    .hero{padding:48px 0 18px}
+    .eyebrow{font-weight:900;letter-spacing:.16em;text-transform:uppercase;font-size:12px;
+      background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
+      -webkit-background-clip:text;background-clip:text;color:transparent}
+    h1{margin:.2em 0 0;font-size:clamp(28px,7vw,48px);line-height:1.08}
+    p.lead{color:var(--muted);font-size:clamp(15px,3vw,18px);max-width:70ch}
+    .grid{display:grid;gap:12px}
+    @media(min-width:760px){.grid{grid-template-columns:repeat(3,1fr)}}
+    .card{background:var(--card);border:1px solid rgba(159,176,200,.16);border-radius:16px;padding:16px}
+    .card h3{margin:.2em 0 .4em}
+    .cta{display:inline-block;margin-top:16px;padding:12px 16px;border-radius:12px;color:#fff;text-decoration:none;font-weight:900;
+      background:linear-gradient(90deg,var(--chakra-red),var(--chakra-orange),var(--chakra-yellow),var(--chakra-green),var(--chakra-blue),var(--chakra-indigo),var(--chakra-violet));
+      background-size:200% 100%;transition:background-position .6s ease,transform .08s ease}
+    .cta:hover{background-position:100% 0}
+    footer{padding:28px 0 40px;color:var(--muted);font-size:13px}
+  </style>
+  <script>
+    // Inline logo fallback to avoid race conditions
+    window._vbLogoFallback=function(img){
+      try{
+        var urls=JSON.parse(img.getAttribute('data-fallbacks')||'[]');
+        var i=(Number(img.getAttribute('data-idx'))||0)+1;
+        if(i<urls.length){img.setAttribute('data-idx',String(i));img.src=urls[i];}
+        else{var brand=img.parentElement;if(brand)brand.classList.add('fallback');img.removeAttribute('onerror');}
+      }catch(e){var b=img.parentElement;if(b)b.classList.add('fallback');}
+    };
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <a class="brand" href="/" aria-label="VibeScript Home">
+        <img alt="VibeScript logo"
+             src="/assets/file_0000000034986115891169618f3eb38a.png?v=3"
+             data-fallbacks='[
+               "/assets/file_0000000034986115891169618f3eb38a.png?v=3",
+               "https://vibescript-landing.pages.dev/assets/file_0000000034986115891169618f3eb38a.png",
+               "https://raw.githubusercontent.com/SheenaBadabina/vibescript-landing/main/assets/file_0000000034986115891169618f3eb38a.png"
+             ]'
+             onerror="_vbLogoFallback(this)">
+        <span class="wordmark">VibeScript</span>
+      </a>
+      <a class="cta" href="/#signup">Get Early Access</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <span class="eyebrow">How it works</span>
+        <h1>From your voice to a working website</h1>
+        <p class="lead">Describe your vision out loud. VibeScript captures intent, generates structure and content, styles it to your brand, and deploys it—plus the campaign materials to launch.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container grid">
+        <div class="card">
+          <h3>1) Speak</h3>
+          <p>Record your idea once—offer, audience, vibe, and outcomes. The system extracts entities, tone, calls-to-action, and brand signals.</p>
+        </div>
+        <div class="card">
+          <h3>2) Generate</h3>
+          <p>AI composes pages, sections, headlines, and long-form content, aligned with your voice. It also drafts emails, posts, ads, and landing pages.</p>
+        </div>
+        <div class="card">
+          <h3>3) Ship</h3>
+          <p>We package the site, optimize for speed and SEO, and deploy. You approve updates by voice or quick edits—no complex tools required.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container card">
+        <h2>What you get</h2>
+        <ul>
+          <li>Conversion-focused landing pages and supporting sections</li>
+          <li>Email sequences, social posts, ad variants, and tracking-ready links</li>
+          <li>Consistent brand style with chakra-tuned accents</li>
+          <li>Fast Cloudflare Pages deployment and easy updates</li>
+        </ul>
+        <a class="cta" href="/#signup">Join early access</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">© 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.</div>
+  </footer>
+</body>
+</html>
