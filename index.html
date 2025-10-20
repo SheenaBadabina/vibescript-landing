@@ -3,88 +3,39 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>VibeScript — Speak Websites Into Existence</title>
-  <meta name="description" content="The AI platform that transforms your voice into complete websites and marketing campaigns." />
+  <title>VibeScript — Speak Your Website Into Existence</title>
+  <meta name="description" content="Stop typing. Start talking. VibeScript turns your voice into a live website—fast, beautiful, and code-free." />
   <meta name="color-scheme" content="dark" />
-  <link rel="icon" href="/assets/file_0000000034986115891169618f3eb38a.png" type="image/png" />
-  <meta property="og:title" content="VibeScript — Speak Websites Into Existence" />
-  <meta property="og:description" content="Describe your vision out loud—VibeScript turns words into live sites and full campaigns." />
-  <meta property="og:image" content="https://vibescript.online/assets/file_000000001048622f95bff34ddca0e28a.png" />
-  <meta name="theme-color" content="#111827" />
+  <meta name="theme-color" content="#0a0c10" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="VibeScript — Speak Your Website Into Existence" />
+  <meta property="og:description" content="Say what you need. VibeScript builds your site in real time." />
+  <meta property="og:image" content="https://vibescript.online/assets/images/vibescript-ai-hero-banner-chakra-lightning.png" />
+  <meta property="og:url" content="https://vibescript.online/" />
+  <meta property="og:type" content="website" />
+
+  <!-- Icons -->
+  <link rel="icon" href="/assets/images/vibescript-ai-website-builder-logo.png" type="image/png" />
+
+  <!-- Preconnect / Prefetch for fast Builder hop -->
+  <link rel="preconnect" href="https://builder.vibescript.online" />
+  <link rel="dns-prefetch" href="https://builder.vibescript.online" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/styles/globals.css" />
+
+  <!-- Minimal critical styles for "flashless" sticky CTA (safety) -->
   <style>
-    :root{
-      --bg:#090b10; --bg2:#0c1117; --card:#0f141b; --muted:#9fb0c8; --text:#eef3ff;
-      --ring:rgba(255,255,255,.12);
-      --r:#ef4444; --o:#f97316; --y:#eab308; --g:#22c55e; --b:#3b82f6; --i:#6366f1; --v:#8b5cf6;
-    }
-    *{box-sizing:border-box} html,body{height:100%}
-    body{
-      margin:0; color:var(--text);
-      font-family:Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; line-height:1.55;
-      background:radial-gradient(1200px 800px at 50% -10%,#1b1030 0%,#0a0c10 45%,#07080c 100%) fixed;
-    }
-    .container{max-width:1080px;margin:0 auto;padding:16px}
-    header{position:sticky;top:0;z-index:30;backdrop-filter:blur(10px);background:color-mix(in oklab,#0a0c10 86%,transparent);border-bottom:1px solid rgba(159,176,200,.12)}
-    .nav{display:flex;align-items:center;gap:12px}
-    .brand{display:flex;align-items:center;gap:10px}
-    .logo{width:28px;height:28px;border-radius:7px;object-fit:cover}
-    .brand-name{font-weight:900;letter-spacing:.2px}
-    .pill{margin-left:auto;border:1px solid rgba(159,176,200,.18);background:#121826;color:#fff;padding:7px 12px;border-radius:999px;font-weight:800}
-    main{display:grid;gap:20px}
-    .hero{display:grid;gap:16px;padding-top:22px}
-    .headline{font-size:clamp(28px,8vw,44px);letter-spacing:-.01em;margin:0}
-    .lead{color:var(--muted);margin:0}
-    .bg-banner{
-      position:relative;overflow:hidden;border-radius:18px;border:1px solid rgba(159,176,200,.14);background:#0b0f15;
-    }
-    .bg-banner::before{
-      content:""; position:absolute; inset:0;
-      background-image:url('/assets/file_000000001048622f95bff34ddca0e28a.png');
-      background-size:cover; background-position:center; opacity:.18; filter:contrast(110%) saturate(120%);
-    }
-    .cards{display:grid;gap:12px}
-    .card{
-      background:rgba(16,21,28,.85); border:1px solid rgba(159,176,200,.16); border-radius:16px; padding:14px;
-      box-shadow:0 10px 28px rgba(0,0,0,.28)
-    }
-    .card h3{margin:0 0 6px}
-    .faq{display:grid;gap:12px}
-    /* Form */
-    .form{display:grid;gap:10px;margin-top:6px}
-    input[type="email"]{
-      width:100%; background:#0c1117; color:#eef3ff; border:1px solid rgba(159,176,200,.26);
-      border-radius:12px; padding:12px 14px; font-size:16px
-    }
-    .btn{
-      display:inline-flex;align-items:center;justify-content:center;gap:10px; padding:12px 16px;
-      border-radius:12px; border:1px solid rgba(159,176,200,.28); background:#121826; color:#fff; font-weight:800; cursor:pointer
-    }
-    .btn:hover{background:#182030}
-    /* chakra gradient ONLY on subscribe button */
-    .btn-chakra{
-      border:0; background:linear-gradient(90deg,var(--r),var(--o),var(--y),var(--g),var(--b),var(--i),var(--v)); background-size:200% 100%;
-    }
-    .btn-chakra:hover{background-position:100% 0}
-    /* Footer */
-    footer{border-top:1px solid rgba(159,176,200,.12); margin-top:16px}
-    .foot-grid{display:grid;gap:10px}
-    .foot-brand{display:flex;align-items:center;gap:10px}
-    .foot-links{display:flex;gap:16px;flex-wrap:wrap}
-    .muted{color:var(--muted)}
-    a{color:#cde1ff;text-decoration:none} a:hover{text-decoration:underline}
-    /* Layout tweaks */
-    @media(min-width:860px){
-      .hero{grid-template-columns:1.2fr .8fr;align-items:center}
-      .cards{grid-template-columns:1fr 1fr}
-      .foot-grid{grid-template-columns:auto 1fr;align-items:center;justify-content:space-between}
-    }
+    .no-js .sticky-cta { display:none; }
   </style>
+  <script>document.documentElement.classList.remove('no-js');</script>
 </head>
-<body>
+<body class="no-js">
   <header>
     <div class="container nav">
       <div class="brand">
-        <img class="logo" src="/assets/file_0000000034986115891169618f3eb38a.png" alt="VibeScript logo" onerror="this.remove();document.querySelector('.brand-name').style.marginLeft='0'">
+        <img class="logo" src="/assets/images/vibescript-ai-website-builder-logo.png" alt="VibeScript logo" />
         <div class="brand-name">VibeScript</div>
       </div>
       <span class="pill">Early Access</span>
@@ -92,139 +43,151 @@
   </header>
 
   <main class="container">
+    <!-- HERO -->
     <section class="hero bg-banner">
-      <div class="card" style="background:rgba(11,15,21,.65)">
-        <p class="muted" style="font-weight:800;letter-spacing:.18em;margin:0 0 6px">EARLY ACCESS</p>
-        <h1 class="headline">VibeScript — Speak Websites Into Existence</h1>
-        <p class="lead">
-          The AI platform that transforms your voice into complete websites and marketing campaigns.
-          Speak your vision out loud and watch advanced AI turn words into professional sites, social content,
-          email sequences, ads, and a conversion-ready digital strategy.
+      <div class="card reveal" style="background:rgba(11,15,21,.68)">
+        <p class="muted" style="font-weight:800;letter-spacing:.18em;margin:0 0 6px">VOICE-FIRST WEBSITE BUILDER</p>
+        <h1 class="headline">Speak Your Website Into Existence</h1>
+        <p class="lead max-w-prose">
+          Stop typing. Start talking. VibeScript turns your voice into a living website—instantly,
+          beautifully, and without code.
         </p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px">
-          <a class="btn" href="#updates">How it works</a>
+        <div class="mt-3">
+          <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">
+            Start Speaking →
+          </a>
         </div>
+        <p class="muted mt-2">Join the early-access wave. No credit card required.</p>
       </div>
 
+      <!-- Proof strip -->
+      <div class="cards">
+        <div class="proof reveal">
+          <div class="proof-item">
+            <img src="/assets/images/vibescript-voice-ai-website-icon.png" alt="Voice input icon" loading="lazy" />
+            <div>
+              <strong>Speak</strong><br /><span class="muted">Describe your vision</span>
+            </div>
+          </div>
+          <div class="proof-item">
+            <img src="/assets/images/vibescript-ai-speak-intelligence-icon.png" alt="AI engine icon" loading="lazy" />
+            <div>
+              <strong>AI Builds</strong><br /><span class="muted">Structure, style, pages</span>
+            </div>
+          </div>
+          <div class="proof-item">
+            <img src="/assets/images/vibescript-ai-web-hosting-icon.png" alt="Hosting icon" loading="lazy" />
+            <div>
+              <strong>Instant Preview</strong><br /><span class="muted">Live on the web</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="card reveal">
+      <h2>Three steps. One conversation.</h2>
+      <div class="divider mt-2 mb-3"></div>
       <div class="cards">
         <div class="card">
-          <h3>🎤 Speak Websites Into Reality</h3>
-          <p class="muted">Talk your website into existence—no coding or design skills required.</p>
+          <h3>1) Speak your vision</h3>
+          <p class="muted">Tell VibeScript what your website should be—like explaining it to a friend.</p>
         </div>
         <div class="card">
-          <h3>🚀 Complete Campaign Generation</h3>
-          <p class="muted">One input creates websites, emails, social posts, ads, and landing pages.</p>
+          <h3>2) Watch it come alive</h3>
+          <p class="muted">Your words become pages, sections, and styles—updated in real time.</p>
         </div>
         <div class="card">
-          <h3>🎯 Multi-Platform Optimization</h3>
-          <p class="muted">Tuned for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email marketing.</p>
+          <h3>3) Publish or refine</h3>
+          <p class="muted">Launch instantly, or keep iterating by voice until it feels right.</p>
         </div>
-        <div class="card">
-          <h3>🧠 Advanced AI Prompting</h3>
-          <p class="muted">Powered by sophisticated meta-prompting frameworks and prompt engineering.</p>
-        </div>
-        <div class="card">
-          <h3>📈 Business-Ready Content</h3>
-          <p class="muted">Brand-consistent, conversion-optimized materials ready to deploy.</p>
-        </div>
-        <div class="card">
-          <h3>⚡ Instant Marketing Automation</h3>
-          <p class="muted">Replace expensive agencies with intelligent AI-driven creation.</p>
-        </div>
+      </div>
+      <div class="mt-3">
+        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
       </div>
     </section>
 
-    <!-- Updates / Mailchimp -->
-    <section id="updates" class="card">
-      <h2 style="margin:0 0 6px">Get product updates</h2>
-      <p class="muted" style="margin:0 0 10px">No spam—only meaningful progress, invites, and early-access opportunities.</p>
+    <!-- Wave divider -->
+    <section class="wave reveal" aria-hidden="true" style="height:120px"></section>
 
-      <!-- Hidden iframe will receive Mailchimp response, then we redirect to /thanks.html -->
-      <iframe name="mc-target" style="display:none" id="mc-target"></iframe>
-
-      <form
-        id="mc-form"
-        class="form"
-        action="https://online.us2.list-manage.com/subscribe/post?u=0a7bc91bac675bcca19bd150d&amp;id=4d7f887426&amp;f_id=00ffa2e0f0"
-        method="post"
-        target="mc-target"
-        novalidate
-      >
-        <label for="mce-EMAIL" class="muted" style="font-weight:600">Email address</label>
-        <input type="email" id="mce-EMAIL" name="EMAIL" required placeholder="you@example.com" />
-
-        <!-- bot trap required by MC -->
-        <div aria-hidden="true" style="position:absolute;left:-5000px">
-          <input type="text" name="b_0a7bc91bac675bcca19bd150d_4d7f887426" tabindex="-1" value="">
-        </div>
-
-        <button type="submit" class="btn btn-chakra" id="subscribe-btn">Subscribe</button>
-
-        <div id="mc-hint" class="muted" style="display:none">Submitting…</div>
-      </form>
+    <!-- Pricing snapshot -->
+    <section class="card reveal">
+      <h2>Start free. Grow when you’re ready.</h2>
+      <p class="muted">
+        Your voice builds the site. Choose a plan inside the Builder—upgrade when it makes sense.
+      </p>
+      <img
+        src="/assets/images/vibescript-free-plan-website-builder.png"
+        alt="VibeScript pricing tiers: Free, Basic, Premium, and one-time Export"
+        loading="lazy"
+        style="width:100%;border-radius:12px;border:1px solid rgba(159,176,200,.18);margin-top:10px"
+      />
+      <div class="mt-3">
+        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
+      </div>
+      <p class="muted mt-2">No commitment. Cancel anytime.</p>
     </section>
 
-    <!-- FAQ / SEO as Q&A -->
-    <section class="faq">
+    <!-- FAQ -->
+    <section class="faq reveal">
       <div class="card">
-        <h3>What is a voice-to-website builder?</h3>
-        <p class="muted">It’s a conversational builder that lets you <strong>speak a website into existence</strong>. VibeScript interprets your voice, generates pages, styles, and content, then deploys the site.</p>
+        <h3>Do I need to know code?</h3>
+        <p class="muted">No. VibeScript is fully voice-driven. Just describe what you want—we handle the rest.</p>
       </div>
       <div class="card">
-        <h3>Can I build a full marketing system from one idea?</h3>
-        <p class="muted">Yes. Describe your offer once and get <strong>AI-powered web development</strong> plus <strong>complete campaign generation</strong>—emails, social posts, ads, and landing pages—ready to publish.</p>
+        <h3>Is my website hosted automatically?</h3>
+        <p class="muted">Yes. Free plans use a VibeScript subdomain; paid plans can connect your custom domain.</p>
       </div>
       <div class="card">
-        <h3>Is it optimized for multiple platforms?</h3>
-        <p class="muted">Absolutely. Content is tuned for Instagram, TikTok, LinkedIn, Facebook, Google Ads, and email marketing, making VibeScript a <strong>voice-activated website creation</strong> and multi-platform engine in one.</p>
+        <h3>Can I download my site?</h3>
+        <p class="muted">Absolutely. Pay once ($25) and get the full HTML/CSS/JS package.</p>
       </div>
       <div class="card">
-        <h3>Who is VibeScript for?</h3>
-        <p class="muted">Entrepreneurs, small businesses, and creators who want a <strong>voice-driven website platform</strong> that turns ideas into brand-consistent, conversion-ready results—fast.</p>
+        <h3>What happens after I click “Start Speaking”?</h3>
+        <p class="muted">You jump into the Builder where VibeScript listens, generates, and shows your site in real time.</p>
+      </div>
+      <div class="mt-3">
+        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
       </div>
     </section>
   </main>
 
+  <!-- Final CTA -->
+  <section class="container reveal" style="margin-top:16px">
+    <div class="card center" style="text-align:center">
+      <h2 class="mt-0">Your voice deserves a stage.</h2>
+      <p class="muted max-w-prose">Let’s build your site together—right now.</p>
+      <div class="mt-3">
+        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
+      </div>
+      <p class="muted mt-2">Early access is limited while we’re in beta.</p>
+    </div>
+  </section>
+
   <footer>
     <div class="container foot-grid">
       <div class="foot-brand">
-        <img class="logo" src="/assets/file_0000000034986115891169618f3eb38a.png" alt="" onerror="this.style.display='none'">
+        <img class="logo" src="/assets/images/vibescript-ai-website-builder-logo.png" alt="" />
         <strong>VibeScript</strong>
       </div>
       <nav class="foot-links">
-        <a href="/how-it-works">How it works</a>
-        <a href="/thanks.html">Get updates</a>
-        <a href="/contact.html">Contact</a>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
+        <a href="/contact.html">Contact</a>
       </nav>
     </div>
     <div class="container" style="padding:12px 16px 24px">
-      <span class="muted">© 2025 VibeScript. Advanced AI Marketing Platform. All rights reserved.</span>
+      <span class="muted">© 2025 VibeScript. Built with energy, not code.</span>
     </div>
   </footer>
 
-  <!-- Minimal Mailchimp handler: submit to hidden iframe; after it loads, go to /thanks.html -->
-  <script>
-    (function(){
-      var form = document.getElementById('mc-form');
-      var btn = document.getElementById('subscribe-btn');
-      var hint = document.getElementById('mc-hint');
-      var target = document.getElementById('mc-target');
-      var submitted = false;
+  <!-- Sticky CTA (mobile-first) -->
+  <div class="sticky-cta">
+    <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
+  </div>
 
-      form.addEventListener('submit', function(){
-        submitted = true;
-        btn.disabled = true;
-        hint.style.display = 'block';
-      });
-
-      target.addEventListener('load', function(){
-        if(submitted){
-          window.location.href = '/thanks.html';
-        }
-      });
-    })();
-  </script>
+  <!-- Scripts -->
+  <script src="/scripts/main.js" defer></script>
 </body>
 </html>
