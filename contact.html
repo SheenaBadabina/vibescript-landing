@@ -5,97 +5,74 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Contact — VibeScript</title>
-  <meta name="description" content="Questions, partnerships, or early access interest? Say hello to the VibeScript team." />
+  <meta name="description" content="Questions, partnerships, or early access interest? Contact the VibeScript team." />
   <meta name="color-scheme" content="light" />
   <meta name="theme-color" content="#ffffff" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Contact — VibeScript" />
-  <meta property="og:description" content="Say hello. We’d love to hear about what you’re building." />
+  <meta property="og:description" content="Say hello. We’d love to hear from you." />
   <meta property="og:image" content="https://vibescript.online/assets/images/vibescript-ai-hero-banner-chakra-lightning.png" />
   <meta property="og:url" content="https://vibescript.online/contact.html" />
   <meta property="og:type" content="website" />
 
-  <!-- Icons -->
+  <!-- Icons & Prefetch -->
   <link rel="icon" href="/assets/images/vibescript-ai-website-builder-logo.png" type="image/png" />
+  <link rel="preconnect" href="https://builder.vibescript.online" />
+  <link rel="dns-prefetch" href="https://builder.vibescript.online" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="/styles/globals.css" />
 
   <!-- No-JS helper -->
   <style>noscript .js-only{display:none!important}</style>
-
-  <script>
-    function sendMail(ev){
-      ev.preventDefault();
-      const name  = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const msg   = document.getElementById('message').value.trim();
-
-      if(!email){
-        alert('Please include your email so we can reply.'); 
-        return;
-      }
-
-      const subject = encodeURIComponent('VibeScript contact from ' + (name || 'visitor'));
-      const body = encodeURIComponent(
-        'From: ' + (name || 'N/A') + ' <' + email + '>' + '\n\n' + msg
-      );
-
-      window.location.href = 'mailto:admin@vibescript.online?subject=' + subject + '&body=' + body;
-    }
-  </script>
 </head>
 <body>
   <!-- Header -->
   <header>
     <div class="container nav">
-      <a class="brand" href="/" aria-label="VibeScript home">
+      <a class="brand" href="/" aria-label="VibeScript Home">
         <img class="logo" src="/assets/images/vibescript-ai-website-builder-logo.png" alt="VibeScript logo" />
         <div class="brand-name">VibeScript</div>
       </a>
-      <a class="pill" href="https://builder.vibescript.online">Early Access</a>
+      <span class="pill">Early Access</span>
     </div>
   </header>
 
   <!-- Main -->
-  <main class="container">
-    <section class="card" style="margin-top:24px">
-      <p class="muted" style="font-weight:800;letter-spacing:.16em;margin:0 0 8px">CONTACT</p>
-      <h1 class="chakra-text" style="margin-top:0">Say hello 👋</h1>
-      <p class="lead" style="max-width:68ch">
-        Questions, partnerships, press, or early access interest? We’d love to hear what you’re building.
-      </p>
+  <main class="container" style="padding-top:24px">
+    <section class="card">
+      <p class="muted" style="font-weight:800;letter-spacing:.16em;margin:0 0 6px">CONTACT</p>
+      <h1 class="headline chakra-text">Say hello 👋</h1>
+      <p class="lead">Questions, partnerships, press, or early-access interest? We’d love to hear from you.</p>
     </section>
 
-    <section class="card" style="margin-top:16px">
-      <form class="contact-form" onsubmit="sendMail(event)">
-        <div class="grid-2">
+    <!-- Contact form (mailto) -->
+    <section class="card" style="margin-top:12px">
+      <form onsubmit="sendMail(event)">
+        <div style="display:grid;gap:10px;grid-template-columns:1fr;max-width:720px">
           <div>
-            <label for="name" class="label">Your name</label>
+            <label for="name" class="muted" style="display:block;margin:8px 0 4px">Your name</label>
             <input id="name" class="input" type="text" autocomplete="name" placeholder="Ada Lovelace" />
           </div>
           <div>
-            <label for="email" class="label">Your email <span aria-hidden="true" style="color:#ef4444">*</span></label>
+            <label for="email" class="muted" style="display:block;margin:8px 0 4px">Your email</label>
             <input id="email" class="input" type="email" inputmode="email" autocomplete="email" placeholder="you@example.com" required />
           </div>
+          <div>
+            <label for="message" class="muted" style="display:block;margin:8px 0 4px">Message</label>
+            <textarea id="message" class="input" placeholder="Tell us what you’re building…" style="min-height:140px"></textarea>
+          </div>
         </div>
-
-        <label for="message" class="label" style="margin-top:12px">Message</label>
-        <textarea id="message" class="input" placeholder="Tell us about your project…"
-                  style="min-height:140px;resize:vertical"></textarea>
-
-        <div style="margin-top:14px">
-          <button type="submit" class="btn-chakra">Send message</button>
-          <noscript>
-            <a class="btn-ghost" href="mailto:admin@vibescript.online?subject=VibeScript%20contact&body=Please%20include%20your%20name%20and%20details.">Email us</a>
-          </noscript>
+        <div style="margin-top:12px">
+          <button class="btn-chakra" type="submit">Send message</button>
         </div>
       </form>
     </section>
 
-    <section class="card" style="margin-top:16px">
-      <h2 class="chakra-text" style="margin-top:0">Prefer X or email?</h2>
+    <!-- Direct email -->
+    <section class="card" style="margin-top:12px">
+      <h2 class="chakra-text" style="margin-top:0">Prefer email?</h2>
       <p class="muted">Email: <a href="mailto:admin@vibescript.online">admin@vibescript.online</a></p>
     </section>
   </main>
@@ -125,8 +102,26 @@
       Start Speaking →
     </button>
   </div>
+  <noscript>
+    <div class="sticky-cta">
+      <a class="btn-ghost" href="https://builder.vibescript.online">Start Speaking →</a>
+    </div>
+  </noscript>
 
   <!-- Scripts -->
+  <script>
+    function sendMail(ev){
+      ev.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      if(!email){ alert('Please provide your email.'); return; }
+      const subject = encodeURIComponent('VibeScript contact from ' + (name || 'visitor'));
+      const body = encodeURIComponent(`From: ${name||'N/A'} <${email}>\n\n${msg}`);
+      window.location.href = `mailto:admin@vibescript.online?subject=${subject}&body=${body}`;
+    }
+  </script>
   <script src="/scripts/main.js" defer></script>
 </body>
 </html>
+```0
