@@ -1,5 +1,0 @@
-Contact: mailto:admin@vibescript.online
-Expires: 2026-12-31T23:59:59z
-Preferred-Languages: en
-Policy: https://vibescript.online/terms.html
-Hiring: https://vibescript.online/
