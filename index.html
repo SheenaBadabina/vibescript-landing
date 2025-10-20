@@ -1,12 +1,13 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="no-js">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <title>VibeScript — Speak Your Website Into Existence</title>
   <meta name="description" content="Stop typing. Start talking. VibeScript turns your voice into a live website—fast, beautiful, and code-free." />
-  <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#0a0c10" />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#ffffff" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="VibeScript — Speak Your Website Into Existence" />
@@ -15,23 +16,19 @@
   <meta property="og:url" content="https://vibescript.online/" />
   <meta property="og:type" content="website" />
 
-  <!-- Icons -->
+  <!-- Icons & Prefetch -->
   <link rel="icon" href="/assets/images/vibescript-ai-website-builder-logo.png" type="image/png" />
-
-  <!-- Preconnect / Prefetch for fast Builder hop -->
   <link rel="preconnect" href="https://builder.vibescript.online" />
   <link rel="dns-prefetch" href="https://builder.vibescript.online" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="/styles/globals.css" />
 
-  <!-- Minimal critical styles for "flashless" sticky CTA (safety) -->
-  <style>
-    .no-js .sticky-cta { display:none; }
-  </style>
-  <script>document.documentElement.classList.remove('no-js');</script>
+  <!-- No-JS helper -->
+  <style>noscript .js-only{display:none!important}</style>
 </head>
-<body class="no-js">
+<body>
+  <!-- Header -->
   <header>
     <div class="container nav">
       <div class="brand">
@@ -42,43 +39,54 @@
     </div>
   </header>
 
+  <!-- Main -->
   <main class="container">
     <!-- HERO -->
     <section class="hero bg-banner">
-      <div class="card reveal" style="background:rgba(11,15,21,.68)">
+      <div class="card reveal">
         <p class="muted" style="font-weight:800;letter-spacing:.18em;margin:0 0 6px">VOICE-FIRST WEBSITE BUILDER</p>
-        <h1 class="headline">Speak Your Website Into Existence</h1>
-        <p class="lead max-w-prose">
+        <h1 class="headline chakra-text">Speak Your Website Into Existence</h1>
+        <p class="lead">
           Stop typing. Start talking. VibeScript turns your voice into a living website—instantly,
           beautifully, and without code.
         </p>
-        <div class="mt-3">
-          <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">
+
+        <div style="margin-top:12px" class="js-only">
+          <button type="button" class="btn-chakra" data-cta aria-label="Start Speaking"
+            onclick="window.location.href='https://builder.vibescript.online'">
             Start Speaking →
-          </a>
+          </button>
         </div>
-        <p class="muted mt-2">Join the early-access wave. No credit card required.</p>
+
+        <!-- Fallback link if JS is disabled -->
+        <noscript>
+          <p style="margin-top:12px">
+            <a class="btn-ghost" href="https://builder.vibescript.online" rel="noopener">Start Speaking →</a>
+          </p>
+        </noscript>
+
+        <p class="muted" style="margin-top:8px">Join the early-access wave. No credit card required.</p>
       </div>
 
-      <!-- Proof strip -->
+      <!-- Proof strip (3 cards) -->
       <div class="cards">
         <div class="proof reveal">
           <div class="proof-item">
             <img src="/assets/images/vibescript-voice-ai-website-icon.png" alt="Voice input icon" loading="lazy" />
             <div>
-              <strong>Speak</strong><br /><span class="muted">Describe your vision</span>
+              <strong class="chakra-text">Speak</strong><br /><span class="muted">Describe your vision</span>
             </div>
           </div>
           <div class="proof-item">
             <img src="/assets/images/vibescript-ai-speak-intelligence-icon.png" alt="AI engine icon" loading="lazy" />
             <div>
-              <strong>AI Builds</strong><br /><span class="muted">Structure, style, pages</span>
+              <strong class="chakra-text">AI Builds</strong><br /><span class="muted">Structure, style, pages</span>
             </div>
           </div>
           <div class="proof-item">
             <img src="/assets/images/vibescript-ai-web-hosting-icon.png" alt="Hosting icon" loading="lazy" />
             <div>
-              <strong>Instant Preview</strong><br /><span class="muted">Live on the web</span>
+              <strong class="chakra-text">Instant Preview</strong><br /><span class="muted">Live on the web</span>
             </div>
           </div>
         </div>
@@ -87,84 +95,112 @@
 
     <!-- How it works -->
     <section class="card reveal">
-      <h2>Three steps. One conversation.</h2>
-      <div class="divider mt-2 mb-3"></div>
+      <h2 class="chakra-text">Three steps. One conversation.</h2>
+      <div class="divider" style="margin:8px 0 12px"></div>
+
       <div class="cards">
         <div class="card">
-          <h3>1) Speak your vision</h3>
+          <h3 class="chakra-text">1) Speak your vision</h3>
           <p class="muted">Tell VibeScript what your website should be—like explaining it to a friend.</p>
         </div>
         <div class="card">
-          <h3>2) Watch it come alive</h3>
+          <h3 class="chakra-text">2) Watch it come alive</h3>
           <p class="muted">Your words become pages, sections, and styles—updated in real time.</p>
         </div>
         <div class="card">
-          <h3>3) Publish or refine</h3>
+          <h3 class="chakra-text">3) Publish or refine</h3>
           <p class="muted">Launch instantly, or keep iterating by voice until it feels right.</p>
         </div>
       </div>
-      <div class="mt-3">
-        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
-      </div>
-    </section>
 
-    <!-- Wave divider -->
-    <section class="wave reveal" aria-hidden="true" style="height:120px"></section>
+      <div style="margin-top:12px" class="js-only">
+        <button type="button" class="btn-chakra" data-cta aria-label="Start Speaking"
+          onclick="window.location.href='https://builder.vibescript.online'">
+          Start Speaking →
+        </button>
+      </div>
+      <noscript>
+        <p style="margin-top:12px"><a class="btn-ghost" href="https://builder.vibescript.online">Start Speaking →</a></p>
+      </noscript>
+    </section>
 
     <!-- Pricing snapshot -->
     <section class="card reveal">
-      <h2>Start free. Grow when you’re ready.</h2>
-      <p class="muted">
-        Your voice builds the site. Choose a plan inside the Builder—upgrade when it makes sense.
-      </p>
+      <h2 class="chakra-text">Start free. Grow when you’re ready.</h2>
+      <p class="muted">Your voice builds the site. Choose a plan inside the Builder—upgrade when it makes sense.</p>
+
       <img
         src="/assets/images/vibescript-free-plan-website-builder.png"
         alt="VibeScript pricing tiers: Free, Basic, Premium, and one-time Export"
         loading="lazy"
-        style="width:100%;border-radius:12px;border:1px solid rgba(159,176,200,.18);margin-top:10px"
+        style="width:100%;border-radius:12px;border:1px solid #e5e7eb;margin-top:10px"
       />
-      <div class="mt-3">
-        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
+
+      <div style="margin-top:12px" class="js-only">
+        <button type="button" class="btn-chakra" data-cta aria-label="Start Speaking"
+          onclick="window.location.href='https://builder.vibescript.online'">
+          Start Speaking →
+        </button>
       </div>
-      <p class="muted mt-2">No commitment. Cancel anytime.</p>
+      <noscript>
+        <p style="margin-top:12px"><a class="btn-ghost" href="https://builder.vibescript.online">Start Speaking →</a></p>
+      </noscript>
+
+      <p class="muted" style="margin-top:8px">No commitment. Cancel anytime.</p>
     </section>
 
     <!-- FAQ -->
     <section class="faq reveal">
       <div class="card">
-        <h3>Do I need to know code?</h3>
+        <h3 class="chakra-text">Do I need to know code?</h3>
         <p class="muted">No. VibeScript is fully voice-driven. Just describe what you want—we handle the rest.</p>
       </div>
       <div class="card">
-        <h3>Is my website hosted automatically?</h3>
+        <h3 class="chakra-text">Is my website hosted automatically?</h3>
         <p class="muted">Yes. Free plans use a VibeScript subdomain; paid plans can connect your custom domain.</p>
       </div>
       <div class="card">
-        <h3>Can I download my site?</h3>
+        <h3 class="chakra-text">Can I download my site?</h3>
         <p class="muted">Absolutely. Pay once ($25) and get the full HTML/CSS/JS package.</p>
       </div>
       <div class="card">
-        <h3>What happens after I click “Start Speaking”?</h3>
+        <h3 class="chakra-text">What happens after I click “Start Speaking”?</h3>
         <p class="muted">You jump into the Builder where VibeScript listens, generates, and shows your site in real time.</p>
       </div>
-      <div class="mt-3">
-        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
+
+      <div style="margin-top:12px" class="js-only">
+        <button type="button" class="btn-chakra" data-cta aria-label="Start Speaking"
+          onclick="window.location.href='https://builder.vibescript.online'">
+          Start Speaking →
+        </button>
       </div>
+      <noscript>
+        <p style="margin-top:12px"><a class="btn-ghost" href="https://builder.vibescript.online">Start Speaking →</a></p>
+      </noscript>
     </section>
   </main>
 
   <!-- Final CTA -->
   <section class="container reveal" style="margin-top:16px">
-    <div class="card center" style="text-align:center">
-      <h2 class="mt-0">Your voice deserves a stage.</h2>
-      <p class="muted max-w-prose">Let’s build your site together—right now.</p>
-      <div class="mt-3">
-        <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
+    <div class="card" style="text-align:center">
+      <h2 class="chakra-text" style="margin-top:0">Your voice deserves a stage.</h2>
+      <p class="muted" style="max-width:68ch;margin:0 auto">Let’s build your site together—right now.</p>
+
+      <div style="margin-top:12px" class="js-only">
+        <button type="button" class="btn-chakra" data-cta aria-label="Start Speaking"
+          onclick="window.location.href='https://builder.vibescript.online'">
+          Start Speaking →
+        </button>
       </div>
-      <p class="muted mt-2">Early access is limited while we’re in beta.</p>
+      <noscript>
+        <p style="margin-top:12px"><a class="btn-ghost" href="https://builder.vibescript.online">Start Speaking →</a></p>
+      </noscript>
+
+      <p class="muted" style="margin-top:8px">Early access is limited while we’re in beta.</p>
     </div>
   </section>
 
+  <!-- Footer -->
   <footer>
     <div class="container foot-grid">
       <div class="foot-brand">
@@ -182,10 +218,18 @@
     </div>
   </footer>
 
-  <!-- Sticky CTA (mobile-first) -->
-  <div class="sticky-cta">
-    <a class="btn btn-primary chakra" data-cta href="https://builder.vibescript.online" target="_blank" rel="noopener">Start Speaking →</a>
+  <!-- Sticky CTA (mobile) -->
+  <div class="sticky-cta js-only">
+    <button type="button" class="btn-chakra" data-cta aria-label="Start Speaking (sticky)"
+      onclick="window.location.href='https://builder.vibescript.online'">
+      Start Speaking →
+    </button>
   </div>
+  <noscript>
+    <div class="sticky-cta">
+      <a class="btn-ghost" href="https://builder.vibescript.online">Start Speaking →</a>
+    </div>
+  </noscript>
 
   <!-- Scripts -->
   <script src="/scripts/main.js" defer></script>
