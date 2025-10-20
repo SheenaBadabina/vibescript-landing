@@ -1,8 +1,0 @@
-/*
-  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
-  X-Content-Type-Options: nosniff
-  X-Frame-Options: DENY
-  Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=()
-  Cache-Control: public, max-age=600
-  Content-Security-Policy: default-src 'self'; img-src 'self' https://raw.githubusercontent.com https://vibescript-landing.pages.dev data:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; base-uri 'self'; form-action 'self' https://online.us2.list-manage.com; frame-ancestors 'none'
