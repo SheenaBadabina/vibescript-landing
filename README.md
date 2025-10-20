@@ -1,63 +1,49 @@
-# VibeScript Online
+# VibeScript Landing
 
 **Status:** Active Development  
 **Last Updated:** October 2025  
 
----
+## Overview
+[VibeScript.online](https://vibescript.online) is the public marketing funnel for **VibeScript** — a voice-first website generator.  
+Its single goal: inspire visitors to click **Start Speaking** and enter the Builder at [builder.vibescript.online](https://builder.vibescript.online).
 
-## 🌐 Overview
+## Design Vision
+- White background with dark text and chakra-gradient accents  
+- Minimal, emotional, and mobile-first  
+- Accessible contrast with subtle animations  
+- CTAs are real buttons with chakra gradients, glow, and squish feedback  
 
-**VibeScript.online** is the public-facing marketing funnel for the **VibeScript** platform — the AI tool that lets anyone **speak a website into existence**.  
-This static HTML site is designed to emotionally engage, inform, and convert visitors to **start building immediately** at [builder.vibescript.online](https://builder.vibescript.online).
+## Repository
+/index.html  
+/styles/globals.css  
+/scripts/main.js  
+/assets/images/  
 
----
+## Image Assets
+vibescript-ai-hero-banner-chakra-lightning.png  
+vibescript-voice-ai-website-icon.png  
+vibescript-ai-speak-intelligence-icon.png  
+vibescript-ai-web-hosting-icon.png  
+vibescript-ai-website-builder-logo.png  
+vibescript-free-plan-website-builder.png  
+vibescript-real-energy-waveform-banner.png  
 
-## 🎯 Purpose
+## Conversion Flow
+1. Hero — emotional hook + CTA  
+2. Proof Strip — Speak → Build → Preview  
+3. How It Works — 3-step guide  
+4. Pricing Snapshot — Free / Basic / Premium  
+5. FAQ — final CTA  
+6. Sticky Mobile CTA — always visible  
 
-This repository contains the marketing website only.  
-Its **sole goal** is to guide users through a simple, focused journey:
+## Deployment
+- Host: Cloudflare Pages  
+- Branch: `main`  
+- Auto-deploys on push  
 
-> Curiosity → Belief → Action → “Start Speaking”
+## Links
+[Live Site → vibescript.online](https://vibescript.online)  
+[Builder → builder.vibescript.online](https://builder.vibescript.online)  
+[Cloudflare Deployments](https://dash.cloudflare.com/?to=/:account/pages/view/vibescript.online/deployments)  
 
-Every element, image, and word exists to reinforce that single CTA.
-
----
-
-## 🧱 Architecture
-
-| Component | Description |
-|------------|--------------|
-| `/index.html` | Main landing funnel |
-| `/assets/images/` | Optimized hero + brand imagery |
-| `/static/styles.css` | Global responsive styling |
-| `/static/script.js` | Lightweight interactivity & CTA animation |
-
-**Hosting:** Cloudflare Pages  
-**Language:** HTML, CSS, JS (no frameworks)  
-**Design:** Mobile-first, emotion-driven funnel  
-
----
-
-## ✨ Design Philosophy
-
-Clean cinematic energy with psychological precision.  
-VibeScript’s visuals and copy balance clarity and excitement, using motion, gradient lighting, and conversational tone to build emotional momentum.
-
----
-
-## 📈 Conversion Flow
-
-1. **Hero:** Introduces “Speak your website into existence.”  
-2. **Proof Strip:** Reinforces trust via icons and short lines.  
-3. **How It Works:** 3 steps → Speak, Watch, Publish.  
-4. **Social Proof:** Real creator quotes or placeholders.  
-5. **Pricing Snapshot:** Shows Free, Basic, Premium tiers.  
-6. **FAQ:** Anticipates objections with short, confident answers.  
-7. **Final CTA:** Emotional close with urgency + CTA.  
-
-Every CTA button and navigation route leads to:  
-`https://builder.vibescript.online`
-
----
-
-## 🖼️ Asset Directory
+© 2025 VibeScript. All rights reserved.
