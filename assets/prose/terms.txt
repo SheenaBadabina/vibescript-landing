@@ -65,7 +65,7 @@ Current pricing includes:
 
 - **Free:** Subdomain hosting with limited generation credits
 - **Basic ($9/month):** Custom domain hosting and enhanced features
-- **Premium:** Additional features (pricing to be announced)
+- **Premium:** Additional features ($19/month)
 - **One-Time Export ($25):** Full website download package
 
 Pricing is subject to change with 30 days' notice. Changes will not affect existing subscribers until their next billing cycle.
