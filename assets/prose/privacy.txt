@@ -1,6 +1,7 @@
+<document path="privacy-policy.md" title="Privacy Policy">
 # Privacy Policy
 
-**Effective Date:** October 19, 2025
+**Effective Date:** October 26, 2025
 
 This Privacy Policy describes how VibeScript ("we," "us," or "our") collects, uses, and protects your personal information when you use our websites at https://vibescript.online and https://builder.vibescript.online (collectively, the "Services"). By accessing or using our Services, you agree to this Privacy Policy.
 
@@ -14,7 +15,10 @@ When you create an account, use our Services, or communicate with us, we may col
 - **Authentication Data:** Google account information if you sign in via Google OAuth
 - **Payment Information:** Billing details processed through Stripe (we do not store full credit card numbers)
 - **Voice Input:** Audio recordings of your voice commands used to generate websites (processed in real-time and not permanently stored unless you save your project)
+- **Voice Preferences:** Selected voice options (alloy, echo, fable, onyx, nova, shimmer) stored in localStorage for guests and Supabase for authenticated users
 - **Content You Create:** Website designs, text, images, code, and other materials you generate or upload through our AI-powered builder
+- **AI-Generated Assets:** Images and other assets created using our AI generation features
+- **Conversation History:** Chat messages and interactions with our AI system, saved in Supabase for authenticated users and localStorage for guests
 - **Communications:** Messages you send to us via email or support channels
 - **Waitlist Information:** Email addresses submitted for beta access invitations
 
@@ -22,7 +26,7 @@ When you create an account, use our Services, or communicate with us, we may col
 
 When you use our Services, we automatically collect:
 
-- **Usage Data:** Features accessed, generation requests, pages visited, time spent on the platform
+- **Usage Data:** Features accessed, generation requests, pages visited, time spent on the platform, AI generation counts, storage usage
 - **Device Information:** Browser type, operating system, device identifiers, IP address
 - **Performance Data:** Error logs, load times, API response metrics
 - **Security Data:** Cloudflare Turnstile verification tokens and anti-abuse signals
@@ -32,10 +36,11 @@ When you use our Services, we automatically collect:
 
 We receive information from:
 
-- **Supabase:** Authentication and session management data
-- **Stripe:** Payment processing and transaction records
+- **Supabase:** Authentication, session management, and database storage data
+- **Stripe:** Payment processing, subscription status, and transaction records
 - **Google:** Profile information when you use Google sign-in
-- **Cloudflare:** Security analysis and traffic protection data
+- **Cloudflare:** Security analysis, traffic protection data, and CDN delivery metrics
+- **OpenAI:** Processing confirmations for voice transcription (Whisper), text-to-speech (TTS), image generation (DALL-E), and conversational AI (GPT-4)
 
 ## 2. How We Use Your Information
 
@@ -43,15 +48,20 @@ We use collected information to:
 
 - Provide, operate, and maintain the Services
 - Process your voice and text inputs to generate websites using AI
+- Generate images and assets using AI based on your descriptions and requirements
 - Create, host, and manage your website projects
+- Store and deliver your assets via our Asset Locker system
 - Authenticate your identity and manage your account
-- Process payments, subscriptions, and one-time exports
+- Process payments, subscriptions, storage add-ons, and one-time exports
+- Verify subscription status and enforce tier-based limits on AI generation and storage
 - Send transactional emails (confirmations, receipts, account notifications) via Resend
 - Detect and prevent fraud, abuse, and security threats
+- Monitor usage patterns to prevent system abuse and excessive resource consumption
 - Analyze usage patterns to improve performance and features
 - Respond to your support requests and communications
 - Comply with legal obligations and enforce our Terms and Conditions
 - Communicate important updates about the Services (you may opt out of non-essential communications)
+- Manage closed beta access and waitlist invitations
 
 ## 3. AI and Voice Processing
 
@@ -59,19 +69,33 @@ We use collected information to:
 
 When you use voice input to describe your website:
 
-- Audio is transmitted securely to our AI processing systems
+- Audio is transmitted securely to OpenAI's Whisper API for transcription
 - Voice data is converted to text and interpreted to generate website code
 - Audio recordings are processed in real-time and are not permanently stored on our servers unless you save the project
-- Voice data is never used to train third-party AI models
+- Voice data is never used to train third-party AI models without explicit consent
 - We do not sell or share your voice recordings with third parties for advertising or marketing
+- Voice preferences (selected voice for TTS playback) are stored locally or in your account settings
 
-### 3.2 AI Training
+### 3.2 AI Image Generation
 
-Our AI models are trained exclusively on:
+When you use our AI image generation features:
+
+- Your text descriptions are sent to OpenAI's DALL-E API to generate images
+- Generated images are stored in your Asset Locker in our Cloudflare R2 storage
+- Full-resolution images are delivered to your live websites via CDN without watermarks
+- Watermarked, low-resolution previews are shown only in the Asset Locker interface for unpurchased exports
+- Generation limits are enforced based on your subscription tier (verified via Stripe webhook)
+- We track generation counts to prevent abuse and manage costs
+- Generated images remain your property subject to our licensing terms
+
+### 3.3 AI Training
+
+Our AI models and the third-party AI services we use are trained on:
 
 - Publicly available, licensed, and allow-listed datasets
 - Aggregated, anonymized usage patterns (not individual user content)
 - No private user content, personal data, or proprietary designs are used for AI training without explicit consent
+- OpenAI's data usage policies apply to content processed through their APIs
 
 ## 4. Data Sharing and Disclosure
 
@@ -81,11 +105,12 @@ We do not sell your personal information. We share information only in these cir
 
 We share data with trusted third-party providers who perform services on our behalf:
 
-- **Cloudflare:** Infrastructure hosting, security, CDN, and anti-DDoS protection
-- **Supabase:** Authentication and database management
-- **Stripe:** Payment processing and billing management
+- **Cloudflare:** Infrastructure hosting (Pages, Workers, D1, R2, KV, Durable Objects), security, CDN, and anti-DDoS protection
+- **Supabase:** Authentication, database management, and data storage
+- **Stripe:** Payment processing, subscription management, and billing
 - **Resend:** Transactional email delivery
 - **Google:** OAuth authentication services
+- **OpenAI:** AI processing for voice transcription (Whisper), text-to-speech (TTS), image generation (DALL-E), and conversational AI (GPT-4)
 
 These providers are contractually obligated to protect your data and use it only for specified purposes.
 
@@ -97,6 +122,7 @@ We may disclose information when required by law or to:
 - Enforce our Terms and Conditions or other agreements
 - Protect the rights, property, or safety of VibeScript, our users, or the public
 - Detect, prevent, or investigate fraud, security issues, or illegal activity
+- Respond to claims of intellectual property infringement
 
 ### 4.3 Business Transfers
 
@@ -113,8 +139,11 @@ We retain your information for as long as necessary to provide the Services and 
 - **Account Data:** Retained while your account is active and for a reasonable period after deletion to comply with legal obligations
 - **Payment Records:** Retained as required by tax and financial regulations (typically 7 years)
 - **Voice Inputs:** Processed in real-time; not permanently stored unless part of a saved project
+- **Conversation History:** Retained in Supabase for authenticated users until you delete your account; stored in localStorage for guests until browser data is cleared
 - **Website Projects:** Retained until you delete them or close your account
+- **AI-Generated Assets:** Retained in your Asset Locker until you delete them or close your account
 - **Logs and Analytics:** Typically retained for 90 days unless needed for security investigations
+- **Abuse Prevention Data:** Retained as necessary to prevent repeat violations and protect the platform
 
 You may request deletion of your data by contacting us at contact@vibescript.online.
 
@@ -124,7 +153,7 @@ Depending on your location, you may have the following rights:
 
 ### 6.1 Access and Portability
 
-You can access your account information through the builder dashboard. You may request a copy of your personal data in a portable format.
+You can access your account information through the dashboard. You may request a copy of your personal data in a portable format, including your conversation history, projects, and generated assets.
 
 ### 6.2 Correction
 
@@ -132,7 +161,7 @@ You can update your account information directly in your account settings.
 
 ### 6.3 Deletion
 
-You may request deletion of your account and personal data. Note that we may retain certain information as required by law or legitimate business purposes (e.g., fraud prevention, financial records).
+You may request deletion of your account and personal data. Note that we may retain certain information as required by law or legitimate business purposes (e.g., fraud prevention, financial records, abuse prevention).
 
 ### 6.4 Opt-Out
 
@@ -167,7 +196,8 @@ To exercise any of these rights, contact us at contact@vibescript.online.
 We use essential cookies and similar technologies to:
 
 - Maintain your login session
-- Remember your preferences
+- Remember your preferences (including voice settings)
+- Store conversation history temporarily in localStorage
 - Provide security through Cloudflare Turnstile
 - Analyze performance and usage patterns
 
@@ -176,6 +206,7 @@ We use essential cookies and similar technologies to:
 - **Essential Cookies:** Required for authentication and core functionality
 - **Performance Cookies:** Help us understand how you use the Services
 - **Security Cookies:** Protect against fraud and abuse
+- **Preference Cookies:** Remember your voice and interface settings
 
 You can control cookies through your browser settings, but disabling essential cookies may impair functionality.
 
@@ -186,26 +217,56 @@ We implement reasonable security measures to protect your information:
 - Encryption in transit (TLS/SSL) and at rest
 - Secure authentication via Supabase with password hashing
 - Cloudflare security protections including DDoS mitigation and bot detection
+- Signed URLs with expiration for asset access
+- Multi-layer protection for Asset Locker content (watermarks, right-click prevention, low-resolution previews)
 - Regular security assessments and monitoring
 - Access controls limiting employee and contractor access to personal data
+- Rate limiting to prevent abuse and unauthorized access
 
 However, no system is completely secure. We cannot guarantee absolute security of your information.
 
-## 9. International Data Transfers
+## 9. Asset Storage and Protection
+
+### 9.1 Asset Locker
+
+AI-generated and uploaded assets are stored in your Asset Locker with the following protections:
+
+- **Preview Mode:** Low-resolution, watermarked previews displayed in the Asset Locker interface
+- **Full Resolution:** High-quality images delivered to your live websites without watermarks
+- **Access Control:** Signed URLs with expiration prevent unauthorized access
+- **Download Protection:** Right-click and drag prevention, along with technical safeguards, discourage unauthorized downloads
+- **Export Requirement:** Full-resolution downloads require purchase of the one-time export package
+
+### 9.2 Asset Usage
+
+- **On Live Websites:** Full-resolution, clean images delivered via Cloudflare CDN
+- **In Asset Locker:** Watermarked previews for unpurchased exports
+- **After Export Purchase:** Full-resolution files available for download in a complete package
+
+## 10. International Data Transfers
 
 Our Services are operated from the United States. If you access the Services from outside the United States, your information will be transferred to, stored, and processed in the United States and other countries where our service providers operate. These jurisdictions may have different data protection laws than your country of residence.
 
 By using the Services, you consent to the transfer of your information to the United States and other jurisdictions. We implement appropriate safeguards, including standard contractual clauses, to protect your information during international transfers.
 
-## 10. Children's Privacy
+## 11. Children's Privacy
 
 The Services are not intended for users under 13 years of age (or under 16 in the European Economic Area). We do not knowingly collect personal information from children. If we discover that we have collected information from a child without parental consent, we will promptly delete it. If you believe a child has provided us with personal information, contact us at contact@vibescript.online.
 
-## 11. Third-Party Links
+## 12. Third-Party Links
 
 Our Services may contain links to third-party websites, applications, or services not operated by us. This Privacy Policy does not apply to third-party sites. We encourage you to review the privacy policies of any third-party sites you visit.
 
-## 12. Changes to This Privacy Policy
+## 13. Closed Beta and Invitation System
+
+During our closed beta phase:
+
+- We collect email addresses for waitlist management
+- Manual approval is required for platform access
+- Waitlist data is retained until you request deletion or we exit beta
+- Approved users receive invitation emails via Resend
+
+## 14. Changes to This Privacy Policy
 
 We may update this Privacy Policy from time to time. When we make material changes, we will:
 
@@ -215,7 +276,7 @@ We may update this Privacy Policy from time to time. When we make material chang
 
 Continued use of the Services after changes become effective constitutes acceptance of the updated Privacy Policy.
 
-## 13. Contact Us
+## 15. Contact Us
 
 If you have questions, concerns, or requests regarding this Privacy Policy or our data practices, contact us at:
 
@@ -225,3 +286,441 @@ Location: United States
 
 For GDPR-related inquiries, please include "GDPR Request" in your email subject line.  
 For CCPA-related inquiries, please include "CCPA Request" in your email subject line.
+</document>
+
+<document path="terms-and-conditions.md" title="Terms and Conditions">
+# Terms and Conditions
+
+**Effective Date:** October 26, 2025
+
+These Terms and Conditions ("Terms") govern your access to and use of the websites and services provided by VibeScript at https://vibescript.online and https://builder.vibescript.online (collectively, the "Services"). By accessing or using the Services, you agree to be bound by these Terms. If you do not agree, do not use the Services.
+
+## 1. Acceptance of Terms
+
+By creating an account, accessing the Services, or using any features including voice-to-website generation, AI image generation, hosting, or export functionality, you acknowledge that you have read, understood, and agree to these Terms and our Privacy Policy. These Terms constitute a legally binding agreement between you and VibeScript.
+
+## 2. Eligibility
+
+You must be at least 13 years of age (or 16 in the European Economic Area) to use the Services. If you are under 18, you represent that you have parental or guardian consent to use the Services. By using the Services, you represent and warrant that you meet these eligibility requirements and have the authority to enter into these Terms.
+
+## 3. Account Registration
+
+### 3.1 Account Creation
+
+To access certain features, you must create an account by providing:
+
+- A valid email address
+- A secure password, or
+- Authentication via Google OAuth
+
+You are responsible for maintaining the confidentiality of your account credentials and for all activities that occur under your account.
+
+### 3.2 Closed Beta Access
+
+The Services are currently in closed beta and available by invitation only. You may join the waitlist on our website to request access. We reserve the right to approve or deny access requests at our sole discretion.
+
+### 3.3 Account Accuracy
+
+You agree to provide accurate, current, and complete information during registration and to update such information to keep it accurate. We may suspend or terminate accounts that provide false or misleading information.
+
+### 3.4 Account Security
+
+You must immediately notify us at contact@vibescript.online if you suspect unauthorized access to your account. We are not liable for losses arising from unauthorized use of your account.
+
+## 4. Description of Services
+
+### 4.1 Voice-First Website Builder
+
+VibeScript is an AI-powered platform that allows you to create websites using voice or text input. You describe your desired website, and our AI generates production-ready HTML, CSS, and JavaScript code in real time.
+
+### 4.2 AI Image Generation
+
+We provide AI-powered image generation using OpenAI's DALL-E technology. Generated images are:
+
+- Stored in your Asset Locker
+- Available for use on your VibeScript-hosted websites at full resolution without watermarks
+- Displayed as watermarked, low-resolution previews in the Asset Locker interface for unpurchased exports
+- Subject to tier-based generation limits enforced via Stripe webhook verification
+
+### 4.3 Hosting
+
+We provide instant website hosting:
+
+- **Free Tier:** No AI generation capabilities; upload-only for assets; websites hosted under a vibescript.online subdomain (e.g., yoursite.vibescript.online); 100 MB storage
+- **Basic Tier ($9/month):** 100 AI image generations per month; custom domain hosting; 2 GB storage
+- **Premium Tier ($19/month):** 250 AI image generations per month; custom domain hosting; 10 GB storage
+
+### 4.4 Storage Add-ons
+
+Stackable storage expansions are available for paid subscribers:
+
+- **Small Add-on ($10/month):** +5 GB additional storage
+- **Medium Add-on ($25/month):** +50 GB additional storage
+- **Large Add-on ($50/month):** +250 GB additional storage
+
+Add-ons can be combined to create custom storage solutions.
+
+### 4.5 Export Functionality
+
+For a one-time fee of $25, you may export a complete static copy of your website, including:
+
+- All HTML, CSS, and JavaScript files
+- Full-resolution images and assets without watermarks
+- A complete, self-contained package suitable for hosting elsewhere
+- Limit of one export per checkout transaction (additional exports require separate purchases)
+
+### 4.6 AI Processing
+
+Our AI interprets your voice and text inputs to generate website code and images. Voice data is processed in real-time using OpenAI's Whisper API and is not permanently stored unless you save your project. The AI relies on licensed datasets and does not use your private content for training purposes without explicit consent.
+
+### 4.7 Voice Features
+
+We offer voice input (speech-to-text via OpenAI Whisper) and voice output (text-to-speech via OpenAI TTS) with six voice options: alloy, echo, fable, onyx, nova, and shimmer. Voice preferences are stored in localStorage for guests and in your Supabase account for authenticated users.
+
+## 5. Pricing and Payments
+
+### 5.1 Pricing Tiers
+
+Current pricing includes:
+
+- **Free:** No AI generation; upload-only; subdomain hosting; 100 MB storage
+- **Basic ($9/month):** 100 AI images/month; custom domain hosting; 2 GB storage
+- **Premium ($19/month):** 250 AI images/month; custom domain hosting; 10 GB storage
+- **Storage Add-ons:** Small (+5 GB, $10/month), Medium (+50 GB, $25/month), Large (+250 GB, $50/month) - stackable
+- **One-Time Export ($25):** Full website download package (limit 1 per checkout)
+
+Pricing is subject to change with 30 days' notice. Changes will not affect existing subscribers until their next billing cycle.
+
+### 5.2 Payment Processing
+
+All payments are processed securely through Stripe. By providing payment information, you authorize us to charge your payment method for applicable fees. You represent that you have the legal right to use the payment method provided.
+
+### 5.3 Subscriptions
+
+Subscriptions automatically renew at the end of each billing period unless you cancel before the renewal date. You can manage or cancel your subscription through the BillingModal in your dashboard. Cancellations take effect at the end of the current billing period.
+
+### 5.4 Tier-Based Limits
+
+Access to AI generation and storage is verified through Stripe webhook integration:
+
+- Free users cannot generate AI images (upload-only access)
+- Basic and Premium users receive monthly AI generation credits that reset at the beginning of each billing cycle
+- Storage limits are enforced based on subscription tier plus any purchased add-ons
+- Exceeding storage limits may result in inability to upload or generate additional assets until storage is freed or expanded
+
+### 5.5 Refunds
+
+Subscription fees are generally non-refundable. We may provide refunds on a case-by-case basis at our sole discretion. One-time export fees are non-refundable once the export file has been delivered.
+
+### 5.6 Taxes
+
+Prices do not include applicable taxes, which you are responsible for paying. We will charge applicable taxes where required by law.
+
+### 5.7 Failed Payments
+
+If a payment fails, we may suspend your account and downgrade your service until payment is resolved. Repeated payment failures may result in account termination.
+
+## 6. Intellectual Property
+
+### 6.1 Your Content
+
+You retain all ownership rights to the websites, text, code, and other content you create using the Services ("Your Content"). By using the Services, you grant us a limited, worldwide, non-exclusive license to host, store, process, and display Your Content solely to provide the Services.
+
+### 6.2 AI-Generated Images
+
+Images generated by our AI based on your input are subject to the following:
+
+- You have a license to use generated images on your VibeScript-hosted websites
+- Full-resolution images without watermarks are delivered to your live websites
+- To download images for use outside VibeScript, you must purchase the one-time export package ($25)
+- Generated images are subject to OpenAI's usage policies and any applicable restrictions
+- We do not claim ownership of generated images, but we provide them under a licensing model that governs their use
+
+### 6.3 Generated Code
+
+Website code generated by our AI based on your input belongs to you. You may use, modify, distribute, and commercialize the generated code without restriction. The one-time export option provides you with a complete, portable copy of your website for use outside our platform.
+
+### 6.4 VibeScript Property
+
+The Services, including all software, algorithms, AI models, designs, logos, branding, and underlying technology, are owned by VibeScript and protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, reverse engineer, decompile, or create derivative works based on the Services.
+
+### 6.5 Feedback
+
+If you provide feedback, suggestions, or ideas about the Services, you grant us a perpetual, irrevocable, worldwide, royalty-free license to use, implement, and incorporate such feedback without compensation or attribution.
+
+## 7. Acceptable Use
+
+### 7.1 Permitted Use
+
+You may use the Services to:
+
+- Create, design, and host websites for lawful purposes
+- Generate AI images for use in your websites
+- Export your websites for personal or commercial use
+- Use voice and text inputs to interact with our AI
+
+### 7.2 Prohibited Use
+
+You agree not to:
+
+- Violate any applicable laws, regulations, or third-party rights
+- Create websites that contain illegal, harmful, defamatory, obscene, or infringing content
+- Generate images or content that promotes hate speech, violence, discrimination, or harassment
+- Use the Services to distribute malware, viruses, phishing schemes, or malicious code
+- Impersonate any person or entity or misrepresent your affiliation
+- Scrape, data-mine, or use automated tools to access the Services without permission
+- Attempt to hack, compromise, or interfere with the security or integrity of the Services
+- Use the Services to spam, send unsolicited communications, or engage in fraudulent activity
+- Resell, sublicense, or redistribute the Services without authorization
+- Abuse AI generation features by creating excessive images without active websites ("image farming")
+- Circumvent tier-based limits, rate limiting, or other usage restrictions
+- Use the Services in any way that could damage, disable, or impair the platform or other users' experience
+- Create websites or generate images that infringe on intellectual property rights, including copyrights, trademarks, or patents
+- Use the Services to engage in cryptocurrency mining, illegal gambling, or pyramid schemes
+- Download or attempt to extract full-resolution images from the Asset Locker without purchasing an export
+
+### 7.3 Content Monitoring
+
+We reserve the right, but are not obligated, to monitor, review, or remove content that violates these Terms or is otherwise objectionable. We may use automated and manual methods to detect prohibited content.
+
+### 7.4 Enforcement
+
+Violation of these Terms may result in:
+
+- Warning or suspension of your account
+- Removal of prohibited content, websites, or generated images
+- Termination of your account and access to the Services
+- Legal action and reporting to authorities as required by law
+
+## 8. AI Generation Limits and Anti-Abuse
+
+### 8.1 Generation Limits
+
+AI image generation is limited by subscription tier:
+
+- **Free:** No AI generation (upload-only)
+- **Basic:** 100 images per month
+- **Premium:** 250 images per month
+
+Limits reset at the beginning of each billing cycle and are enforced via Stripe webhook verification.
+
+### 8.2 Rate Limiting
+
+To prevent abuse and manage costs, we implement rate limiting on AI generation requests. Excessive generation attempts may be temporarily blocked.
+
+### 8.3 Anti-Abuse Monitoring
+
+We monitor usage patterns to detect abuse, including:
+
+- Generating large quantities of images without maintaining active websites
+- Rapid generation followed by immediate account cancellation
+- Patterns inconsistent with legitimate website building
+
+Accounts exhibiting abusive patterns may be flagged, limited, or terminated.
+
+## 9. Website Hosting and Availability
+
+### 9.1 Hosting Infrastructure
+
+Websites are hosted on Cloudflare infrastructure (Pages, Workers, D1, R2, KV, and Durable Objects). We strive to provide reliable uptime and performance but do not guarantee uninterrupted or error-free service.
+
+### 9.2 Subdomains
+
+Free-tier users receive hosting under a vibescript.online subdomain (e.g., yoursite.vibescript.online). We reserve the right to reclaim or modify subdomains that violate these Terms or are inactive for extended periods.
+
+### 9.3 Custom Domains
+
+Paid subscribers (Basic and Premium) may connect custom domains to their hosted websites. You are responsible for:
+
+- Domain registration and renewal
+- DNS configuration (CNAME records pointing to Cloudflare)
+- Domain verification
+- Compliance with domain registrar policies
+
+We are not liable for issues arising from domain expiration, misconfiguration, or registrar actions. SSL certificates are automatically provisioned by Cloudflare upon successful domain connection.
+
+### 9.4 Service Limitations
+
+We may impose limits on:
+
+- Storage space (enforced by tier and add-ons)
+- Bandwidth usage
+- Number of websites or projects per account
+- AI generation credits and requests
+- File upload sizes and types
+
+Limits vary by pricing tier and are subject to change with reasonable notice.
+
+### 9.5 Suspension and Downtime
+
+We may suspend or restrict access to the Services for:
+
+- Scheduled maintenance and updates
+- Emergency security measures
+- Technical issues or outages
+- Account-level violations or non-payment
+- Exceeding tier-based storage or generation limits
+
+We will provide advance notice of scheduled maintenance when feasible.
+
+## 10. Asset Locker and Export System
+
+### 10.1 Asset Storage
+
+All uploaded and AI-generated assets are stored in your Asset Locker with the following characteristics:
+
+- **Preview Display:** Watermarked, low-resolution previews shown in the Asset Locker interface for unpurchased exports
+- **Live Website Display:** Full-resolution images without watermarks delivered via CDN to your live websites
+- **Access Control:** Assets protected by signed URLs with expiration and technical safeguards
+- **Download Protection:** Right-click prevention, drag prevention, and other measures discourage unauthorized downloads from the Asset Locker
+
+### 10.2 One-Time Export
+
+For $25, you may purchase a one-time export package that includes:
+
+- All HTML, CSS, and JavaScript files
+- Full-resolution images and assets without watermarks
+- A complete, self-contained static site package suitable for hosting elsewhere
+- Limit of one export per checkout transaction
+
+### 10.3 Export Limitations
+
+Exported websites are provided "as is" without ongoing support, updates, or hosting. Once exported, you are responsible for maintaining, hosting, and securing the website independently. The export fee is non-refundable once the download is delivered.
+
+### 10.4 License
+
+Exported code and assets are provided under the same ownership terms described in Section 6. You may use, modify, and distribute the exported website freely, subject to applicable third-party licenses (e.g., OpenAI's usage policies for generated images).
+
+## 11. Third-Party Services
+
+The Services integrate with third-party providers including:
+
+- **Supabase:** Authentication, database management, and data storage
+- **Stripe:** Payment processing and subscription management
+- **Resend:** Email delivery
+- **Google:** OAuth authentication
+- **Cloudflare:** Infrastructure, security, CDN, and hosting
+- **OpenAI:** AI processing for voice transcription (Whisper), text-to-speech (TTS), image generation (DALL-E), and conversational AI (GPT-4)
+
+Your use of these third-party services is subject to their respective terms of service and privacy policies. We are not responsible for the actions, policies, or failures of third-party providers.
+
+## 12. Data and Privacy
+
+Your use of the Services is also governed by our Privacy Policy, which is incorporated into these Terms by reference. We collect, use, and protect your data as described in the Privacy Policy. You acknowledge and consent to such data practices.
+
+## 13. AI and Automated Systems
+
+### 13.1 AI-Generated Content
+
+Our AI generates website code and images based on your inputs. While we strive for accuracy and quality, AI-generated content may contain errors, inaccuracies, or unexpected results. You are responsible for reviewing and testing all generated code and images before publishing or using them.
+
+### 13.2 No Warranties on AI Output
+
+We do not guarantee that AI-generated content will meet your specific requirements, be error-free, or be suitable for any particular purpose. AI output is provided "as is."
+
+### 13.3 Content Responsibility
+
+You are solely responsible for reviewing, editing, and approving all content and code generated by the AI before publication. We are not liable for consequences arising from the use of AI-generated content.
+
+### 13.4 Voice Processing
+
+Voice inputs are processed in real-time by OpenAI's Whisper API. We do not guarantee perfect transcription or interpretation of voice commands. You may review and edit AI interpretations before finalizing website generation.
+
+### 13.5 OpenAI Policies
+
+AI-generated images are subject to OpenAI's usage policies. You agree to use generated images in compliance with OpenAI's terms and any applicable restrictions.
+
+## 14. Disclaimers
+
+### 14.1 "As Is" Service
+
+THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR ACCURACY. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
+
+### 14.2 No Guarantee of Results
+
+We do not guarantee that the Services will meet your specific needs, achieve particular outcomes, or generate websites or images that perform as desired. You use the Services at your own risk.
+
+### 14.3 Third-Party Content
+
+We are not responsible for the accuracy, legality, or quality of third-party content, links, or services accessed through or integrated with the Services.
+
+### 14.4 Beta Features
+
+The Services are currently in closed beta. Features may change, be removed, or contain bugs. Beta features are provided without warranties and may not be suitable for production use.
+
+## 15. Limitation of Liability
+
+TO THE FULLEST EXTENT PERMITTED BY LAW, VIBESCRIPT, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AND SERVICE PROVIDERS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:
+
+- YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICES
+- ANY CONDUCT OR CONTENT OF THIRD PARTIES ON THE SERVICES
+- UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR CONTENT
+- AI-GENERATED CONTENT, IMAGES, OR ERRORS IN WEBSITE CODE
+- WEBSITE DOWNTIME, OUTAGES, OR TECHNICAL ISSUES
+- DATA LOSS OR CORRUPTION
+- LOSS OF GENERATED IMAGES OR ASSETS
+- INABILITY TO DOWNLOAD OR ACCESS ASSETS
+- DOMAIN CONNECTION ISSUES OR DNS CONFIGURATION ERRORS
+- ANY OTHER MATTER RELATED TO THE SERVICES
+
+OUR TOTAL LIABILITY TO YOU FOR ANY CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR $100, WHICHEVER IS GREATER.
+
+SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATION OF LIABILITY, SO THESE LIMITATIONS MAY NOT APPLY TO YOU.
+
+## 16. Indemnification
+
+You agree to indemnify, defend, and hold harmless VibeScript, its affiliates, officers, directors, employees, agents, and service providers from and against any claims, liabilities, damages, losses, costs, or expenses (including reasonable attorneys' fees) arising out of or related to:
+
+- Your use of the Services
+- Your Content, websites, or AI-generated images
+- Your violation of these Terms
+- Your violation of any rights of another party, including intellectual property rights
+- Your violation of applicable laws or regulations
+- Your abuse of AI generation features or tier-based limits
+
+We reserve the right to assume the exclusive defense and control of any matter subject to indemnification by you, in which case you will cooperate with us in asserting any available defenses.
+
+## 17. Termination
+
+### 17.1 Termination by You
+
+You may terminate your account at any time by contacting us at contact@vibescript.online or using account deletion features in the Services. Termination does not entitle you to refunds for unused subscription periods.
+
+### 17.2 Termination by Us
+
+We may suspend or terminate your account immediately, without prior notice, if:
+
+- You violate these Terms
+- You engage in fraudulent, illegal, or abusive activity (including AI generation abuse)
+- Your account remains inactive for an extended period
+- We are required to do so by law or legal process
+- We discontinue the Services
+
+### 17.3 Effect of Termination
+
+Upon termination:
+
+- Your access to the Services will be revoked
+- Your hosted websites may be taken offline
+- Your Asset Locker content may be deleted
+- Your data may be deleted in accordance with our Privacy Policy
+- Sections of these Terms that by their nature should survive termination will remain in effect, including intellectual property, disclaimers, limitation of liability, and indemnification
+
+### 17.4 Data Retrieval
+
+Before terminating your account, you may export your websites or request a copy of your data. After termination, we may retain certain information as required by law or legitimate business purposes (e.g., financial records, abuse prevention).
+
+## 18. Dispute Resolution
+
+### 18.1 Governing Law
+
+These Terms are governed by and construed in accordance with the laws of the United States and the state in which VibeScript is established, without regard to conflict of law principles.
+
+### 18.2 Informal Resolution
+
+Before filing a formal legal claim, you agree to contact us at contact@vibescript.online to attempt to resolve the dispute informally. We will make reasonable efforts to resolve disputes amicably.
+
+### 18.3 Arbitration
+
+Any dispute, claim, or controversy arising out of or relating to these Terms or the Services that cannot be resolved informally shall be resolved through binding arbitration administered by a mutually agreed-upon arbitration service in accordance with its rules. The arbitration will take place in the United States. Judgment on the arbitration award may be entered in any court having jurisdiction.
+
