@@ -1,12 +1,13 @@
+<document path="terms-and-conditions.md" title="Terms and Conditions">
 # Terms and Conditions
 
-**Effective Date:** October 19, 2025
+**Effective Date:** October 26, 2025
 
 These Terms and Conditions ("Terms") govern your access to and use of the websites and services provided by VibeScript at https://vibescript.online and https://builder.vibescript.online (collectively, the "Services"). By accessing or using the Services, you agree to be bound by these Terms. If you do not agree, do not use the Services.
 
 ## 1. Acceptance of Terms
 
-By creating an account, accessing the Services, or using any features including voice-to-website generation, hosting, or export functionality, you acknowledge that you have read, understood, and agree to these Terms and our Privacy Policy. These Terms constitute a legally binding agreement between you and VibeScript.
+By creating an account, accessing the Services, or using any features including voice-to-website generation, AI image generation, hosting, or export functionality, you acknowledge that you have read, understood, and agree to these Terms and our Privacy Policy. These Terms constitute a legally binding agreement between you and VibeScript.
 
 ## 2. Eligibility
 
@@ -42,20 +43,49 @@ You must immediately notify us at contact@vibescript.online if you suspect unaut
 
 VibeScript is an AI-powered platform that allows you to create websites using voice or text input. You describe your desired website, and our AI generates production-ready HTML, CSS, and JavaScript code in real time.
 
-### 4.2 Hosting
+### 4.2 AI Image Generation
+
+We provide AI-powered image generation using OpenAI's DALL-E technology. Generated images are:
+
+- Stored in your Asset Locker
+- Available for use on your VibeScript-hosted websites at full resolution without watermarks
+- Displayed as watermarked, low-resolution previews in the Asset Locker interface for unpurchased exports
+- Subject to tier-based generation limits enforced via Stripe webhook verification
+
+### 4.3 Hosting
 
 We provide instant website hosting:
 
-- **Free Tier:** Websites are hosted under a vibescript.online subdomain (e.g., yoursite.vibescript.online)
-- **Paid Tiers:** Custom domain hosting is available for subscribers
+- **Free Tier:** No AI generation capabilities; upload-only for assets; websites hosted under a vibescript.online subdomain (e.g., yoursite.vibescript.online); 100 MB storage
+- **Basic Tier ($9/month):** 100 AI image generations per month; custom domain hosting; 2 GB storage
+- **Premium Tier ($19/month):** 250 AI image generations per month; custom domain hosting; 10 GB storage
 
-### 4.3 Export Functionality
+### 4.4 Storage Add-ons
 
-For a one-time fee of $25, you may export a complete static copy of your website, including all HTML, CSS, JavaScript, and assets, for self-hosting or transfer to another platform.
+Stackable storage expansions are available for paid subscribers:
 
-### 4.4 AI Processing
+- **Small Add-on ($10/month):** +5 GB additional storage
+- **Medium Add-on ($25/month):** +50 GB additional storage
+- **Large Add-on ($50/month):** +250 GB additional storage
 
-Our AI interprets your voice and text inputs to generate website code. Voice data is processed in real-time and is not permanently stored unless you save your project. The AI relies on licensed datasets and does not use your private content for training purposes.
+Add-ons can be combined to create custom storage solutions.
+
+### 4.5 Export Functionality
+
+For a one-time fee of $25, you may export a complete static copy of your website, including:
+
+- All HTML, CSS, and JavaScript files
+- Full-resolution images and assets without watermarks
+- A complete, self-contained package suitable for hosting elsewhere
+- Limit of one export per checkout transaction (additional exports require separate purchases)
+
+### 4.6 AI Processing
+
+Our AI interprets your voice and text inputs to generate website code and images. Voice data is processed in real-time using OpenAI's Whisper API and is not permanently stored unless you save your project. The AI relies on licensed datasets and does not use your private content for training purposes without explicit consent.
+
+### 4.7 Voice Features
+
+We offer voice input (speech-to-text via OpenAI Whisper) and voice output (text-to-speech via OpenAI TTS) with six voice options: alloy, echo, fable, onyx, nova, and shimmer. Voice preferences are stored in localStorage for guests and in your Supabase account for authenticated users.
 
 ## 5. Pricing and Payments
 
@@ -63,10 +93,11 @@ Our AI interprets your voice and text inputs to generate website code. Voice dat
 
 Current pricing includes:
 
-- **Free:** Subdomain hosting with limited generation credits
-- **Basic ($9/month):** Custom domain hosting and enhanced features
-- **Premium ($19/month):** Additional features 
-- **One-Time Export ($25):** Full website download package
+- **Free:** No AI generation; upload-only; subdomain hosting; 100 MB storage
+- **Basic ($9/month):** 100 AI images/month; custom domain hosting; 2 GB storage
+- **Premium ($19/month):** 250 AI images/month; custom domain hosting; 10 GB storage
+- **Storage Add-ons:** Small (+5 GB, $10/month), Medium (+50 GB, $25/month), Large (+250 GB, $50/month) - stackable
+- **One-Time Export ($25):** Full website download package (limit 1 per checkout)
 
 Pricing is subject to change with 30 days' notice. Changes will not affect existing subscribers until their next billing cycle.
 
@@ -76,17 +107,26 @@ All payments are processed securely through Stripe. By providing payment informa
 
 ### 5.3 Subscriptions
 
-Subscriptions automatically renew at the end of each billing period unless you cancel before the renewal date. You can manage or cancel your subscription through your account settings. Cancellations take effect at the end of the current billing period.
+Subscriptions automatically renew at the end of each billing period unless you cancel before the renewal date. You can manage or cancel your subscription through the BillingModal in your dashboard. Cancellations take effect at the end of the current billing period.
 
-### 5.4 Refunds
+### 5.4 Tier-Based Limits
+
+Access to AI generation and storage is verified through Stripe webhook integration:
+
+- Free users cannot generate AI images (upload-only access)
+- Basic and Premium users receive monthly AI generation credits that reset at the beginning of each billing cycle
+- Storage limits are enforced based on subscription tier plus any purchased add-ons
+- Exceeding storage limits may result in inability to upload or generate additional assets until storage is freed or expanded
+
+### 5.5 Refunds
 
 Subscription fees are generally non-refundable. We may provide refunds on a case-by-case basis at our sole discretion. One-time export fees are non-refundable once the export file has been delivered.
 
-### 5.5 Taxes
+### 5.6 Taxes
 
 Prices do not include applicable taxes, which you are responsible for paying. We will charge applicable taxes where required by law.
 
-### 5.6 Failed Payments
+### 5.7 Failed Payments
 
 If a payment fails, we may suspend your account and downgrade your service until payment is resolved. Repeated payment failures may result in account termination.
 
@@ -94,17 +134,27 @@ If a payment fails, we may suspend your account and downgrade your service until
 
 ### 6.1 Your Content
 
-You retain all ownership rights to the websites, text, images, code, and other content you create using the Services ("Your Content"). By using the Services, you grant us a limited, worldwide, non-exclusive license to host, store, process, and display Your Content solely to provide the Services.
+You retain all ownership rights to the websites, text, code, and other content you create using the Services ("Your Content"). By using the Services, you grant us a limited, worldwide, non-exclusive license to host, store, process, and display Your Content solely to provide the Services.
 
-### 6.2 Generated Code
+### 6.2 AI-Generated Images
+
+Images generated by our AI based on your input are subject to the following:
+
+- You have a license to use generated images on your VibeScript-hosted websites
+- Full-resolution images without watermarks are delivered to your live websites
+- To download images for use outside VibeScript, you must purchase the one-time export package ($25)
+- Generated images are subject to OpenAI's usage policies and any applicable restrictions
+- We do not claim ownership of generated images, but we provide them under a licensing model that governs their use
+
+### 6.3 Generated Code
 
 Website code generated by our AI based on your input belongs to you. You may use, modify, distribute, and commercialize the generated code without restriction. The one-time export option provides you with a complete, portable copy of your website for use outside our platform.
 
-### 6.3 VibeScript Property
+### 6.4 VibeScript Property
 
 The Services, including all software, algorithms, AI models, designs, logos, branding, and underlying technology, are owned by VibeScript and protected by copyright, trademark, and other intellectual property laws. You may not copy, modify, reverse engineer, decompile, or create derivative works based on the Services.
 
-### 6.4 Feedback
+### 6.5 Feedback
 
 If you provide feedback, suggestions, or ideas about the Services, you grant us a perpetual, irrevocable, worldwide, royalty-free license to use, implement, and incorporate such feedback without compensation or attribution.
 
@@ -115,6 +165,7 @@ If you provide feedback, suggestions, or ideas about the Services, you grant us 
 You may use the Services to:
 
 - Create, design, and host websites for lawful purposes
+- Generate AI images for use in your websites
 - Export your websites for personal or commercial use
 - Use voice and text inputs to interact with our AI
 
@@ -124,16 +175,19 @@ You agree not to:
 
 - Violate any applicable laws, regulations, or third-party rights
 - Create websites that contain illegal, harmful, defamatory, obscene, or infringing content
-- Generate content that promotes hate speech, violence, discrimination, or harassment
+- Generate images or content that promotes hate speech, violence, discrimination, or harassment
 - Use the Services to distribute malware, viruses, phishing schemes, or malicious code
 - Impersonate any person or entity or misrepresent your affiliation
 - Scrape, data-mine, or use automated tools to access the Services without permission
 - Attempt to hack, compromise, or interfere with the security or integrity of the Services
 - Use the Services to spam, send unsolicited communications, or engage in fraudulent activity
 - Resell, sublicense, or redistribute the Services without authorization
+- Abuse AI generation features by creating excessive images without active websites ("image farming")
+- Circumvent tier-based limits, rate limiting, or other usage restrictions
 - Use the Services in any way that could damage, disable, or impair the platform or other users' experience
-- Create websites that infringe on intellectual property rights, including copyrights, trademarks, or patents
+- Create websites or generate images that infringe on intellectual property rights, including copyrights, trademarks, or patents
 - Use the Services to engage in cryptocurrency mining, illegal gambling, or pyramid schemes
+- Download or attempt to extract full-resolution images from the Asset Locker without purchasing an export
 
 ### 7.3 Content Monitoring
 
@@ -144,36 +198,70 @@ We reserve the right, but are not obligated, to monitor, review, or remove conte
 Violation of these Terms may result in:
 
 - Warning or suspension of your account
-- Removal of prohibited content or websites
+- Removal of prohibited content, websites, or generated images
 - Termination of your account and access to the Services
 - Legal action and reporting to authorities as required by law
 
-## 8. Website Hosting and Availability
+## 8. AI Generation Limits and Anti-Abuse
 
-### 8.1 Hosting Infrastructure
+### 8.1 Generation Limits
+
+AI image generation is limited by subscription tier:
+
+- **Free:** No AI generation (upload-only)
+- **Basic:** 100 images per month
+- **Premium:** 250 images per month
+
+Limits reset at the beginning of each billing cycle and are enforced via Stripe webhook verification.
+
+### 8.2 Rate Limiting
+
+To prevent abuse and manage costs, we implement rate limiting on AI generation requests. Excessive generation attempts may be temporarily blocked.
+
+### 8.3 Anti-Abuse Monitoring
+
+We monitor usage patterns to detect abuse, including:
+
+- Generating large quantities of images without maintaining active websites
+- Rapid generation followed by immediate account cancellation
+- Patterns inconsistent with legitimate website building
+
+Accounts exhibiting abusive patterns may be flagged, limited, or terminated.
+
+## 9. Website Hosting and Availability
+
+### 9.1 Hosting Infrastructure
 
 Websites are hosted on Cloudflare infrastructure (Pages, Workers, D1, R2, KV, and Durable Objects). We strive to provide reliable uptime and performance but do not guarantee uninterrupted or error-free service.
 
-### 8.2 Subdomains
+### 9.2 Subdomains
 
 Free-tier users receive hosting under a vibescript.online subdomain (e.g., yoursite.vibescript.online). We reserve the right to reclaim or modify subdomains that violate these Terms or are inactive for extended periods.
 
-### 8.3 Custom Domains
+### 9.3 Custom Domains
 
-Paid subscribers may connect custom domains to their hosted websites. You are responsible for domain registration, DNS configuration, and renewal. We are not liable for issues arising from domain expiration or misconfiguration.
+Paid subscribers (Basic and Premium) may connect custom domains to their hosted websites. You are responsible for:
 
-### 8.4 Service Limitations
+- Domain registration and renewal
+- DNS configuration (CNAME records pointing to Cloudflare)
+- Domain verification
+- Compliance with domain registrar policies
+
+We are not liable for issues arising from domain expiration, misconfiguration, or registrar actions. SSL certificates are automatically provisioned by Cloudflare upon successful domain connection.
+
+### 9.4 Service Limitations
 
 We may impose limits on:
 
-- Storage space and bandwidth
+- Storage space (enforced by tier and add-ons)
+- Bandwidth usage
 - Number of websites or projects per account
 - AI generation credits and requests
 - File upload sizes and types
 
 Limits vary by pricing tier and are subject to change with reasonable notice.
 
-### 8.5 Suspension and Downtime
+### 9.5 Suspension and Downtime
 
 We may suspend or restrict access to the Services for:
 
@@ -181,159 +269,180 @@ We may suspend or restrict access to the Services for:
 - Emergency security measures
 - Technical issues or outages
 - Account-level violations or non-payment
+- Exceeding tier-based storage or generation limits
 
 We will provide advance notice of scheduled maintenance when feasible.
 
-## 9. Export and Portability
+## 10. Asset Locker and Export System
 
-### 9.1 One-Time Export
+### 10.1 Asset Storage
 
-For $25, you may purchase a one-time export of your website that includes:
+All uploaded and AI-generated assets are stored in your Asset Locker with the following characteristics:
+
+- **Preview Display:** Watermarked, low-resolution previews shown in the Asset Locker interface for unpurchased exports
+- **Live Website Display:** Full-resolution images without watermarks delivered via CDN to your live websites
+- **Access Control:** Assets protected by signed URLs with expiration and technical safeguards
+- **Download Protection:** Right-click prevention, drag prevention, and other measures discourage unauthorized downloads from the Asset Locker
+
+### 10.2 One-Time Export
+
+For $25, you may purchase a one-time export package that includes:
 
 - All HTML, CSS, and JavaScript files
-- Images and other assets used in the website
+- Full-resolution images and assets without watermarks
 - A complete, self-contained static site package suitable for hosting elsewhere
+- Limit of one export per checkout transaction
 
-### 9.2 Export Limitations
+### 10.3 Export Limitations
 
 Exported websites are provided "as is" without ongoing support, updates, or hosting. Once exported, you are responsible for maintaining, hosting, and securing the website independently. The export fee is non-refundable once the download is delivered.
 
-### 9.3 License
+### 10.4 License
 
-Exported code is provided under the same ownership terms described in Section 6.2. You may use, modify, and distribute the exported website freely.
+Exported code and assets are provided under the same ownership terms described in Section 6. You may use, modify, and distribute the exported website freely, subject to applicable third-party licenses (e.g., OpenAI's usage policies for generated images).
 
-## 10. Third-Party Services
+## 11. Third-Party Services
 
 The Services integrate with third-party providers including:
 
-- **Supabase:** Authentication and database management
-- **Stripe:** Payment processing
+- **Supabase:** Authentication, database management, and data storage
+- **Stripe:** Payment processing and subscription management
 - **Resend:** Email delivery
 - **Google:** OAuth authentication
-- **Cloudflare:** Infrastructure, security, and CDN
+- **Cloudflare:** Infrastructure, security, CDN, and hosting
+- **OpenAI:** AI processing for voice transcription (Whisper), text-to-speech (TTS), image generation (DALL-E), and conversational AI (GPT-4)
 
 Your use of these third-party services is subject to their respective terms of service and privacy policies. We are not responsible for the actions, policies, or failures of third-party providers.
 
-## 11. Data and Privacy
+## 12. Data and Privacy
 
 Your use of the Services is also governed by our Privacy Policy, which is incorporated into these Terms by reference. We collect, use, and protect your data as described in the Privacy Policy. You acknowledge and consent to such data practices.
 
-## 12. AI and Automated Systems
+## 13. AI and Automated Systems
 
-### 12.1 AI-Generated Content
+### 13.1 AI-Generated Content
 
-Our AI generates website code based on your inputs. While we strive for accuracy and quality, AI-generated content may contain errors, inaccuracies, or unexpected results. You are responsible for reviewing and testing all generated code before publishing or using it.
+Our AI generates website code and images based on your inputs. While we strive for accuracy and quality, AI-generated content may contain errors, inaccuracies, or unexpected results. You are responsible for reviewing and testing all generated code and images before publishing or using them.
 
-### 12.2 No Warranties on AI Output
+### 13.2 No Warranties on AI Output
 
 We do not guarantee that AI-generated content will meet your specific requirements, be error-free, or be suitable for any particular purpose. AI output is provided "as is."
 
-### 12.3 Content Responsibility
+### 13.3 Content Responsibility
 
 You are solely responsible for reviewing, editing, and approving all content and code generated by the AI before publication. We are not liable for consequences arising from the use of AI-generated content.
 
-### 12.4 Voice Processing
+### 13.4 Voice Processing
 
-Voice inputs are processed in real-time by our AI systems. We do not guarantee perfect transcription or interpretation of voice commands. You may review and edit AI interpretations before finalizing website generation.
+Voice inputs are processed in real-time by OpenAI's Whisper API. We do not guarantee perfect transcription or interpretation of voice commands. You may review and edit AI interpretations before finalizing website generation.
 
-## 13. Disclaimers
+### 13.5 OpenAI Policies
 
-### 13.1 "As Is" Service
+AI-generated images are subject to OpenAI's usage policies. You agree to use generated images in compliance with OpenAI's terms and any applicable restrictions.
+
+## 14. Disclaimers
+
+### 14.1 "As Is" Service
 
 THE SERVICES ARE PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, NON-INFRINGEMENT, OR ACCURACY. WE DO NOT WARRANT THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR FREE OF VIRUSES OR OTHER HARMFUL COMPONENTS.
 
-### 13.2 No Guarantee of Results
+### 14.2 No Guarantee of Results
 
-We do not guarantee that the Services will meet your specific needs, achieve particular outcomes, or generate websites that perform as desired. You use the Services at your own risk.
+We do not guarantee that the Services will meet your specific needs, achieve particular outcomes, or generate websites or images that perform as desired. You use the Services at your own risk.
 
-### 13.3 Third-Party Content
+### 14.3 Third-Party Content
 
 We are not responsible for the accuracy, legality, or quality of third-party content, links, or services accessed through or integrated with the Services.
 
-### 13.4 Beta Features
+### 14.4 Beta Features
 
 The Services are currently in closed beta. Features may change, be removed, or contain bugs. Beta features are provided without warranties and may not be suitable for production use.
 
-## 14. Limitation of Liability
+## 15. Limitation of Liability
 
 TO THE FULLEST EXTENT PERMITTED BY LAW, VIBESCRIPT, ITS AFFILIATES, OFFICERS, DIRECTORS, EMPLOYEES, AGENTS, AND SERVICE PROVIDERS SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO LOSS OF PROFITS, DATA, USE, GOODWILL, OR OTHER INTANGIBLE LOSSES, RESULTING FROM:
 
 - YOUR ACCESS TO OR USE OF (OR INABILITY TO ACCESS OR USE) THE SERVICES
 - ANY CONDUCT OR CONTENT OF THIRD PARTIES ON THE SERVICES
 - UNAUTHORIZED ACCESS, USE, OR ALTERATION OF YOUR CONTENT
-- AI-GENERATED CONTENT OR ERRORS IN WEBSITE CODE
+- AI-GENERATED CONTENT, IMAGES, OR ERRORS IN WEBSITE CODE
 - WEBSITE DOWNTIME, OUTAGES, OR TECHNICAL ISSUES
 - DATA LOSS OR CORRUPTION
+- LOSS OF GENERATED IMAGES OR ASSETS
+- INABILITY TO DOWNLOAD OR ACCESS ASSETS
+- DOMAIN CONNECTION ISSUES OR DNS CONFIGURATION ERRORS
 - ANY OTHER MATTER RELATED TO THE SERVICES
 
 OUR TOTAL LIABILITY TO YOU FOR ANY CLAIMS ARISING OUT OF OR RELATED TO THESE TERMS OR THE SERVICES SHALL NOT EXCEED THE AMOUNT YOU PAID US IN THE TWELVE (12) MONTHS PRECEDING THE CLAIM, OR $100, WHICHEVER IS GREATER.
 
 SOME JURISDICTIONS DO NOT ALLOW THE EXCLUSION OF CERTAIN WARRANTIES OR LIMITATION OF LIABILITY, SO THESE LIMITATIONS MAY NOT APPLY TO YOU.
 
-## 15. Indemnification
+## 16. Indemnification
 
 You agree to indemnify, defend, and hold harmless VibeScript, its affiliates, officers, directors, employees, agents, and service providers from and against any claims, liabilities, damages, losses, costs, or expenses (including reasonable attorneys' fees) arising out of or related to:
 
 - Your use of the Services
-- Your Content or websites created using the Services
+- Your Content, websites, or AI-generated images
 - Your violation of these Terms
 - Your violation of any rights of another party, including intellectual property rights
 - Your violation of applicable laws or regulations
+- Your abuse of AI generation features or tier-based limits
 
 We reserve the right to assume the exclusive defense and control of any matter subject to indemnification by you, in which case you will cooperate with us in asserting any available defenses.
 
-## 16. Termination
+## 17. Termination
 
-### 16.1 Termination by You
+### 17.1 Termination by You
 
 You may terminate your account at any time by contacting us at contact@vibescript.online or using account deletion features in the Services. Termination does not entitle you to refunds for unused subscription periods.
 
-### 16.2 Termination by Us
+### 17.2 Termination by Us
 
 We may suspend or terminate your account immediately, without prior notice, if:
 
 - You violate these Terms
-- You engage in fraudulent, illegal, or abusive activity
+- You engage in fraudulent, illegal, or abusive activity (including AI generation abuse)
 - Your account remains inactive for an extended period
 - We are required to do so by law or legal process
 - We discontinue the Services
 
-### 16.3 Effect of Termination
+### 17.3 Effect of Termination
 
 Upon termination:
 
 - Your access to the Services will be revoked
 - Your hosted websites may be taken offline
+- Your Asset Locker content may be deleted
 - Your data may be deleted in accordance with our Privacy Policy
 - Sections of these Terms that by their nature should survive termination will remain in effect, including intellectual property, disclaimers, limitation of liability, and indemnification
 
-### 16.4 Data Retrieval
+### 17.4 Data Retrieval
 
-Before terminating your account, you may export your websites or request a copy of your data. After termination, we may retain certain information as required by law or legitimate business purposes.
+Before terminating your account, you may export your websites or request a copy of your data. After termination, we may retain certain information as required by law or legitimate business purposes (e.g., financial records, abuse prevention).
 
-## 17. Dispute Resolution
+## 18. Dispute Resolution
 
-### 17.1 Governing Law
+### 18.1 Governing Law
 
 These Terms are governed by and construed in accordance with the laws of the United States and the state in which VibeScript is established, without regard to conflict of law principles.
 
-### 17.2 Informal Resolution
+### 18.2 Informal Resolution
 
 Before filing a formal legal claim, you agree to contact us at contact@vibescript.online to attempt to resolve the dispute informally. We will make reasonable efforts to resolve disputes amicably.
 
-### 17.3 Arbitration
+### 18.3 Arbitration
 
 Any dispute, claim, or controversy arising out of or relating to these Terms or the Services that cannot be resolved informally shall be resolved through binding arbitration administered by a mutually agreed-upon arbitration service in accordance with its rules. The arbitration will take place in the United States. Judgment on the arbitration award may be entered in any court having jurisdiction.
 
-### 17.4 Class Action Waiver
+### 18.4 Class Action Waiver
 
 You agree to resolve disputes individually and waive your right to participate in class actions, class arbitrations, or representative proceedings.
 
-### 17.5 Exceptions
+### 18.5 Exceptions
 
 Either party may seek injunctive or equitable relief in court for intellectual property violations, confidentiality breaches, or other matters requiring immediate relief.
 
-## 18. Modifications to Terms
+## 19. Modifications to Terms
 
 We may update these Terms from time to time. When we make material changes:
 
@@ -343,45 +452,45 @@ We may update these Terms from time to time. When we make material changes:
 
 If you do not agree to the modified Terms, you must stop using the Services and terminate your account.
 
-## 19. Modifications to Services
+## 20. Modifications to Services
 
-We reserve the right to modify, suspend, or discontinue any aspect of the Services, including features, pricing, and availability, at any time with or without notice. We are not liable for any modification, suspension, or discontinuation of the Services.
+We reserve the right to modify, suspend, or discontinue any aspect of the Services, including features, pricing, tier-based limits, and availability, at any time with or without notice. We are not liable for any modification, suspension, or discontinuation of the Services.
 
-## 20. General Provisions
+## 21. General Provisions
 
-### 20.1 Entire Agreement
+### 21.1 Entire Agreement
 
 These Terms, together with our Privacy Policy, constitute the entire agreement between you and VibeScript regarding the Services and supersede all prior agreements and understandings.
 
-### 20.2 Severability
+### 21.2 Severability
 
 If any provision of these Terms is found to be invalid or unenforceable, the remaining provisions will remain in full force and effect.
 
-### 20.3 Waiver
+### 21.3 Waiver
 
 Our failure to enforce any provision of these Terms does not constitute a waiver of that provision or any other provision.
 
-### 20.4 Assignment
+### 21.4 Assignment
 
 You may not assign or transfer these Terms or your account without our prior written consent. We may assign these Terms or delegate our obligations without restriction.
 
-### 20.5 Force Majeure
+### 21.5 Force Majeure
 
 We are not liable for delays or failures in performance resulting from circumstances beyond our reasonable control, including acts of God, natural disasters, war, terrorism, labor disputes, government actions, or internet disruptions.
 
-### 20.6 Notices
+### 21.6 Notices
 
 Notices to you may be sent via email to the address associated with your account or posted on the Services. Notices to us should be sent to contact@vibescript.online.
 
-### 20.7 Relationship
+### 21.7 Relationship
 
 These Terms do not create any partnership, joint venture, employment, or agency relationship between you and VibeScript.
 
-### 20.8 Accessibility
+### 21.8 Accessibility
 
 We strive to make the Services accessible to users with disabilities. If you encounter accessibility issues, please contact us at contact@vibescript.online.
 
-## 21. Contact Information
+## 22. Contact Information
 
 If you have questions, concerns, or feedback regarding these Terms or the Services, contact us at:
 
@@ -394,3 +503,4 @@ For legal inquiries or notices, please include "Legal Notice" in your email subj
 ---
 
 **By using the Services, you acknowledge that you have read, understood, and agree to be bound by these Terms and Conditions and our Privacy Policy.**
+</document>
