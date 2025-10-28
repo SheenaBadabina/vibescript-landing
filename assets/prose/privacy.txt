@@ -1,4 +1,4 @@
-<document path="privacy-policy.md" title="Privacy Policy">
+title="Privacy Policy">
 # Privacy Policy
 
 **Effective Date:** October 26, 2025
@@ -286,5 +286,3 @@ Location: United States
 
 For GDPR-related inquiries, please include "GDPR Request" in your email subject line.  
 For CCPA-related inquiries, please include "CCPA Request" in your email subject line.
-</document>
-
